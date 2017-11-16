@@ -1,6 +1,21 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.8)
 project(StrangerShips)
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp source/model/Entity.cpp source/model/Entity.h source/model/Bullet.cpp source/model/Bullet.h source/model/Obstacle.cpp source/model/Obstacle.h source/model/Ship.cpp source/model/Ship.h source/model/World.cpp source/model/World.h)
+# Extend the CMake module path to find the FindSFML.cmake
+# file in {project root}/cmake/Modules
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/")
+
+# Look for SFML >= 2.0, with the specific subcomponents listed below
+FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
+
+# Add include dirs for SFML
+# (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)
+INCLUDE_DIRECTORIES(${SFML_INCLUDE_DIR})
+
+set(SOURCE_FILES main.cpp source/model/Entity.cpp source/model/Entity.h source/model/Bullet.cpp source/model/Bullet.h source/model/Obstacle.cpp source/model/Obstacle.h source/model/Ship.cpp source/model/Ship.h source/model/World.cpp source/model/World.h source/controller/Game.cpp source/controller/Game.h)
 add_executable(StrangerShips ${SOURCE_FILES})
+
+# Link target to SFML libs
+# (The SFML_LIBRARIES variable is defined by FindSFML.cmake, if SFML was found)
+TARGET_LINK_LIBRARIES(StrangerShips ${SFML_LIBRARIES})
