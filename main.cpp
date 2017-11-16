@@ -13,7 +13,7 @@ int main()
     Game game (1920, 1080, "Stranger Ships");
     game.run();
 
-    /// OOLOLOOLLOLL///
+    /// OOLOLOOLLOLL/// 2e poging
 
     return 0;
 }
