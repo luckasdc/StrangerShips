@@ -13,5 +13,7 @@ int main()
     Game game (1920, 1080, "Stranger Ships");
     game.run();
 
+    /// OOLOLOOLLOLL///
+
     return 0;
 }
