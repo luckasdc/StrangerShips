@@ -3,3 +3,7 @@
 //
 
 #include "Entity.h"
+
+Location ActiveEntity::getLocation() {
+    return _location;
+}

@@ -7,13 +7,13 @@ set(CMAKE_CXX_STANDARD 11)
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/")
 
 # Look for SFML >= 2.0, with the specific subcomponents listed below
-FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
+FIND_PACKAGE(SFML 2 COMPONENTS system window graphics audio)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)
 INCLUDE_DIRECTORIES(${SFML_INCLUDE_DIR})
 
-set(SOURCE_FILES main.cpp source/model/Entity.cpp source/model/Entity.h source/model/Bullet.cpp source/model/Bullet.h source/model/Obstacle.cpp source/model/Obstacle.h source/model/Ship.cpp source/model/Ship.h source/model/World.cpp source/model/World.h source/controller/Game.cpp source/controller/Game.h)
+set(SOURCE_FILES main.cpp source/model/Entity.cpp source/model/Entity.h source/model/Bullet.cpp source/model/Bullet.h source/model/Obstacle.cpp source/model/Obstacle.h source/model/Ship.cpp source/model/Ship.h source/model/World.cpp source/model/World.h source/controller/Game.cpp source/controller/Game.h source/controller/Stopwatch.cpp source/controller/Stopwatch.h source/view/View.cpp source/view/View.h source/view/ShipView.cpp source/view/ShipView.h)
 add_executable(StrangerShips ${SOURCE_FILES})
 
 # Link target to SFML libs

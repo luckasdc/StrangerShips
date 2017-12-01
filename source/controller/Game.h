@@ -6,6 +6,8 @@
 #define STRANGERSHIPS_GAME_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "../view/View.h"
 #include <memory>
 
     class Game {
@@ -19,7 +21,10 @@
 
 
     private:
-        std::shared_ptr<sf::RenderWindow> window_;
+        std::shared_ptr<sf::RenderWindow> _window;
+        std::shared_ptr<View> _view;
+        std::shared_ptr<World> _world;
+
         const float dt = 1.0f / 60.0f;
 
 

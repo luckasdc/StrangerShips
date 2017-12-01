@@ -5,6 +5,10 @@
 #ifndef STRANGERSHIPS_ENTITY_H
 #define STRANGERSHIPS_ENTITY_H
 
+struct Location {
+    float x;
+    float y;
+};
 
 class Entity {
 
@@ -14,7 +18,11 @@ class Entity {
 
 
 class ActiveEntity : public Entity {
+public:
+    Location getLocation();
 
+protected:
+    Location _location;
 
 };
 

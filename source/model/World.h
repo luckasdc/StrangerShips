@@ -7,8 +7,20 @@
 
 
 #include "Entity.h"
+#include "Ship.h"
+#include "Bullet.h"
+#include "Obstacle.h"
+#include <memory>
+#include <vector>
 
 class World : public PassiveEntity {
+
+
+private:
+    std::shared_ptr<PlayerShip> _playerShip;
+    std::vector<std::shared_ptr<EnemyShip>> _enemyShipList;
+    std::vector<std::shared_ptr<Bullet>> _bulletList;
+    std::vector<std::shared_ptr<Obstacle>> _obstacleList;
 
 };
 
