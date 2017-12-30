@@ -14,7 +14,7 @@
 // Member Functions
 
 // Move()
-void Ship::move(Direction &dir) {
+void Ship::move(Direction dir) {
 
     //TODO: diagonal directions (extra switch-statements?)
 
@@ -44,13 +44,11 @@ void Ship::move(Direction &dir) {
             break;
         }
     }
+
+    this->notify("movement");
 }
 
-/// Getters
 
-double Ship::getHealth() {
-    return _health;
-}
 
 
 

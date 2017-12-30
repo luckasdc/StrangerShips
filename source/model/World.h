@@ -12,15 +12,31 @@
 #include "Obstacle.h"
 #include <memory>
 #include <vector>
+#include <list>
 
 class World : public PassiveEntity {
+
+    typedef std::vector<std::shared_ptr<ActiveEntity> > EntityList;
 
 
 private:
     std::shared_ptr<PlayerShip> _playerShip;
-    std::vector<std::shared_ptr<EnemyShip>> _enemyShipList;
-    std::vector<std::shared_ptr<Bullet>> _bulletList;
-    std::vector<std::shared_ptr<Obstacle>> _obstacleList;
+    EntityList _enemyShipList;
+    std::shared_ptr<EntityList> _bulletList;
+    std::shared_ptr<EntityList> _obstacleList;
+
+public:
+
+    // Constructor
+    World();
+
+    // update() --> calls update-functions of items
+    void update();
+
+    void checkIfInitialised();
+
+    const std::shared_ptr<PlayerShip> &get_playerShip() const;
+
 
 };
 

@@ -10,9 +10,9 @@
 #include "../model/World.h"
 #include "../model/Entity.h"
 #include "SFML/Graphics.hpp"
+#include "../model/Subject.h"
 
-
-class View {
+class View : public Observer {
 
 public:
 // TODO add texture manager
@@ -20,7 +20,9 @@ public:
      * @brief constructor for base-class View
      * @param window
      */
-    View(std::shared_ptr<sf::RenderWindow> window) : _window(std::move(window)) {};
+    View(std::shared_ptr<Subject> _subject, std::shared_ptr<sf::RenderWindow> window)
+            : Observer(std::move(_subject)), _window(std::move(window)) {}
+
 
     /**
      * @brief initialises a sprite based on the given filename;

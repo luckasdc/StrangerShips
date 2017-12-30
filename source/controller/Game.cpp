@@ -29,8 +29,6 @@ void Game::run()
             }
             Stopwatch::getStopwatch().start();
 
-
-
             // check all the window's events that were triggered since the last iteration of the loop
             sf::Event event {};
             while (_window->pollEvent(event))
@@ -38,6 +36,11 @@ void Game::run()
                 // "close requested" event: we close the window
                 if (event.type == sf::Event::Closed)
                     _window->close();
+
+
+
+
+
             }
 
             // clear the window with black color
@@ -57,3 +60,8 @@ void Game::run()
 }
 
 
+/// TODO WEGHALEN HIERONDER
+
+const std::shared_ptr<sf::RenderWindow> &Game::get_window() const {
+    return _window;
+}

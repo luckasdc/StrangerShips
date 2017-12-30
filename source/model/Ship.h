@@ -9,20 +9,15 @@
 #include <tuple>
 #include "Entity.h"
 
-enum Direction { Up, Down, Left, Right };
 
 class Ship : public ActiveEntity {
 
 public:
 
     // Movement
-    void move(Direction& dir);
+    void move(Direction dir) override ;
 
-    /**
-     * @brief returns double health, if health == 0 --> ship is dead.
-     * @return double health,
-     */
-    double getHealth();
+
     /**
      * @brief returns the location of an object in [-3, 3] x [-4, 4] dimensions
      * @return a pair of doubles (this->first = x-value; this->second = y-value
@@ -33,9 +28,7 @@ public:
 
 private:
 
-    //std::pair<float, float> _location;
-    float _speed;
-    unsigned int _health;
+
 
 
 
@@ -44,6 +37,15 @@ private:
 };
 
 class PlayerShip : public Ship {
+
+public:
+    PlayerShip() {
+        this->_location.x = 1;
+        this->_location.y = 2;
+        this->_health = 10;
+        this->_speed = 0.3;
+    }
+
 
 };
 

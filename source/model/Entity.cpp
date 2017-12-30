@@ -7,3 +7,9 @@
 Location ActiveEntity::getLocation() {
     return _location;
 }
+
+/// Getters
+
+double ActiveEntity::getHealth() {
+    return _health;
+}
