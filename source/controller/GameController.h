@@ -7,7 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "../view/ShipView.h"
+#include "../view/WorldView.h"
 #include <memory>
 
     class Game {
@@ -19,12 +19,10 @@
         //Methods
         void run ();
 
-        const std::shared_ptr<sf::RenderWindow> &get_window() const;
-
 
     private:
         std::shared_ptr<sf::RenderWindow> _window;
-        std::shared_ptr<View> _view;
+        std::shared_ptr<WorldView> _view;
         std::shared_ptr<World> _world;
 
 

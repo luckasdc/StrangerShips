@@ -16,26 +16,37 @@
 
 class World : public PassiveEntity {
 
-    typedef std::vector<std::shared_ptr<ActiveEntity> > EntityList;
-
-
 private:
     std::shared_ptr<PlayerShip> _playerShip;
-    EntityList _enemyShipList;
-    std::shared_ptr<EntityList> _bulletList;
-    std::shared_ptr<EntityList> _obstacleList;
+    std::vector<std::shared_ptr<EnemyShip>> _enemyShipList;
+    std::vector<std::shared_ptr<Bullet>> _bulletList;
+    std::vector<std::shared_ptr<Obstacle>> _obstacleList;
 
 public:
 
-    // Constructor
-    World();
+    /**
+     * @brief A default, empty constructor since initialize() handles all the entities in the world.
+     */
+    World() = default;
 
-    // update() --> calls update-functions of items
-    void update();
+    /**
+    * @brief Initializes the current level: constructs a PlayerShip, the EnemyShips and the Obstacles.
+     * It also notifies the Observers.
+    *
+    */
+    void initialize();
 
-    void checkIfInitialised();
+    /**
+    * @brief Getter for the shared pointer of the PlayerShip
+    * @return shared_ptr<PlayerShip>
+    */
+    const std::shared_ptr<PlayerShip>& getPlayerShip() const;
 
-    const std::shared_ptr<PlayerShip> &get_playerShip() const;
+    /**
+    * @brief Getter for the shared pointer of the latest added EnemyShip (used for notifying observers)
+    * @return shared_ptr<EnemyShip>
+    */
+    const std::shared_ptr<EnemyShip>& getLatestEnemyship() const;
 
 
 };

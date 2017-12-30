@@ -9,13 +9,9 @@
 class Transformation {
 
 public:
-    static float transformWidth(float original);
-    static float transformHeight(float original);
+    static float transformWidth(float original, float screen);
+    static float transformHeight(float original, float screen);
 
-
-private:
-    const float width = 1000;
-    const float height = 750;
 
 
 };

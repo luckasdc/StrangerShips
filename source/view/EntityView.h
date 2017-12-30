@@ -5,9 +5,13 @@
 #ifndef STRANGERSHIPS_ENTITYVIEW_H
 #define STRANGERSHIPS_ENTITYVIEW_H
 
+#include "SFML/Graphics.hpp"
 
-#include "View.h"
+#include "../model/Subject.h"
 #include "../firstAid/Transformation.h"
+#include "../model/World.h"
+#include "../model/Entity.h"
+#include "../model/Subject.h"
 
 #include <utility>
 
@@ -18,15 +22,11 @@ public:
      * Constructor
      */
     EntityView(const std::shared_ptr<sf::RenderWindow> &window,
-               std::shared_ptr<ActiveEntity> _entityPtr, std::shared_ptr<sf::Sprite> _sprite)
-            : Observer(_entityPtr), _window(window), _entityPtr(_entityPtr), _sprite(
-                        std::move(_sprite)) {
-
-        // initialize the position
-        this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x),
-                                   Transformation::transformHeight(_entityPtr->getLocation().y));
+               std::shared_ptr<ActiveEntity> _entityPtr)
+            : Observer(_entityPtr), _window(window), _entityPtr(_entityPtr) {
 
     }
+
 
     /**
      * @brief initialises a sprite based on the given filename;
@@ -48,6 +48,7 @@ protected:
     std::shared_ptr<sf::RenderWindow> _window;
     std::shared_ptr<ActiveEntity> _entityPtr;
     std::shared_ptr<sf::Sprite> _sprite;
+    std::unique_ptr<sf::Texture> _texture = nullptr;
 
 
 

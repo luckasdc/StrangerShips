@@ -20,14 +20,14 @@ void Ship::move(Direction dir) {
 
     switch (dir) {
         case Up : {
-            float newYU {_location.y + _speed};
-            if (newYU >= 3) _location.y = 3;
+            float newYU {_location.y - _speed};
+            if (newYU <= -3) _location.y = -3;
             else _location.y = newYU;
             break;
         }
         case Down : {
-            float newYD {_location.y - _speed};
-            if (newYD <= -3) _location.y = -3;
+            float newYD {_location.y + _speed};
+            if (newYD >= +3) _location.y = +3;
             else _location.y = newYD;
             break;
         }
@@ -38,11 +38,12 @@ void Ship::move(Direction dir) {
             break;
         }
         case Left : {
-            float newXL {_location.x + _speed};
+            float newXL {_location.x - _speed};
             if (newXL <= -4) _location.x = -4;
             else _location.x = newXL;
             break;
         }
+        case Idle : break;
     }
 
     this->notify("movement");
