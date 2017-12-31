@@ -3,7 +3,16 @@
 //
 
 #include "Ship.h"
+#include "Bullet.h"
+#include "World.h"
 
+/* generate a random floating point number from min to max */
+float randfrom(float min, float max)
+{
+    float range = (max - min);
+    float div = RAND_MAX / range;
+    return min + (rand() / div);
+}
 
 /*
  * SHIP
@@ -13,7 +22,6 @@
 
 // Member Functions
 
-// Move()
 void Ship::move(Direction dir) {
 
     //TODO: diagonal directions (extra switch-statements?)
@@ -50,16 +58,36 @@ void Ship::move(Direction dir) {
 }
 
 
-
-
-
-
 /*
- * FRIENDLY SHIP
+ * PLAYER SHIP
  */
+
+PlayerShip::PlayerShip(World* myWorld) {
+    this->_location.x = -3;
+    this->_location.y = 0;
+    this->_health = 10;
+    this->_speed = 0.16;
+    this->_myWorld = myWorld;
+}
+
+void PlayerShip::shoot() {
+
+    this->_myWorld->addBullet(std::make_shared<Bullet>(false, this->_location));
+    this->notify("newBullet");
+
+
+
+}
 
 
 
 /*
  * ENEMY SHIP
  */
+EnemyShip::EnemyShip(World* myWorld) {
+    this->_location.x = 3;
+    this->_location.y = randfrom(-3, 3);
+    this->_health = 10;
+    this->_speed = 0.16;
+    this->_myWorld = myWorld;
+}

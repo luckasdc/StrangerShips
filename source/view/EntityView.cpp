@@ -47,9 +47,13 @@ void EntityView::update(std::string what) {
 
     }
 
-    if (what == "dead") {
-
+    if (what == "destruction") {
+        std::cout << "destruction' in entityview!" << std::endl;
 
     }
 
+}
+
+const std::shared_ptr<ActiveEntity> &EntityView::get_entityPtr() const {
+    return _entityPtr;
 }

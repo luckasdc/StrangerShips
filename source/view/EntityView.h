@@ -41,7 +41,11 @@ public:
 
     void update(std::string what) override ;
 
-
+    /**
+     * @brief getter for entityPtr
+     * @return shared_ptr<ActiveEntity>
+     */
+    const std::shared_ptr <ActiveEntity> &get_entityPtr() const;
 
 
 protected:

@@ -14,10 +14,24 @@ private:
     KeyController() = default;
 
 public:
-    // get single instance of Stopwatch
+
+    /**
+     * @brief get single instance of Stopwatch
+     * @return instance
+     */
     static KeyController& getKeyController();
 
+    /**
+     * @brief returns the right direction based on the currently pressed buttons
+     * @return enum Direction
+     */
     Direction processDirection();
+
+    /**
+     * @brief returns true if space bar is pressed
+     * @param event
+     * @return boolean
+     */
     bool processShooting(sf::Event& event);
 
 

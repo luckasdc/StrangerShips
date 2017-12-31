@@ -29,21 +29,34 @@ private:
 
 
 };
-
+class World;
 class PlayerShip : public Ship {
 
 public:
-    PlayerShip() {
-        this->_location.x = 1;
-        this->_location.y = 2;
-        this->_health = 10;
-        this->_speed = 0.2;
-    }
+    /**
+     * @brief default constructor, initializes all the params in ShipView.cpp
+     */
+    PlayerShip(World* myWorld);
 
+    void shoot();
+
+private:
+    World* _myWorld;
 
 };
 
+class World;
 class EnemyShip : public Ship {
+public:
+    /**
+     * @brief default constructor, initializes all the params in ShipView.cpp
+     */
+    EnemyShip(World* myWorld);
+
+    void shoot();
+
+private:
+    World* _myWorld;
 
 };
 

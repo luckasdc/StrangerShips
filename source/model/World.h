@@ -14,7 +14,7 @@
 #include <vector>
 #include <list>
 
-class World : public PassiveEntity {
+class World : public Subject {
 
 private:
     std::shared_ptr<PlayerShip> _playerShip;
@@ -48,6 +48,24 @@ public:
     */
     const std::shared_ptr<EnemyShip>& getLatestEnemyship() const;
 
+    /**
+   * @brief Getter for the list of shared pointers of bullets (used for updating location of bullets
+   * and checking collisions)
+   * @return std::vector<std::shared_ptr<EnemyShip>>
+   */
+    const std::vector<std::shared_ptr<Bullet>> &getBulletList() const;
+
+    /**
+     * @brief adds a bullet to the bulletList
+     *
+     */
+    void addBullet(std::shared_ptr<Bullet> bullet);
+
+    /**
+     * @brief removes a bullet to the bulletList
+     *
+     */
+    void removeBullet(std::shared_ptr<Bullet> bullet);
 
 };
 

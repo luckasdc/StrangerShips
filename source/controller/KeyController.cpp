@@ -24,4 +24,12 @@ Direction KeyController::processDirection() {
 
 }
 
+bool KeyController::processShooting(sf::Event &event) {
+    if (event.type == sf::Event::KeyPressed) {
+        if (event.key.code == sf::Keyboard::Space) {
+            return true;
+        }
+    }
+    return false;
+}
 

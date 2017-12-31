@@ -5,11 +5,14 @@
 #include "Stopwatch.h"
 #include "GameController.h"
 #include "KeyController.h"
+#include "CollisionController.h"
 
 Game::Game(uint width, uint height, std::string title)
 {
     this->_window = std::make_shared<sf::RenderWindow> (sf::VideoMode(width, height), "Stranger Ships");
     this->_window->create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
+    // Only one bullet can be shot at a time
+    this->_window->setKeyRepeatEnabled(false);
 
     //TODO change this to add levels
     this->_world = std::make_shared<World> ();
@@ -22,52 +25,48 @@ Game::Game(uint width, uint height, std::string title)
 
 void Game::run()
 {
-
     Stopwatch::getStopwatch().start();
-    sf::Event event;
+    CollisionController cctr (this->_world);
 
-
+    sf::Event event{};
 
     while (this->_window->isOpen()) {
 
-        // while Stopwatch::remainingUntilRefresh > 0:
+        // wait 'till the following amount of time has passed to maintain the right FPS
+        if (Stopwatch::getStopwatch().elapsedMilliSeconds() < 16) {
+            continue;
+        }
+
+        Stopwatch::getStopwatch().start();
 
 
+        // check which keys are currently pressed to control movement
+        Direction dir = KeyController::getKeyController().processDirection();
+        if(dir != Idle) _world->getPlayerShip()->move(dir);
 
 
-            if (Stopwatch::getStopwatch().elapsedMilliSeconds() < 16) {
-                //std::cout << &Stopwatch::getStopwatch() << std::endl;
-                //std::cout << Stopwatch::getStopwatch().elapsedMilliSeconds() << std::endl;
-                continue;
+        // check all the window's events that were triggered since the last iteration of the loop
+        while (_window->pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed) {
+                _window->close();
             }
+            // check if the player is shooting
+            if (KeyController::getKeyController().processShooting(event)) _world->getPlayerShip()->shoot();
 
-            Stopwatch::getStopwatch().start();
+        }
 
-            Direction dir = KeyController::getKeyController().processDirection();
-            _world->getPlayerShip()->move(dir);
-            // check all the window's events that were triggered since the last iteration of the loop
-            while (_window->pollEvent(event))
-            {
-                // "close requested" event: we close the window
-                if (event.type == sf::Event::Closed) {
-                    _window->close();
+        cctr.updateBullets();
 
-                }
+        // clear the window with black color
+        _window->clear(sf::Color::Black);
 
-            }
+        // draw everything here...
+        _view->draw();
 
-            // clear the window with black color
-            _window->clear(sf::Color::Black);
-
-            // draw everything here...
-            _view->draw();
-
-
-            // end the current frame
-            _window->display();
-
-
-
+        // end the current frame
+        _window->display();
 
     }
 

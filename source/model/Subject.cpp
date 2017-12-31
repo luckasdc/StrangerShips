@@ -5,15 +5,18 @@
 #include "Subject.h"
 #include <iostream>
 void Subject::attach(std::shared_ptr<Observer> observer) {
-    this->_observer = std::move(observer);
+    this->_observers.push_back(std::move(observer));
 }
 
-void Subject::detach(std::shared_ptr<Observer> observer) {
-    this->_observer = nullptr;
+void Subject::detach() {
+    this->_observers = {};
 }
 
 void Subject::notify(std::string what) {
-    this->_observer->update(what);
+    for (auto& observer : this->_observers) {
+        observer->update(what);
+    }
+
 }
 
 void Observer::update(std::string what) {

@@ -13,3 +13,9 @@ Location ActiveEntity::getLocation() {
 double ActiveEntity::getHealth() {
     return _health;
 }
+
+
+void ActiveEntity::hit(int health) {
+    this->_health -= health;
+}
+

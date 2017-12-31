@@ -6,24 +6,26 @@
 
 
 void World::initialize() {
-
-    _playerShip = std::make_shared<PlayerShip>();
+    // Since you cannot use share_from_this in a constructor (object itself hasn't been created yet,
+    // so a weak ptr will be made), We need to solve this. Paul Houx has found a solution by using
+    // Lamda Functions (https://forum.libcinder.org/topic/solution-calling-shared-from-this-in-the-constructor)
+    //auto wptr = std::shared_ptr<World>( this, [](World*){} );
+    _playerShip = std::make_shared<PlayerShip>(this);
     this->notify("newPlayership");
     _enemyShipList = {};
     _bulletList = {};
     _obstacleList = {};
 
-    // Generate a few enemies TODO will be changed!
+     //Generate a few enemies TODO will be changed!
     for (unsigned int i = 0; i < 5; ++i) {
-        _enemyShipList.push_back(std::make_shared<EnemyShip>());
+        _enemyShipList.push_back(std::make_shared<EnemyShip>(this));
         this->notify("newEnemyship");
-
     }
 
 }
 
 
-/// TODO COMMENTS
+/// GETTERS AND SETTERS
 
 const std::shared_ptr<PlayerShip> &World::getPlayerShip() const {
     return _playerShip;
@@ -32,3 +34,23 @@ const std::shared_ptr<PlayerShip> &World::getPlayerShip() const {
 const std::shared_ptr<EnemyShip> &World::getLatestEnemyship() const {
     return _enemyShipList.back();
 }
+
+const std::vector<std::shared_ptr<Bullet>> &World::getBulletList() const {
+    return _bulletList;
+}
+
+void World::addBullet(std::shared_ptr<Bullet> bullet) {
+    this->_bulletList.push_back(bullet);
+    this->notify("newBullet");
+}
+
+void World::removeBullet(std::shared_ptr<Bullet> bullet) {
+    bullet->notify("destruction");
+    this->notify("EntityDestructed");
+    bullet->detach();
+    _bulletList.erase(std::remove(_bulletList.begin(), _bulletList.end(), bullet), _bulletList.end());
+
+
+}
+
+

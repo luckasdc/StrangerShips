@@ -9,18 +9,19 @@
 #include <memory>
 #include <utility>
 #include <string>
+#include <vector>
 
 class Observer;
 
 class Subject {
 private:
-    std::shared_ptr<Observer> _observer;
+    std::vector<std::shared_ptr<Observer>> _observers ;
 
 public:
     //Subject(std::shared_ptr<World> worldptr) : _worldPointer(std::move(worldptr)) {};
     Subject() = default;
     void attach(std::shared_ptr<Observer> observer);
-    void detach(std::shared_ptr<Observer> observer);
+    void detach();
     void notify(std::string what);
 
 

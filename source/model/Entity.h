@@ -43,6 +43,14 @@ public:
      */
     virtual void move(Direction dir) = 0;
 
+    /**
+     * @brief subtracts int from remaining life
+     * @param int health,
+     */
+    void hit(int health);
+
+
+
 protected:
     Location _location;
     float _speed;
