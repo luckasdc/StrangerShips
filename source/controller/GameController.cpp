@@ -59,6 +59,9 @@ void Game::run()
 
         cctr.updateBullets();
 
+        // check which entities died during this iteration and remove them
+        _world->updateEntities();
+
         // clear the window with black color
         _window->clear(sf::Color::Black);
 

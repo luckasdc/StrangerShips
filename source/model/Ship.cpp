@@ -88,6 +88,6 @@ EnemyShip::EnemyShip(World* myWorld) {
     this->_location.x = 3;
     this->_location.y = randfrom(-3, 3);
     this->_health = 10;
-    this->_speed = 0.16;
+    this->_speed = 0.12;
     this->_myWorld = myWorld;
 }

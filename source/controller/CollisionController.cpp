@@ -2,6 +2,8 @@
 // Created by Luckas Declerck on 31/11/17.
 //
 
+#include <iostream>
+#include <cmath>
 #include "CollisionController.h"
 #include "../model/World.h"
 
@@ -21,7 +23,7 @@ void CollisionController::updateBullets() {
         checkBulletWithShips(bullet);
 
         // check bullet collision with obstacle
-        checkBulletWithObstacles(bullet);
+        //checkBulletWithObstacles(bullet);
 
         // check if bullet runs out of range
         checkBulletRange(bullet);
@@ -33,7 +35,19 @@ void CollisionController::updateBullets() {
 
 void CollisionController::checkBulletWithShips(std::shared_ptr<Bullet> bullet) {
 
-    //for (auto enemy : )
+
+    for (auto enemy : _world->getEnemyShipList()) {
+
+        //std::cout << enemy->getLocation().x  << ", " << enemy->getLocation().y << " and bullet " << bullet->getLocation().x << " , " << bullet->getLocation().y  << std::endl;
+
+        if (doTheyCollide(enemy->getLocation(), bullet->getLocation())) {
+            std::cout << "COLLISION" << std::endl;
+            bullet->hit(1);
+            enemy->hit(3);
+            //_world->removeBullet(bullet);
+
+        }
+    }
 
 }
 
@@ -45,7 +59,19 @@ void CollisionController::checkBulletRange(std::shared_ptr<Bullet> bullet) {
 
     if (bullet->getLocation().x == 4 or bullet->getLocation().x == -4) {
         bullet->hit(1);
-        _world->removeBullet(bullet);
+        //_world->removeBullet(bullet);
     }
 
+}
+
+bool CollisionController::doTheyCollide(Location first, Location second) {
+
+    float radius_circle1 = 0.15;
+    float radius_circle2 = 0.15;
+
+    float dx = first.x - second.x;
+    float dy = first.y - second.y;
+    float distance = std::sqrt(dx * dx + dy * dy);
+
+    return distance < radius_circle1 + radius_circle2;
 }

@@ -51,6 +51,7 @@ public:
 
 
 
+
 protected:
     Location _location;
     float _speed;

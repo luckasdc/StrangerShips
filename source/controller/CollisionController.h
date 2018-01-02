@@ -8,6 +8,7 @@
 
 #include <memory>
 #include <utility>
+#include "../model/Entity.h"
 
 class World;
 class Bullet;
@@ -57,6 +58,12 @@ public:
     void checkBulletRange(std::shared_ptr<Bullet> bullet);
 
     // void checkShipWithObstacles();
+
+    /**
+     * @brief checks collision by taking two Locations and generating circles to check if they intersect
+     * @param location 1, location 2
+     */
+    bool doTheyCollide(Location first, Location second);
 
 private:
     std::shared_ptr<World> _world;

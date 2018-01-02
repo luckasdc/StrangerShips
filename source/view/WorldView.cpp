@@ -27,7 +27,7 @@ void WorldView::update(std::string what) {
     }
     if (what == "newEnemyship") {
         std::cout << "update! Added a new EnemyShipView because World made a new one" << std::endl;
-        auto es = std::make_shared<EnemyShipView> (this->_window, this->_world->getLatestEnemyship());
+        auto es = std::make_shared<EnemyShipView> (this->_window, this->_world->getEnemyShipList().back());
         //_world->getLatestEnemyship()->attach(es);
         _entityViews.push_back(es);
     }
@@ -41,7 +41,7 @@ void WorldView::update(std::string what) {
     if (what == "EntityDestructed") {
         //std::cout << "EntityDestructed' in worldView..." << std::endl;
         for (auto ev : this->_entityViews) {
-            if (ev->get_entityPtr()->getHealth() == 0) {
+            if (ev->get_entityPtr()->getHealth() <= 0) {
                 _entityViews.erase(std::remove(_entityViews.begin(), _entityViews.end(), ev), _entityViews.end());
                 break;
             }

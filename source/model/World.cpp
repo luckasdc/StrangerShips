@@ -31,9 +31,6 @@ const std::shared_ptr<PlayerShip> &World::getPlayerShip() const {
     return _playerShip;
 }
 
-const std::shared_ptr<EnemyShip> &World::getLatestEnemyship() const {
-    return _enemyShipList.back();
-}
 
 const std::vector<std::shared_ptr<Bullet>> &World::getBulletList() const {
     return _bulletList;
@@ -49,6 +46,40 @@ void World::removeBullet(std::shared_ptr<Bullet> bullet) {
     this->notify("EntityDestructed");
     bullet->detach();
     _bulletList.erase(std::remove(_bulletList.begin(), _bulletList.end(), bullet), _bulletList.end());
+}
+
+void World::removeEnemy(std::shared_ptr<EnemyShip> enemy) {
+    enemy->notify("destruction");
+    this->notify("EntityDestructed");
+    enemy->detach();
+    _enemyShipList.erase(std::remove(_enemyShipList.begin(), _enemyShipList.end(), enemy), _enemyShipList.end());
+}
+
+const std::vector<std::shared_ptr<EnemyShip>> &World::getEnemyShipList() const {
+    return _enemyShipList;
+}
+
+void World::updateEntities() {
+
+    auto snapshotOfBullets = _bulletList;
+    auto snapshotOfEnemies = _enemyShipList;
+
+
+    if (_playerShip->getHealth() == 0) {
+        std::cout << "PLAYERSHIP IS DEAD, GAME OVER" << std::endl;
+    }
+
+    for (auto& es : snapshotOfEnemies) {
+        if (es->getHealth() == 0) {
+            this->removeEnemy(es);
+        }
+    }
+    for (auto& b : snapshotOfBullets) {
+        if (b->getHealth() == 0) {
+            this->removeBullet(b);
+        }
+    }
+
 
 
 }

@@ -37,16 +37,21 @@ public:
     void initialize();
 
     /**
+     * @brief checks if all enitities are still alive and removes them if they are not.
+     */
+    void updateEntities();
+
+    /**
     * @brief Getter for the shared pointer of the PlayerShip
     * @return shared_ptr<PlayerShip>
     */
     const std::shared_ptr<PlayerShip>& getPlayerShip() const;
 
     /**
-    * @brief Getter for the shared pointer of the latest added EnemyShip (used for notifying observers)
-    * @return shared_ptr<EnemyShip>
+    * @brief Getter for the list of shared pointers of EnemyShips (used for notifying observers)
+    * @return vector<shared_ptr<EnemyShip>>
     */
-    const std::shared_ptr<EnemyShip>& getLatestEnemyship() const;
+    const std::vector<std::shared_ptr<EnemyShip>>& getEnemyShipList() const;
 
     /**
    * @brief Getter for the list of shared pointers of bullets (used for updating location of bullets
@@ -62,12 +67,19 @@ public:
     void addBullet(std::shared_ptr<Bullet> bullet);
 
     /**
-     * @brief removes a bullet to the bulletList
-     *
+     * @brief removes a bullet from the bulletList
+     * @param bullet
      */
     void removeBullet(std::shared_ptr<Bullet> bullet);
 
-};
+    /**
+     * @brief removes an enemy from te enemyshiplist
+     * @param enemy
+     */
+    void removeEnemy(std::shared_ptr<EnemyShip> enemy);
+
+
+    };
 
 
 #endif //STRANGERSHIPS_WORLD_H

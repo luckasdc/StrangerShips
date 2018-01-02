@@ -55,6 +55,7 @@ public:
         this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
                                    Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
 
+        this->_sprite->setOrigin(75, 75);
     }
 
 };
