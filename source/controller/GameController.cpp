@@ -6,6 +6,7 @@
 #include "GameController.h"
 #include "KeyController.h"
 #include "CollisionController.h"
+#include "AIController.h"
 
 Game::Game(uint width, uint height, std::string title)
 {
@@ -27,6 +28,7 @@ void Game::run()
 {
     Stopwatch::getStopwatch().start();
     CollisionController cctr (this->_world);
+    AIController aictr (this->_world);
 
     sf::Event event{};
 
@@ -56,7 +58,7 @@ void Game::run()
             if (KeyController::getKeyController().processShooting(event)) _world->getPlayerShip()->shoot();
 
         }
-
+        aictr.makeDecisions();
         cctr.updateBullets();
 
         // check which entities died during this iteration and remove them

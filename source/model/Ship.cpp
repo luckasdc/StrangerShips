@@ -75,8 +75,6 @@ void PlayerShip::shoot() {
     this->_myWorld->addBullet(std::make_shared<Bullet>(false, this->_location));
     this->notify("newBullet");
 
-
-
 }
 
 
@@ -88,6 +86,27 @@ EnemyShip::EnemyShip(World* myWorld) {
     this->_location.x = 3;
     this->_location.y = randfrom(-3, 3);
     this->_health = 10;
-    this->_speed = 0.12;
+    this->_speed = 0.05;
     this->_myWorld = myWorld;
+}
+
+void EnemyShip::shoot() {
+    _shotCounter ++;
+    // use the shotcounter to minimalize the amount of shots fired
+    if (_shotCounter >= 25) {
+        this->_myWorld->addBullet(std::make_shared<Bullet>(true, this->_location));
+        this->notify("newBullet");
+        _shotCounter = 0;
+    }
+
+}
+
+void EnemyShip::moveRandomDirection() {
+    _moveCounter ++;
+
+    if (_moveCounter >= 50) {
+        _curdir = Direction(rand() % 10);
+        _moveCounter = 0;
+    }
+    move(_curdir);
 }

@@ -32,7 +32,7 @@ void WorldView::update(std::string what) {
         _entityViews.push_back(es);
     }
     if (what == "newBullet") {
-        std::cout << "update! Added a new Bullet has been fired" << std::endl;
+        //std::cout << "update! Added a new Bullet has been fired" << std::endl;
         auto b = std::make_shared<BulletView> (this->_window, this->_world->getBulletList().back());
         //_world->getLatestEnemyship()->attach(es);
         _entityViews.push_back(b);

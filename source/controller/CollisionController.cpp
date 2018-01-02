@@ -38,10 +38,10 @@ void CollisionController::checkBulletWithShips(std::shared_ptr<Bullet> bullet) {
 
     for (auto enemy : _world->getEnemyShipList()) {
 
-        //std::cout << enemy->getLocation().x  << ", " << enemy->getLocation().y << " and bullet " << bullet->getLocation().x << " , " << bullet->getLocation().y  << std::endl;
+        if (bullet->fromEnemy()) break;
 
         if (doTheyCollide(enemy->getLocation(), bullet->getLocation())) {
-            std::cout << "COLLISION" << std::endl;
+            //std::cout << "COLLISION" << std::endl;
             bullet->hit(1);
             enemy->hit(3);
             //_world->removeBullet(bullet);

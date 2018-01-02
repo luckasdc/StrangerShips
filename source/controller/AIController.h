@@ -5,8 +5,11 @@
 #ifndef STRANGERSHIPS_AICONTROLLER_H
 #define STRANGERSHIPS_AICONTROLLER_H
 
+#include <memory>
+#include <utility>
+#include "../model/Ship.h"
 
-#include "../model/World.h"
+class World;
 
 class AIController {
 
@@ -18,6 +21,10 @@ public:
     */
     AIController(std::shared_ptr<World> world) : _world(std::move(world)) {};
 
+    /**
+     * @brief decide which actions to do based upon a few (function-based) parameters.
+     */
+    void makeDecisions();
 
     bool targetInRange(std::shared_ptr<EnemyShip> enemy);
 

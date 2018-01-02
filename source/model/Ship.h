@@ -55,8 +55,13 @@ public:
 
     void shoot();
 
+    void moveRandomDirection();
+
 private:
     World* _myWorld;
+    int _shotCounter;
+    Direction _curdir;
+    int _moveCounter;
 
 };
 
