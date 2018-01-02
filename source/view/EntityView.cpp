@@ -16,7 +16,6 @@ void EntityView::draw() {
 }
 
 void EntityView::makeSprite(const std::string &file) {
-    std::cout << "makeSprite! loading from file " << file << std::endl;
     this->_sprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture>  texture(new sf::Texture);
     try {
@@ -48,7 +47,7 @@ void EntityView::update(std::string what) {
     }
 
     if (what == "destruction") {
-        std::cout << "destruction' in entityview!" << std::endl;
+        // TODO Destructor or something?
 
     }
 

@@ -35,6 +35,10 @@ void CollisionController::updateBullets() {
 
 void CollisionController::checkBulletWithShips(std::shared_ptr<Bullet> bullet) {
 
+    if (doTheyCollide(bullet->getLocation(), _world->getPlayerShip()->getLocation()) and bullet->fromEnemy()) {
+        bullet->hit(1);
+        _world->getPlayerShip()->hit(2);
+    }
 
     for (auto enemy : _world->getEnemyShipList()) {
 
@@ -44,7 +48,6 @@ void CollisionController::checkBulletWithShips(std::shared_ptr<Bullet> bullet) {
             //std::cout << "COLLISION" << std::endl;
             bullet->hit(1);
             enemy->hit(3);
-            //_world->removeBullet(bullet);
 
         }
     }

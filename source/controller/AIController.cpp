@@ -13,7 +13,6 @@ void AIController::makeDecisions() {
 
         if( targetInRange(enemy))
         {
-            std::cout << "I WANNA SHOOOT" << std::endl;
             fireAtTarget(enemy);
         }
         else if( bulletComingTowardsMe(enemy))

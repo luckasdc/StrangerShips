@@ -9,7 +9,7 @@ void World::initialize() {
     // Since you cannot use share_from_this in a constructor (object itself hasn't been created yet,
     // so a weak ptr will be made), We need to solve this. Paul Houx has found a solution by using
     // Lamda Functions (https://forum.libcinder.org/topic/solution-calling-shared-from-this-in-the-constructor)
-    //auto wptr = std::shared_ptr<World>( this, [](World*){} );
+    auto wptr = std::shared_ptr<World>( this, [](World*){} );
     _playerShip = std::make_shared<PlayerShip>(this);
     this->notify("newPlayership");
     _enemyShipList = {};
@@ -67,6 +67,7 @@ void World::updateEntities() {
 
     if (_playerShip->getHealth() == 0) {
         std::cout << "PLAYERSHIP IS DEAD, GAME OVER" << std::endl;
+        this->notify("GAME OVER");
     }
 
     for (auto& es : snapshotOfEnemies) {
