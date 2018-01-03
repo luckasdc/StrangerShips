@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 13/11/17.
-//
 
 #include "Ship.h"
 #include "Bullet.h"
@@ -17,14 +14,10 @@ float randfrom(float min, float max)
 /*
  * SHIP
  */
-// Constructor
-
 
 // Member Functions
 
 void Ship::move(Direction dir) {
-
-    //TODO: diagonal directions (extra switch-statements?)
 
     switch (dir) {
         case Up : {
@@ -81,7 +74,7 @@ void PlayerShip::shoot() {
  * ENEMY SHIP
  */
 EnemyShip::EnemyShip(World* myWorld) {
-    this->_location.x = 3;
+    this->_location.x = randfrom(4.5, 6.5);
     this->_location.y = randfrom(-3, 3);
     this->_health = 10;
     this->_speed = 0.03;
@@ -91,20 +84,26 @@ EnemyShip::EnemyShip(World* myWorld) {
 void EnemyShip::shoot() {
     _shotCounter ++;
     // use the shotcounter to minimalize the amount of shots fired
-    if (_shotCounter >= 25) {
+    if (_shotCounter >= 25 and _location.x <= 4) {
         this->_myWorld->addBullet(std::make_shared<Bullet>(true, this->_location));
         this->notify("newBullet");
         _shotCounter = 0;
     }
-
 }
 
 void EnemyShip::moveRandomDirection() {
     _moveCounter ++;
 
-    if (_moveCounter >= 50) {
+    if (_location.x <= -4) _outOfRangecounter++;
+
+    if (_moveCounter >= 40) {
         _curdir = Direction(rand() % 10 + 1);
         _moveCounter = 0;
+    }
+
+    if (_outOfRangecounter >= 80) {
+        _curdir = Direction(Left);
+        _moveCounter = _moveCounter = 0;
     }
     move(_curdir);
 }

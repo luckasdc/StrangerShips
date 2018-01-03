@@ -7,6 +7,7 @@
 #include "ShipView.h"
 #include "BulletView.h"
 #include "ObstacleView.h"
+#include "OverlayView.h"
 
 void WorldView::draw() {
 
@@ -19,6 +20,9 @@ void WorldView::draw() {
     for (const auto& entityView : this->_entityViews) {
         entityView->draw();
     }
+
+    _overlay->drawLives();
+
 
 
 }

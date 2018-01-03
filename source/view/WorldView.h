@@ -7,6 +7,7 @@
 
 
 #include "EntityView.h"
+#include "OverlayView.h"
 
 
 class WorldView : public Observer {
@@ -15,11 +16,15 @@ public:
 // TODO add texture manager
     /**
      * @brief constructor for WorldView object and initialize Background
+     * + add an Overlay object to the WorldView and initialize it.
      * @param window
      */
     WorldView(std::shared_ptr<World> world, std::shared_ptr<sf::RenderWindow> window)
             : Observer(world), _world(world), _window(std::move(window))  {
         initBackground();
+        _overlay = std::make_shared<OverlayView>(_window, _world);
+        _overlay->initHeart();
+
     }
 
     ~WorldView() override = default;
@@ -50,6 +55,8 @@ protected:
     std::vector<std::shared_ptr<PassiveEntityView> > _passiveEntityViews = {};
     std::shared_ptr<sf::Sprite> _BgSprite;
     std::unique_ptr<sf::Texture> _BgTexture;
+    std::shared_ptr<OverlayView> _overlay;
+
 
 
 private:

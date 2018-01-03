@@ -63,6 +63,7 @@ void Game::run()
 
         // CollisionController: Check if there were any collions and handle them
         cctr.updateBullets();
+        cctr.checkPlayerShip();
 
         // check which entities died during this iteration and remove the according views
         _world->updateEntities();

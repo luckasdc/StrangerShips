@@ -90,6 +90,7 @@ private:
     int _shotCounter;
     Direction _curdir;
     int _moveCounter;
+    int _outOfRangecounter = 0;
 
 };
 
