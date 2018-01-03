@@ -25,8 +25,6 @@
         std::shared_ptr<WorldView> _view;
         std::shared_ptr<World> _world;
 
-
-
     };
 
 

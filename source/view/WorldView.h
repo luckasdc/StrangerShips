@@ -38,7 +38,9 @@ public:
 protected:
     std::shared_ptr<sf::RenderWindow> _window;
     std::shared_ptr<World> _world;
-    std::vector<std::shared_ptr<EntityView> > _entityViews = {};
+    std::vector<std::shared_ptr<ActiveEntityView> > _entityViews = {};
+    std::vector<std::shared_ptr<PassiveEntityView> > _passiveEntityViews = {};
+
 
 private:
 

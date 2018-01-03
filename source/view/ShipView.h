@@ -11,7 +11,7 @@
 
 #include <utility>
 
-class PlayerShipView : public EntityView {
+class PlayerShipView : public ActiveEntityView {
 
 public:
 
@@ -21,14 +21,14 @@ public:
      * @param shared_ptr<playerShip>
      */
     PlayerShipView(const std::shared_ptr<sf::RenderWindow> &window, const std::shared_ptr<ActiveEntity> &_entityPtr) :
-            EntityView( window, _entityPtr) {
+            ActiveEntityView( window, _entityPtr) {
 
-        this->makeSprite("../assets/plane.png");
+        this->makeSprite("../assets/bluebird-midflap.png");
         // initialize the position
         this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
                                    Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
 
-        this->_sprite->setOrigin(75, 75);
+        this->_sprite->setOrigin(17, 12);
     }
 
 
@@ -38,7 +38,7 @@ private:
 };
 
 
-class EnemyShipView : public EntityView {
+class EnemyShipView : public ActiveEntityView {
 
 public:
     /**
@@ -47,15 +47,15 @@ public:
  * @param shared_ptr<playerShip>
  */
     EnemyShipView(const std::shared_ptr<sf::RenderWindow> &window, const std::shared_ptr<ActiveEntity> &_entityPtr) :
-            EntityView( window, _entityPtr) {
+            ActiveEntityView( window, _entityPtr) {
 
-        this->makeSprite("../assets/enemy.png");
+        this->makeSprite("../assets/angrybird.png");
 
         // initialize the position
         this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
                                    Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
 
-        this->_sprite->setOrigin(75, 75);
+        this->_sprite->setOrigin(17, 12);
     }
 
 };

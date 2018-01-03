@@ -54,11 +54,19 @@ public:
     const std::vector<std::shared_ptr<EnemyShip>>& getEnemyShipList() const;
 
     /**
-   * @brief Getter for the list of shared pointers of bullets (used for updating location of bullets
-   * and checking collisions)
-   * @return std::vector<std::shared_ptr<EnemyShip>>
-   */
+    * @brief Getter for the list of shared pointers of bullets (used for updating location of bullets
+    * and checking collisions)
+    * @return std::vector<std::shared_ptr<EnemyShip>>
+    */
     const std::vector<std::shared_ptr<Bullet>> &getBulletList() const;
+
+    /**
+    * @brief Getter for the list of shared pointers of Obstaces (used for updating location of obstacles
+    * and checking collisions)
+    * @return std::vector<std::shared_ptr<EnemyShip>>
+    */
+    const std::vector<std::shared_ptr<Obstacle>> &getObstacleList() const;
+
 
     /**
      * @brief adds a bullet to the bulletList

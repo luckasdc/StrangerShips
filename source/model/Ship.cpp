@@ -66,7 +66,7 @@ PlayerShip::PlayerShip(World* myWorld) {
     this->_location.x = -3;
     this->_location.y = 0;
     this->_health = 10;
-    this->_speed = 0.16;
+    this->_speed = 0.09;
     this->_myWorld = myWorld;
 }
 
@@ -77,8 +77,6 @@ void PlayerShip::shoot() {
 
 }
 
-
-
 /*
  * ENEMY SHIP
  */
@@ -86,7 +84,7 @@ EnemyShip::EnemyShip(World* myWorld) {
     this->_location.x = 3;
     this->_location.y = randfrom(-3, 3);
     this->_health = 10;
-    this->_speed = 0.05;
+    this->_speed = 0.03;
     this->_myWorld = myWorld;
 }
 
@@ -105,8 +103,18 @@ void EnemyShip::moveRandomDirection() {
     _moveCounter ++;
 
     if (_moveCounter >= 50) {
-        _curdir = Direction(rand() % 10);
+        _curdir = Direction(rand() % 10 + 1);
         _moveCounter = 0;
     }
     move(_curdir);
 }
+
+void EnemyShip::escape() {
+    Direction newdir = Up;
+    if (_location.y < 0 ) newdir = Down;
+    _curdir = newdir;
+    _moveCounter = 0;
+    move(_curdir);
+
+}
+

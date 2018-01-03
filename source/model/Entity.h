@@ -61,8 +61,30 @@ protected:
 
 
 class PassiveEntity : public Entity {
-    
-    
+public:
+
+    /**
+     * @brief returns the bottom left corner of a passive entity.
+     * @return Location
+     */
+    const Location &get_bottomRightCorner() const;
+
+    float get_width() const;
+
+    float get_height() const;
+
+    /**
+     * @brief returns if the obstacle is inversed (for generating te top bar)
+     */
+    bool is_inversed() const;
+
+
+protected:
+    Location _bottomRightCorner = {};
+    float _width {};
+    float _height {};
+    bool _inversed{};
+
 };
 
 #endif //STRANGERSHIPS_ENTITY_H

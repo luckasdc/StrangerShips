@@ -21,3 +21,18 @@ void ActiveEntity::hit(int health) {
 }
 
 
+const Location &PassiveEntity::get_bottomRightCorner() const {
+    return _bottomRightCorner;
+}
+
+float PassiveEntity::get_width() const {
+    return _width;
+}
+
+float PassiveEntity::get_height() const {
+    return _height;
+}
+
+bool PassiveEntity::is_inversed() const {
+    return _inversed;
+}

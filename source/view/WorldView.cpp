@@ -6,9 +6,13 @@
 #include "WorldView.h"
 #include "ShipView.h"
 #include "BulletView.h"
+#include "ObstacleView.h"
 
 void WorldView::draw() {
 
+    for (const auto& passiveEntity : this->_passiveEntityViews) {
+        passiveEntity->draw();
+    }
     //Draw all entities
     for (const auto& entityView : this->_entityViews) {
         entityView->draw();
@@ -33,6 +37,10 @@ void WorldView::update(std::string what) {
         //std::cout << "update! Added a new Bullet has been fired" << std::endl;
         auto b = std::make_shared<BulletView> (this->_window, this->_world->getBulletList().back());
         _entityViews.push_back(b);
+    }
+    if (what == "newBottomObstacle") {
+        auto o = std::make_shared<BorderObstacleView> (this->_window, this->_world->getObstacleList().back());
+        _passiveEntityViews.push_back(o);
     }
 
     if (what == "EntityDestructed") {

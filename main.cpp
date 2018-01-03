@@ -11,7 +11,7 @@
  */
 int main()
 {
-    Game game(2000, 1500, "Stranger Ships");
+    Game game(1200, 900, "Stranger Ships");
 
     game.run();
 

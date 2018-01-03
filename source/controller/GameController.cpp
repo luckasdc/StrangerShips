@@ -58,7 +58,7 @@ void Game::run()
             if (KeyController::getKeyController().processShooting(event)) _world->getPlayerShip()->shoot();
 
         }
-        aictr.makeDecisions();
+        //aictr.makeDecisions();
         cctr.updateBullets();
 
         // check which entities died during this iteration and remove them

@@ -34,6 +34,12 @@ bool AIController::targetInRange(std::shared_ptr<EnemyShip> enemy) {
 }
 
 bool AIController::bulletComingTowardsMe(std::shared_ptr<EnemyShip> enemy) {
+    for(auto& bullet : _world->getBulletList()) {
+        float difference_vertical = bullet->getLocation().y - enemy->getLocation().y;
+        float difference_horizontal = bullet->getLocation().x - enemy->getLocation().x;
+
+        return fabs(difference_vertical) <= 0.2 ;
+    }
     return false;
 }
 
@@ -43,6 +49,9 @@ void AIController::wanderAroundAimlessly(std::shared_ptr<EnemyShip> enemy) {
 
 void AIController::moveAwayFromBullet(std::shared_ptr<EnemyShip> enemy) {
 
+    if (bulletComingTowardsMe(enemy)) {
+        enemy->escape();
+    }
 }
 
 void AIController::fireAtTarget(std::shared_ptr<EnemyShip> enemy) {

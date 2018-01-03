@@ -80,6 +80,11 @@ public:
      */
     void moveRandomDirection();
 
+    /**
+     * @brief escape the bullet by escaping up or down
+     */
+    void escape();
+
 private:
     World* _myWorld;
     int _shotCounter;

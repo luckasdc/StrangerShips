@@ -21,6 +21,19 @@ void World::initialize() {
         _enemyShipList.push_back(std::make_shared<EnemyShip>(this));
         this->notify("newEnemyship");
     }
+    //Generate Bottom Obstacles
+    for (unsigned int i = 0; i < 5; ++i) {
+        // the width of every obstacle is 1.5;
+        _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), false));
+        this->notify("newBottomObstacle");
+    }
+
+    //Generate Top Obstacles
+    for (unsigned int i = 0; i < 5; ++i) {
+        // the width of every obstacle is 1.5;
+        _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), true));
+        this->notify("newBottomObstacle");
+    }
 
 }
 
@@ -34,6 +47,10 @@ const std::shared_ptr<PlayerShip> &World::getPlayerShip() const {
 
 const std::vector<std::shared_ptr<Bullet>> &World::getBulletList() const {
     return _bulletList;
+}
+
+const std::vector<std::shared_ptr<Obstacle>> &World::getObstacleList() const {
+    return _obstacleList;
 }
 
 void World::addBullet(std::shared_ptr<Bullet> bullet) {
@@ -63,13 +80,16 @@ void World::updateEntities() {
 
     auto snapshotOfBullets = _bulletList;
     auto snapshotOfEnemies = _enemyShipList;
+    auto snapshotOfObstacles = _obstacleList;
 
 
     if (_playerShip->getHealth() == 0) {
         std::cout << "PLAYERSHIP IS DEAD, GAME OVER" << std::endl;
         this->notify("GAME OVER");
     }
-
+    for(auto& o : snapshotOfObstacles) {
+        o->shiftLeft();
+    }
     for (auto& es : snapshotOfEnemies) {
         if (es->getHealth() == 0) {
             this->removeEnemy(es);
@@ -82,7 +102,7 @@ void World::updateEntities() {
     }
 
 
-
 }
+
 
 
