@@ -42,11 +42,6 @@ void Game::run()
         Stopwatch::getStopwatch().start();
 
 
-        // check which keys are currently pressed to control movement
-        Direction dir = KeyController::getKeyController().processDirection();
-        if(dir != Idle) _world->getPlayerShip()->move(dir);
-
-
         // check all the window's events that were triggered since the last iteration of the loop
         while (_window->pollEvent(event))
         {
@@ -58,19 +53,28 @@ void Game::run()
             if (KeyController::getKeyController().processShooting(event)) _world->getPlayerShip()->shoot();
 
         }
-        //aictr.makeDecisions();
+
+        // check which keys are currently pressed to control movement
+        Direction dir = KeyController::getKeyController().processDirection();
+        if(dir != Idle) _world->getPlayerShip()->move(dir);
+
+        // AI-controller: decides what the enemies are going to do
+        aictr.makeDecisions();
+
+        // CollisionController: Check if there were any collions and handle them
         cctr.updateBullets();
 
-        // check which entities died during this iteration and remove them
+        // check which entities died during this iteration and remove the according views
         _world->updateEntities();
 
+        // Everything's ready for the next iteration!
         // clear the window with black color
-        _window->clear(sf::Color::Black);
+        _window->clear();
 
-        // draw everything here...
+        // draw everything again...
         _view->draw();
 
-        // end the current frame
+        // and finally display the current frame!
         _window->display();
 
     }

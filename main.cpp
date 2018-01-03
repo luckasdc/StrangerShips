@@ -11,6 +11,10 @@
  */
 int main()
 {
+    /*
+     * ATTENTION: GAME IS BUILD TO RUN AT THIS RESOLUTION. IT IS NOT ADVISED TO CHANGE
+     * THIS PARAMETERS!
+     */
     Game game(1200, 900, "Stranger Ships");
 
     game.run();

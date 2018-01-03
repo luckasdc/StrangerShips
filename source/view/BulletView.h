@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 31/11/17.
-//
 
 #ifndef STRANGERSHIPS_BULLETVIEW_H
 #define STRANGERSHIPS_BULLETVIEW_H

@@ -10,6 +10,8 @@
 
 void WorldView::draw() {
 
+    _window->draw(*_BgSprite);
+
     for (const auto& passiveEntity : this->_passiveEntityViews) {
         passiveEntity->draw();
     }
@@ -58,5 +60,26 @@ void WorldView::update(std::string what) {
         this->_window->close();
     }
 
+
+}
+
+void WorldView::initBackground() {
+    // make sprite
+    this->_BgSprite = std::make_shared<sf::Sprite>();
+    std::unique_ptr<sf::Texture> texture(new sf::Texture);
+
+    try {
+        if (!texture->loadFromFile("../assets/bg.png", sf::IntRect(0, 0, _window->getSize().x, _window->getSize().y))){
+            throw std::runtime_error("Could not load texture from file");
+        }
+    }
+    catch (std::runtime_error& e) {
+        std::cerr << "Fatal error: " << e.what() << std::endl;
+    }
+
+
+    // transfer ownership of texture to EntityView
+    this->_BgTexture = std::move(texture);
+    this->_BgSprite->setTexture(*this->_BgTexture);
 
 }
