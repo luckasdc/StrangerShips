@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 16/12/17.
-//
 
 #include <iostream>
 #include <cmath>
@@ -101,6 +98,8 @@ void PassiveEntityView::makeSprite(const std::string &file) {
     // transfer ownership of texture to EntityView
     this->_texture = std::move(texture);
     this->_sprite->setTexture(*this->_texture);
+    ////// TODO REMOVE THIS
+    //this->_texture = std::unique_ptr<sf::Texture>(new sf::Texture);
 
 }
 

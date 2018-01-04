@@ -60,9 +60,11 @@ void Game::run()
 
         // AI-controller: decides what the enemies are going to do
         aictr.makeDecisions();
+        // TODO CHANGE THIS
+        aictr.launchSporadicObstacle(1);
 
         // CollisionController: Check if there were any collions and handle them
-        cctr.updateBullets();
+        cctr.updateBulletsAndObstacles();
         cctr.checkPlayerShip();
 
         // check which entities died during this iteration and remove the according views

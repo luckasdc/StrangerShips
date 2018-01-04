@@ -48,12 +48,23 @@ void WorldView::update(std::string what) {
         auto o = std::make_shared<BorderObstacleView> (this->_window, this->_world->getObstacleList().back());
         _passiveEntityViews.push_back(o);
     }
-
+    if (what == "newSporadicObstacle") {
+        auto o = std::make_shared<SporadicObstacleView> (this->_window, this->_world->getObstacleList().back());
+        _passiveEntityViews.push_back(o);
+    }
     if (what == "EntityDestructed") {
         //std::cout << "EntityDestructed' in worldView..." << std::endl;
         for (auto ev : this->_entityViews) {
             if (ev->get_entityPtr()->getHealth() <= 0) {
                 _entityViews.erase(std::remove(_entityViews.begin(), _entityViews.end(), ev), _entityViews.end());
+                break;
+            }
+        }
+    }
+    if (what == "ObstacleDestruction") {
+        for (auto pe : this->_passiveEntityViews) {
+            if (pe->get_entityPtr()->get_bottomRightCorner().x + pe->get_entityPtr()->get_width() < -4) {
+                _passiveEntityViews.erase(std::remove(_passiveEntityViews.begin(), _passiveEntityViews.end(), pe), _passiveEntityViews.end());
                 break;
             }
         }

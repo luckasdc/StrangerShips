@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 29/11/17.
-//
 
 #ifndef STRANGERSHIPS_WorldView_H
 #define STRANGERSHIPS_WorldView_H
@@ -30,12 +27,16 @@ public:
     ~WorldView() override = default;
 
     /**
-     * @brief  function for drawing objects onto the screen
+     * @brief  function for drawing every entity of the world onto the screen
+     * (as well as active/passive entities)
      */
     void draw();
 
     /**
-     * @brief this function will be called when the Subject (World) creates new entities.
+     * @brief this function will be called when the subject notifies one of the following:
+     *  -> the world created a new entity
+     *  -> an entity died
+     *  -> an entity went out of range
      * @param what
      */
     void update(std::string what) override;
@@ -56,12 +57,6 @@ protected:
     std::shared_ptr<sf::Sprite> _BgSprite;
     std::unique_ptr<sf::Texture> _BgTexture;
     std::shared_ptr<OverlayView> _overlay;
-
-
-
-private:
-
-
 
 
 };

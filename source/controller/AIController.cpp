@@ -6,6 +6,7 @@
 #include "../model/World.h"
 #include <iostream>
 #include <cmath>
+#include <random>
 
 void AIController::makeDecisions() {
 
@@ -58,3 +59,24 @@ void AIController::fireAtTarget(std::shared_ptr<EnemyShip> enemy) {
 
     enemy->shoot();
 }
+
+void AIController::launchSporadicObstacle(int difficulty) {
+    _launches -= difficulty;
+    std::random_device rd1;  //Will be used to obtain a seed for the random number engine
+    std::mt19937 gen1(rd1()); //Standard mersenne_twister_engine seeded with rd()
+    std::uniform_int_distribution<> dis1(-4, 5);
+    _launches -= dis1(gen1) * difficulty;
+
+    if (_launches <= 0) {
+         std::random_device rd;  //Will be used to obtain a seed for the random number engine
+         std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+         std::uniform_real_distribution<> dis(-2.5, 2.5);
+         _world->addSporadicObstacle(0.015 * difficulty, dis(gen));
+         _launches = 300;
+     }
+
+
+
+
+}
+

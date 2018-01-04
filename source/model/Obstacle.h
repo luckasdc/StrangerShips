@@ -20,7 +20,7 @@ public:
      * if the obstacle goes out of field, notify observers to destruct
      * and append a new obstacle to the list.
      */
-    void shiftLeft();
+    virtual void shiftLeft();
 
 
 
@@ -41,8 +41,18 @@ public:
     BorderObstacle(float speed, float xValueBottomRightCorner, bool inversed = false);
 
 
+};
 
+class SporadicObstacle : public Obstacle {
+public:
+    /**
+     * @brief constructs a SporadicObstacle and initilizes the right parameters
+     * @param speed
+     * @param xValueBottomRightCorner
+     */
+    SporadicObstacle(float speed, float xValueBottomRightCorner);
 
+    void shiftLeft() override;
 };
 
 #endif //STRANGERSHIPS_OBSTACLE_H

@@ -71,6 +71,17 @@ void World::removeEnemy(std::shared_ptr<EnemyShip> enemy) {
     _enemyShipList.erase(std::remove(_enemyShipList.begin(), _enemyShipList.end(), enemy), _enemyShipList.end());
 }
 
+void World::removeObstacle(std::shared_ptr<Obstacle> obstacle) {
+    obstacle->notify("destruction");
+    this->notify("ObstacleDestruction");
+    obstacle->detach();
+    _obstacleList.erase(std::remove(_obstacleList.begin(), _obstacleList.end(), obstacle), _obstacleList.end());
+
+
+
+}
+
+
 const std::vector<std::shared_ptr<EnemyShip>> &World::getEnemyShipList() const {
     return _enemyShipList;
 }
@@ -99,9 +110,14 @@ void World::updateEntities() {
             this->removeBullet(b);
         }
     }
-
-
 }
+
+void World::addSporadicObstacle(float speed, float xValueBottomRightCorner) {
+    auto o = std::make_shared<SporadicObstacle>(speed, xValueBottomRightCorner);
+    this->_obstacleList.push_back(o);
+    this->notify("newSporadicObstacle");
+}
+
 
 
 

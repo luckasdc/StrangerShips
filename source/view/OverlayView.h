@@ -17,8 +17,8 @@ public:
      * @param _window
      * @param _world
      */
-    OverlayView(std::shared_ptr<sf::RenderWindow> _window, const std::shared_ptr<World> &_world) : _window(std::move(
-            _window)), _world(_world) {
+    OverlayView(std::shared_ptr<sf::RenderWindow> _window, std::shared_ptr<World> _world) : _window(std::move(
+            _window)), _world(std::move(_world)) {
         initHeart();
     };
 

@@ -86,6 +86,19 @@ public:
      */
     void removeEnemy(std::shared_ptr<EnemyShip> enemy);
 
+    /**
+     * @brief removes an obstacle from te obstacleList
+     * @param obstacle
+     */
+    void removeObstacle(std::shared_ptr<Obstacle> obstacle);
+
+    /**
+     * @brief adds a new sporadic obstacle, this function will be called
+     * by the AI-controller.
+     * @param speed
+     * @param xValueBottomRightCorner
+     */
+    void addSporadicObstacle(float speed, float xValueBottomRightCorner);
 
     };
 

@@ -36,12 +36,25 @@ public:
         this->_sprite->setPosition(x, y);
 
         std::cout << _sprite->getPosition().x << ", " << _sprite->getPosition().y << std::endl;
-
-
-
-
     }
+};
 
+class SporadicObstacleView : public ObstacleView {
+
+public:
+
+    SporadicObstacleView(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<PassiveEntity> &_entityPtr) :
+            ObstacleView(window, _entityPtr) {
+
+        this->makeSprite("../assets/horizontal_tube.png");
+
+
+        int x = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().x, _window->getSize().x));
+        int y = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().y, _window->getSize().y));
+        this->_sprite->setPosition(x, y);
+
+        std::cout << _sprite->getPosition().x << ", " << _sprite->getPosition().y << std::endl;
+    }
 
 };
 

@@ -26,19 +26,50 @@ public:
      */
     void makeDecisions();
 
+    /**
+     * @brief checks if the playership has the same y-values as the enemy
+     * @param enemy
+     * @return bool
+     */
     bool targetInRange(std::shared_ptr<EnemyShip> enemy);
 
+    /**
+     * @brief checks if there is a bullet coming towards enemy
+     * @param enemy
+     * @return bool
+     */
     bool bulletComingTowardsMe(std::shared_ptr<EnemyShip> enemy);
 
+    /**
+     * @brief if the enemy is not in danger / cannot shoot, it will
+     * wander around
+     * @param enemy
+     */
     void wanderAroundAimlessly(std::shared_ptr<EnemyShip> enemy);
 
+    /**
+     * @brief this function will call the shoot() function of the enemy
+     * @param enemy
+     */
     void fireAtTarget(std::shared_ptr<EnemyShip> enemy);
 
+    /**
+     * @brief when this funciton is called, enemy wil escape bullet
+     * to the furthest side.
+     * @param enemy
+     */
     void moveAwayFromBullet(std::shared_ptr<EnemyShip> enemy);
 
+    /**
+     * @brief this function controls the launch of sporadic obstacels,
+     * based upon the given difficulty level assigned by the level.
+     * @param difficulty
+     */
+    void launchSporadicObstacle(int difficulty);
 
 private:
     std::shared_ptr<World> _world;
+    int _launches = 200;
 
 };
 

@@ -83,7 +83,7 @@ protected:
     Location _bottomRightCorner = {};
     float _width {};
     float _height {};
-    bool _inversed{};
+    bool _inversed = true;
 
 };
 

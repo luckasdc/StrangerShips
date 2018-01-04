@@ -7,15 +7,16 @@
 #include "CollisionController.h"
 #include "../model/World.h"
 
-void CollisionController::updateBullets() {
+void CollisionController::updateBulletsAndObstacles() {
 
     // creating a copy of BulletList to avoid referencing nullptrs due to deletes
     auto snapshotOfBullets = _world->getBulletList();
+    auto snapshotOfObstacles = _world->getObstacleList();
 
-    for (auto& bullet : snapshotOfBullets) {
+    for (auto &bullet : snapshotOfBullets) {
 
         Direction dir = Right;
-        if(bullet->fromEnemy()) dir = Left;
+        if (bullet->fromEnemy()) dir = Left;
 
         bullet->move(dir);
 
@@ -25,8 +26,15 @@ void CollisionController::updateBullets() {
         // check if bullet runs out of range
         checkBulletRange(bullet);
 
-        }
     }
+
+
+    for (auto &obstacle : snapshotOfObstacles) {
+        checkObstacleRange(obstacle);
+    }
+}
+
+
 
 void CollisionController::checkPlayerShip() {
 
@@ -76,7 +84,13 @@ void CollisionController::checkBulletRange(std::shared_ptr<Bullet> bullet) {
         bullet->hit(1);
         //_world->removeBullet(bullet);
     }
+}
 
+void CollisionController::checkObstacleRange(std::shared_ptr<Obstacle> obstacle) {
+    if (obstacle->get_bottomRightCorner().x + obstacle->get_width() < -4) {
+        _world->removeObstacle(obstacle);
+        std::cout << "Obstacle Out Of Range!" << std::endl;
+    }
 }
 
 bool CollisionController::circleCollisionTest(Location first, Location second) {
@@ -93,17 +107,27 @@ bool CollisionController::circleCollisionTest(Location first, Location second) {
 
 bool CollisionController::circleRectangleCollisionTest(Location circle, Location rectangle, float width, float height, bool inversed) {
 
-    float radius_circle = 0.15;
+    float radius_circle = 0.2;
 
     if (inversed) {
-        float dx = circle.x - std::max(rectangle.x + width, std::min(circle.x, rectangle.x + width + width));
-        float dy = circle.y - std::max(rectangle.y + height, std::min(circle.y, rectangle.y + height + height));
+
+        if (rectangle.y >= 0) {
+            float dx = circle.x - std::max(rectangle.x , std::min(circle.x, rectangle.x + width ));
+            float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height  ));
+            return (dx * dx + dy * dy) < (radius_circle * radius_circle);
+        }
+
+        float dx = circle.x - std::max(rectangle.x , std::min(circle.x, rectangle.x + width ));
+        float dy = circle.y - std::max(rectangle.y, std::min(circle.y, rectangle.y + height));
         return (dx * dx + dy * dy) < (radius_circle * radius_circle);
+
     }
 
-    float dx = circle.x - std::max(rectangle.x - width, std::min(circle.x, rectangle.x + width - width));
-    float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height));
+    float dx = circle.x - std::max(rectangle.x - width , std::min(circle.x, rectangle.x + width - width ));
+    float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height ));
     return (dx * dx + dy * dy) < (radius_circle * radius_circle);
 
     }
+
+
 

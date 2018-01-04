@@ -40,3 +40,32 @@ BorderObstacle::BorderObstacle(float speed, float xValueBottomRightCorner, bool 
     this->_height = 0.76;
 
 }
+
+/*
+ * SporadicObstacle
+ */
+
+SporadicObstacle::SporadicObstacle(float speed, float yValueBottomRightCorner) {
+    this->_speed = speed;
+    Location loc;
+    loc.x = 5;
+    loc.y = yValueBottomRightCorner;
+
+    this->_bottomRightCorner = loc;
+
+    this->_width = 2.15;
+    this->_height = 0.35;
+
+}
+
+void SporadicObstacle::shiftLeft() {
+    this->_bottomRightCorner.x -= _speed;
+
+    // if obstacle goes out of range, move it to the front
+    if (this->_bottomRightCorner.x + this->_width < -4) {
+        this->notify("obstacleDestructed"); // implement this
+        // deleteFromVectorInWorld(hi->;e
+
+    }
+    this->notify("shift");
+}

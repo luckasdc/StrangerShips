@@ -6,6 +6,7 @@
 #include <memory>
 #include <utility>
 #include "../model/Entity.h"
+#include "../model/Obstacle.h"
 
 class World;
 class Bullet;
@@ -25,7 +26,7 @@ public:
      *  -> it moves the bullet in the right direction
      *  -> it checks collisions by calling the corresponding functions
      */
-    void updateBullets();
+    void updateBulletsAndObstacles();
 
     /**
     * @brief checks if the playership has hit an obstacle:
@@ -50,6 +51,14 @@ public:
     * @param bullet
     */
     void checkBulletRange(std::shared_ptr<Bullet> bullet);
+
+    /**
+    * @brief checks if an obstacle goes out of range:
+    *  -> if the y-coordinate of the obstacle < -4, it will remove the bullet
+    *     and notify his observers
+    * @param obstacle
+    */
+    void checkObstacleRange(std::shared_ptr<Obstacle> obstacle);
 
     /**
     * @brief checks collision by taking two Locations and generating circles to check if they intersect
