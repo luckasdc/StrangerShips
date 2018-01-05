@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 1/12/17.
-//
 
 #ifndef STRANGERSHIPS_SHIPVIEW_H
 #define STRANGERSHIPS_SHIPVIEW_H
@@ -36,6 +33,8 @@ public:
 private:
 
 };
+
+
 
 
 class EnemyShipView : public ActiveEntityView {

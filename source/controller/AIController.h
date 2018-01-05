@@ -19,7 +19,7 @@ public:
     * @brief constructs a new Controller based upon the given world.
     * @param world
     */
-    AIController(std::shared_ptr<World> world) : _world(std::move(world)) {};
+    AIController(std::shared_ptr<World> world) : _world(std::move(world)){};
 
     /**
      * @brief decide which actions to do based upon a few (function-based) parameters.
@@ -65,11 +65,17 @@ public:
      * based upon the given difficulty level assigned by the level.
      * @param difficulty
      */
-    void launchSporadicObstacle(int difficulty);
+    void launchSporadicObstacle();
+
+    /**
+     * @brief controls the waves and generates new enemies;
+     */
+    void controlWaves();
 
 private:
     std::shared_ptr<World> _world;
     int _launches = 200;
+    int _wavesToGo = 0;
 
 };
 

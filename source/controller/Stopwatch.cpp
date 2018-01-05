@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 21/11/17.
-//
 
 #include "Stopwatch.h"
 

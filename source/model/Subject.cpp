@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 16/12/17.
-//
 
 #include "Subject.h"
 #include <iostream>

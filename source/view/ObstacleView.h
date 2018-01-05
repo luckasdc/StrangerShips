@@ -1,5 +1,4 @@
 
-
 #ifndef STRANGERSHIPS_OBSTACLEVIEW_H
 #define STRANGERSHIPS_OBSTACLEVIEW_H
 
@@ -35,7 +34,6 @@ public:
         int y = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().y, _window->getSize().y));
         this->_sprite->setPosition(x, y);
 
-        std::cout << _sprite->getPosition().x << ", " << _sprite->getPosition().y << std::endl;
     }
 };
 
@@ -53,7 +51,6 @@ public:
         int y = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().y, _window->getSize().y));
         this->_sprite->setPosition(x, y);
 
-        std::cout << _sprite->getPosition().x << ", " << _sprite->getPosition().y << std::endl;
     }
 
 };

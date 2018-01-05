@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 21/11/17.
-//
 
 #ifndef STRANGERSHIPS_STOPWATCH_H
 #define STRANGERSHIPS_STOPWATCH_H

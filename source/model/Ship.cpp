@@ -59,8 +59,9 @@ PlayerShip::PlayerShip(World* myWorld) {
     this->_location.x = -3;
     this->_location.y = 0;
     this->_health = 10;
-    this->_speed = 0.09;
     this->_myWorld = myWorld;
+    this->_speed = _myWorld->get_level()->get_playerShipSpeed();
+
 }
 
 void PlayerShip::shoot() {
@@ -77,7 +78,7 @@ EnemyShip::EnemyShip(World* myWorld) {
     this->_location.x = randfrom(4.5, 6.5);
     this->_location.y = randfrom(-3, 3);
     this->_health = 10;
-    this->_speed = 0.03;
+    this->_speed = myWorld->get_level()->get_enemyShipSpeed();
     this->_myWorld = myWorld;
 }
 
@@ -96,6 +97,8 @@ void EnemyShip::moveRandomDirection() {
 
     if (_location.x <= -4) _outOfRangecounter++;
 
+
+
     if (_moveCounter >= 40) {
         _curdir = Direction(rand() % 10 + 1);
         _moveCounter = 0;
@@ -104,6 +107,10 @@ void EnemyShip::moveRandomDirection() {
     if (_outOfRangecounter >= 80) {
         _curdir = Direction(Left);
         _moveCounter = _moveCounter = 0;
+    }
+    if (_location.y >= 3) {
+        _curdir = Direction(Up);
+        _moveCounter = 0;
     }
     move(_curdir);
 }

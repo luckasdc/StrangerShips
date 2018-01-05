@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 13/11/17.
-//
 
 #ifndef STRANGERSHIPS_ENTITY_H
 #define STRANGERSHIPS_ENTITY_H

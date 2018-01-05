@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 13/11/17.
-//
 
 #ifndef STRANGERSHIPS_GAME_H
 #define STRANGERSHIPS_GAME_H
@@ -12,6 +9,8 @@
 
     class Game {
     public:
+
+        //TODO comments
         //Constructors
         Game() = default;
         Game(uint width, uint height, std::string title);

@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 3/01/18.
-//
 
 #ifndef STRANGERSHIPS_OVERLAYVIEW_H
 #define STRANGERSHIPS_OVERLAYVIEW_H

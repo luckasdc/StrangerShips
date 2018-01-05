@@ -1,8 +1,49 @@
 
-
 #include <iostream>
 #include "World.h"
 
+World::World(const char *level) {
+
+    _level = std::make_shared<Level> (level);
+
+    //this->loadFromLevel();
+
+}
+
+void World::loadFromLevel() {
+
+    // generating a PlayerShip
+    // Since you cannot use share_from_this in a constructor (object itself hasn't been created yet,
+    // so a weak ptr will be made), We need to solve this. Paul Houx has found a solution by using
+    // Lamda Functions (https://forum.libcinder.org/topic/solution-calling-shared-from-this-in-the-constructor)
+    auto wptr = std::shared_ptr<World>( this, [](World*){} );
+    _playerShip = std::make_shared<PlayerShip>(this);
+    this->notify("newPlayership");
+
+    _enemyShipList = {};
+    _bulletList = {};
+    _obstacleList = {};
+
+    //Generate Bottom Obstacles
+    for (unsigned int i = 0; i < 5; ++i) {
+        _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), false));
+        this->notify("newBottomObstacle");
+    }
+
+    //Generate Top Obstacles
+    for (unsigned int i = 0; i < 5; ++i) {
+        _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), true));
+        this->notify("newBottomObstacle");
+    }
+
+    // set initial amount of Enemies
+    for (unsigned int i = 0; i < _level->get_initialEnemies(); ++i) {
+        _enemyShipList.push_back(std::make_shared<EnemyShip>(this));
+        this->notify("newEnemyship");
+    }
+
+
+}
 
 void World::initialize() {
     // Since you cannot use share_from_this in a constructor (object itself hasn't been created yet,
@@ -15,7 +56,7 @@ void World::initialize() {
     _bulletList = {};
     _obstacleList = {};
 
-     //Generate a few enemies TODO will be changed!
+    //Generate a few enemies TODO will be changed!
     for (unsigned int i = 0; i < 5; ++i) {
         _enemyShipList.push_back(std::make_shared<EnemyShip>(this));
         this->notify("newEnemyship");
@@ -33,9 +74,7 @@ void World::initialize() {
         _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), true));
         this->notify("newBottomObstacle");
     }
-
 }
-
 
 /// GETTERS AND SETTERS
 
@@ -63,6 +102,13 @@ void World::removeBullet(std::shared_ptr<Bullet> bullet) {
     bullet->detach();
     _bulletList.erase(std::remove(_bulletList.begin(), _bulletList.end(), bullet), _bulletList.end());
 }
+
+void World::addEnemy() {
+    auto es = std::make_shared<EnemyShip> (this);
+    this->_enemyShipList.push_back(es);
+    this->notify("newEnemyship");
+}
+
 
 void World::removeEnemy(std::shared_ptr<EnemyShip> enemy) {
     enemy->notify("destruction");
@@ -117,6 +163,14 @@ void World::addSporadicObstacle(float speed, float xValueBottomRightCorner) {
     this->_obstacleList.push_back(o);
     this->notify("newSporadicObstacle");
 }
+
+const std::shared_ptr<Level> &World::get_level() const {
+    return _level;
+}
+
+
+
+
 
 
 

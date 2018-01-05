@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 2/01/18.
-//
 
 #include "AIController.h"
 #include "../model/World.h"
@@ -60,7 +57,8 @@ void AIController::fireAtTarget(std::shared_ptr<EnemyShip> enemy) {
     enemy->shoot();
 }
 
-void AIController::launchSporadicObstacle(int difficulty) {
+void AIController::launchSporadicObstacle() {
+    int difficulty = this->_world->get_level()->get_level();
     _launches -= difficulty;
     std::random_device rd1;  //Will be used to obtain a seed for the random number engine
     std::mt19937 gen1(rd1()); //Standard mersenne_twister_engine seeded with rd()
@@ -71,10 +69,28 @@ void AIController::launchSporadicObstacle(int difficulty) {
          std::random_device rd;  //Will be used to obtain a seed for the random number engine
          std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
          std::uniform_real_distribution<> dis(-2.5, 2.5);
-         _world->addSporadicObstacle(0.015 * difficulty, dis(gen));
+         _world->addSporadicObstacle(_world->get_level()->get_sporadicObstacleSpeed(), dis(gen));
          _launches = 300;
      }
 
+}
+
+void AIController::controlWaves() {
+
+    if (_world->getEnemyShipList().empty() and _wavesToGo < _world->get_level()->get_amountOfWaves()) {
+
+        for (int i = 0; i < _world->get_level()->get_enemiesInWave(); i++) {
+            _world->addEnemy();
+        }
+        _wavesToGo++;
+    }
+
+    else if (_world->getEnemyShipList().empty() and _wavesToGo == _world->get_level()->get_amountOfWaves()){
+        std::cout << "YOU WON THE GAME! CONGRATULATIONS!" << std::endl;
+        _world->notify("YOU WON");
+
+
+    }
 
 
 

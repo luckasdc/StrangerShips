@@ -1,6 +1,4 @@
-//
-// Created by Luckas Declerck on 30/12/17.
-//
+
 
 #include <SFML/Window/Event.hpp>
 #include "KeyController.h"

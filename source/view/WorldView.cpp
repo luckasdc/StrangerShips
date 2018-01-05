@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 29/11/17.
-//
 
 #include <iostream>
 #include "WorldView.h"
@@ -74,6 +71,11 @@ void WorldView::update(std::string what) {
     if (what == "GAME OVER") {
         this->_window->close();
     }
+
+    if (what == "YOU WON") {
+        this->_window->close();
+    }
+
 
 
 }

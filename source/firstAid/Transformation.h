@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 1/12/17.
-//
 
 #ifndef STRANGERSHIPS_TRANSFORMATION_H
 #define STRANGERSHIPS_TRANSFORMATION_H

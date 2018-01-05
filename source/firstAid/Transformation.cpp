@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 1/12/17.
-//
 
 #include <iostream>
 #include "Transformation.h"

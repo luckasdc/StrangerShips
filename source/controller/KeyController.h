@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 30/12/17.
-//
 
 #ifndef STRANGERSHIPS_KEYCONTROLLER_H
 #define STRANGERSHIPS_KEYCONTROLLER_H

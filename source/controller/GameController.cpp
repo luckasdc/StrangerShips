@@ -1,6 +1,4 @@
-//
-// Created by Luckas Declerck on 13/11/17.
-//
+
 #include <iostream>
 #include "Stopwatch.h"
 #include "GameController.h"
@@ -15,13 +13,15 @@ Game::Game(uint width, uint height, std::string title)
     // Only one bullet can be shot at a time
     this->_window->setKeyRepeatEnabled(false);
 
-    //TODO change this to add levels
-    this->_world = std::make_shared<World> ();
-    this->_view = std::make_shared<WorldView> (this->_world, this->_window);
+    ///////////////////////////////////////////////////////////////////////
+    ////           CHANGE LEVEL HERE                                   ////
+    this->_world = std::make_shared<World> ("../Levels/level1.json");  ////
+    ////                                                               ////
+    ///////////////////////////////////////////////////////////////////////
 
-    // We will now initialize the entities in the World model, because this will notify the View to create
-    // the corresponding EntityViews.
-    this->_world->initialize();
+    // Load World and Parse Level:
+    this->_view = std::make_shared<WorldView> (this->_world, this->_window);
+    this->_world->loadFromLevel();
 }
 
 void Game::run()
@@ -54,14 +54,16 @@ void Game::run()
 
         }
 
-        // check which keys are currently pressed to control movement
+        // check which keys are currently pressed to control movement (we cannot use events)
         Direction dir = KeyController::getKeyController().processDirection();
         if(dir != Idle) _world->getPlayerShip()->move(dir);
 
         // AI-controller: decides what the enemies are going to do
         aictr.makeDecisions();
-        // TODO CHANGE THIS
-        aictr.launchSporadicObstacle(1);
+        // AI-controller: launch a new wave and check if game is won
+        aictr.controlWaves();
+        // AI-controller: launch obstalces
+        aictr.launchSporadicObstacle();
 
         // CollisionController: Check if there were any collions and handle them
         cctr.updateBulletsAndObstacles();
