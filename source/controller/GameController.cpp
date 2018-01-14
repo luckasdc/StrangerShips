@@ -17,7 +17,7 @@ Game::Game(uint width, uint height, std::string title)
     std::cin >> number;
 
     try {
-        std::string level = "../levels/level" + number + ".json";
+        std::string level = "../Levels/level" + number + ".json";
         std::cout << "loading levelfile: " << level << "..." << std::endl;
         this->_world = std::make_shared<World> (level);  ////
 
