@@ -8,10 +8,6 @@
 
 Game::Game(uint width, uint height, std::string title)
 {
-    this->_window = std::make_shared<sf::RenderWindow> (sf::VideoMode(width, height), "Stranger Ships");
-    this->_window->create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
-    // Only one bullet can be shot at a time
-    this->_window->setKeyRepeatEnabled(false);
 
     ////     CHANGE LEVEL HERE  (CLI)   ////
 
@@ -29,6 +25,11 @@ Game::Game(uint width, uint height, std::string title)
     catch (const std::exception& e){
         std::cerr << "This is not a valid Level file! Error given: " << e.what() << std::endl;
     }
+
+    this->_window = std::make_shared<sf::RenderWindow> (sf::VideoMode(width, height), "Stranger Ships");
+    this->_window->create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
+    // Only one bullet can be shot at a time
+    this->_window->setKeyRepeatEnabled(false);
 
     // Load World and Parse Level:
     this->_view = std::make_shared<WorldView> (this->_world, this->_window);
