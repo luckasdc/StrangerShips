@@ -1,6 +1,4 @@
-//
-// Created by Luckas Declerck on 16/12/17.
-//
+
 
 #ifndef STRANGERSHIPS_ENTITYVIEW_H
 #define STRANGERSHIPS_ENTITYVIEW_H
@@ -8,7 +6,7 @@
 #include "SFML/Graphics.hpp"
 
 #include "../model/Subject.h"
-#include "../firstAid/Transformation.h"
+#include "../firstAid/Singletons.h"
 #include "../model/World.h"
 #include "../model/Entity.h"
 #include "../model/Subject.h"

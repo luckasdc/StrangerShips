@@ -1,0 +1,10 @@
+{
+  "Level": 3,
+  "InitialEnemies": 6,
+  "EnemiesInWave": 7,
+  "AmountOfWaves": 4,
+
+  "EnemyShipSpeed": 0.04,
+  "PlayerShipSpeed": 0.1,
+  "SporadicObstacleSpeed": 0.025
+}

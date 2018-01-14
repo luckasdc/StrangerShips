@@ -105,6 +105,7 @@ bool CollisionController::circleCollisionTest(Location first, Location second) {
 bool CollisionController::circleRectangleCollisionTest(Location circle, Location rectangle, float width, float height, bool inversed) {
 
     float radius_circle = 0.2;
+    //std::cout << circle.x << ", " << circle.y << std::endl;
 
     if (inversed) {
 

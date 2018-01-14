@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "Stopwatch.h"
+#include "../firstAid/Singletons.h"
 #include "GameController.h"
 #include "KeyController.h"
 #include "CollisionController.h"
@@ -26,7 +26,7 @@ Game::Game(uint width, uint height, std::string title)
 
 void Game::run()
 {
-    Stopwatch::getStopwatch().start();
+    Stopwatch::getInstance().start();
     CollisionController cctr (this->_world);
     AIController aictr (this->_world);
 
@@ -35,11 +35,11 @@ void Game::run()
     while (this->_window->isOpen()) {
 
         // wait 'till the following amount of time has passed to maintain the right FPS
-        if (Stopwatch::getStopwatch().elapsedMilliSeconds() < 16) {
+        if (Stopwatch::getInstance().elapsedMilliSeconds() < 16) {
             continue;
         }
 
-        Stopwatch::getStopwatch().start();
+        Stopwatch::getInstance ().start();
 
 
         // check all the window's events that were triggered since the last iteration of the loop

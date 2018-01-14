@@ -1,6 +1,25 @@
 
-#include <iostream>
-#include "Transformation.h"
+#include "Singletons.h"
+
+
+void Stopwatch::start() {
+
+    this->startTime = clock.now().time_since_epoch();
+
+}
+
+long long int Stopwatch::elapsedMilliSeconds() const {
+
+    auto now = std::chrono::high_resolution_clock::now().time_since_epoch();
+    auto then = startTime;
+    auto difference = std::chrono::duration_cast<std::chrono::milliseconds>(now - then);
+    return difference.count();
+}
+
+
+/*
+ * Transformation
+ */
 
 float Transformation::transformWidth(float original, float screen) {
 

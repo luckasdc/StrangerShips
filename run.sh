@@ -8,4 +8,4 @@ cmake .. && make
 rc=$?; if [[ $rc != 0 ]]; then echo "Build failed"; exit $rc; fi
 
 # Execute
-# ../build/exec
+ ../build/StrangerShips

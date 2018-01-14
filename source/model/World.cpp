@@ -104,8 +104,7 @@ void World::removeBullet(std::shared_ptr<Bullet> bullet) {
 }
 
 void World::addEnemy() {
-    auto es = std::make_shared<EnemyShip> (this);
-    this->_enemyShipList.push_back(es);
+    _enemyShipList.push_back(std::make_shared<EnemyShip>(this));
     this->notify("newEnemyship");
 }
 
@@ -122,11 +121,7 @@ void World::removeObstacle(std::shared_ptr<Obstacle> obstacle) {
     this->notify("ObstacleDestruction");
     obstacle->detach();
     _obstacleList.erase(std::remove(_obstacleList.begin(), _obstacleList.end(), obstacle), _obstacleList.end());
-
-
-
 }
-
 
 const std::vector<std::shared_ptr<EnemyShip>> &World::getEnemyShipList() const {
     return _enemyShipList;

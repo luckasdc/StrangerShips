@@ -21,9 +21,7 @@ void AIController::makeDecisions() {
         {
             wanderAroundAimlessly(enemy);
         }
-
     }
-
 }
 
 bool AIController::targetInRange(std::shared_ptr<EnemyShip> enemy) {
@@ -34,8 +32,6 @@ bool AIController::targetInRange(std::shared_ptr<EnemyShip> enemy) {
 bool AIController::bulletComingTowardsMe(std::shared_ptr<EnemyShip> enemy) {
     for(auto& bullet : _world->getBulletList()) {
         float difference_vertical = bullet->getLocation().y - enemy->getLocation().y;
-        float difference_horizontal = bullet->getLocation().x - enemy->getLocation().x;
-
         return fabs(difference_vertical) <= 0.2 ;
     }
     return false;
@@ -72,7 +68,6 @@ void AIController::launchSporadicObstacle() {
          _world->addSporadicObstacle(_world->get_level()->get_sporadicObstacleSpeed(), dis(gen));
          _launches = 300;
      }
-
 }
 
 void AIController::controlWaves() {
@@ -88,11 +83,7 @@ void AIController::controlWaves() {
     else if (_world->getEnemyShipList().empty() and _wavesToGo == _world->get_level()->get_amountOfWaves()){
         std::cout << "YOU WON THE GAME! CONGRATULATIONS!" << std::endl;
         _world->notify("YOU WON");
-
-
     }
-
-
 
 }
 
