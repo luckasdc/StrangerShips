@@ -11,16 +11,28 @@
 class Observer;
 
 class Subject {
-private:
-    std::vector<std::shared_ptr<Observer>> _observers ;
 
 public:
-    //Subject(std::shared_ptr<World> worldptr) : _worldPointer(std::move(worldptr)) {};
     Subject() = default;
-    void attach(std::shared_ptr<Observer> observer);
+    /**
+     * @brief attaches the given observer to the subject (called by observer constructor)
+     * @param observer
+     */
+    void attach(std::shared_ptr<Observer> observer);`
+
+    /**
+     * @brief detaches the observers
+     */
     void detach();
+
+    /**
+     * @brief notifies the observer about what happened (strings)
+     * @param what
+     */
     void notify(std::string what);
 
+private:
+    std::vector<std::shared_ptr<Observer>> _observers ;
 
 
 };
@@ -30,6 +42,10 @@ protected:
     std::shared_ptr<Subject> _subject;
 
 public:
+    /**
+     * @brief an Observer constructor, will add the given subject to the observer
+     * @param _subject
+     */
     Observer(std::shared_ptr<Subject> _subject) : _subject(std::move(_subject)) {
 
         // Since you cannot use share_from_this in a constructor (object itself hasn't been created yet,
@@ -42,6 +58,10 @@ public:
 
     virtual ~Observer() = default;
 
+    /**
+     * @brief pure virtual update function
+     * @param what
+     */
     virtual void update(std::string what) = 0;
 };
 

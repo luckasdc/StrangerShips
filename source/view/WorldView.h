@@ -10,7 +10,6 @@
 class WorldView : public Observer {
 
 public:
-// TODO add texture manager
     /**
      * @brief constructor for WorldView object and initialize Background
      * + add an Overlay object to the WorldView and initialize it.

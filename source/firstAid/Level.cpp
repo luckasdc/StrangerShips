@@ -5,7 +5,11 @@
 
 using json = nlohmann::json;
 
-void Level::parseLevel(const char *filename) {
+Level::Level(std::string filename) {
+    this->parseLevel(filename);
+}
+
+void Level::parseLevel(std::string filename) {
 
     json j;
     try {
@@ -59,6 +63,4 @@ float Level::get_sporadicObstacleSpeed() const {
     return _sporadicObstacleSpeed;
 }
 
-Level::Level(const char *filename) {
-    this->parseLevel(filename);
-}
+

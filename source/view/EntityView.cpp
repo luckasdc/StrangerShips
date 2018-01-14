@@ -40,14 +40,10 @@ void ActiveEntityView::update(std::string what) {
     if (what == "movement") {
         this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
                                    Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
-//        std::cout << "Model Location: " << _entityPtr->getLocation().x << ", " << _entityPtr->getLocation().y << std::endl;
-//        std::cout << "Screen Location: " << Transformation::transformWidth(_entityPtr->getLocation().x , _window->getSize().x) << ", " <<
-//                Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y) << std::endl;
-
     }
 
     if (what == "destruction") {
-        // TODO Destructor or something?
+        // TODO something?
 
     }
 }
@@ -93,8 +89,7 @@ void PassiveEntityView::makeSprite(const std::string &file) {
     // transfer ownership of texture to EntityView
     this->_texture = std::move(texture);
     this->_sprite->setTexture(*this->_texture);
-    ////// TODO REMOVE THIS
-    //this->_texture = std::unique_ptr<sf::Texture>(new sf::Texture);
+
 
 }
 

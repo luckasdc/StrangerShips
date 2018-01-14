@@ -71,7 +71,7 @@ public:
     void shoot() override ;
 
     /**
-     * @brief everytime this function is called, it wil increpemt the movecounter (this
+     * @brief everytime this function is called, it will increment the movecounter (this
      * limits the amound of random directions) and will move in the current direction.
      * After x function calls, a new direction will be chosen.
      */

@@ -17,10 +17,7 @@ void WorldView::draw() {
     for (const auto& entityView : this->_entityViews) {
         entityView->draw();
     }
-
     _overlay->drawLives();
-
-
 
 }
 
@@ -65,18 +62,13 @@ void WorldView::update(std::string what) {
                 break;
             }
         }
-
     }
-
     if (what == "GAME OVER") {
         this->_window->close();
     }
-
     if (what == "YOU WON") {
         this->_window->close();
     }
-
-
 
 }
 
@@ -93,7 +85,6 @@ void WorldView::initBackground() {
     catch (std::runtime_error& e) {
         std::cerr << "Fatal error: " << e.what() << std::endl;
     }
-
 
     // transfer ownership of texture to EntityView
     this->_BgTexture = std::move(texture);

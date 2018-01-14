@@ -9,7 +9,7 @@ void AIController::makeDecisions() {
 
     for (auto& enemy : _world->getEnemyShipList()) {
 
-        if( targetInRange(enemy))
+        if (targetInRange(enemy))
         {
             fireAtTarget(enemy);
         }

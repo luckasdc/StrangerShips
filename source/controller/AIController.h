@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 2/01/18.
-//
 
 #ifndef STRANGERSHIPS_AICONTROLLER_H
 #define STRANGERSHIPS_AICONTROLLER_H

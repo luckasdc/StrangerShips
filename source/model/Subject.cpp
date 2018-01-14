@@ -18,6 +18,7 @@ void Subject::notify(std::string what) {
 
 void Observer::update(std::string what) {
 
-    std::cout << "update!" << std::endl;
+    std::cout << "update! but this function must me overridden"
+            "so no one can see this!" << std::endl;
 
 }

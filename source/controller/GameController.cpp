@@ -13,11 +13,22 @@ Game::Game(uint width, uint height, std::string title)
     // Only one bullet can be shot at a time
     this->_window->setKeyRepeatEnabled(false);
 
-    ///////////////////////////////////////////////////////////////////////
-    ////           CHANGE LEVEL HERE                                   ////
-    this->_world = std::make_shared<World> ("../Levels/level1.json");  ////
-    ////                                                               ////
-    ///////////////////////////////////////////////////////////////////////
+    ////     CHANGE LEVEL HERE  (CLI)   ////
+
+    std::cout << "Type the number of level you want to play: "
+            "(level 1, 2 and 3 are ready to play)" << std::endl;
+    std::string number = "";
+    std::cin >> number;
+
+    try {
+        std::string level = "../Levels/level" + number + ".json";
+        std::cout << "loading levelfile: " << level << "..." << std::endl;
+        this->_world = std::make_shared<World> (level);  ////
+
+    }
+    catch (const std::exception& e){
+        std::cerr << "This is not a valid Level file! Error given: " << e.what() << std::endl;
+    }
 
     // Load World and Parse Level:
     this->_view = std::make_shared<WorldView> (this->_world, this->_window);

@@ -12,14 +12,14 @@ public:
      * a level based on the given filename (of a level.json file)
      * @param filename
      */
-    Level(const char *filename);
+    Level(std::string filename);
 
     /**
      * @brief this will read a level.json file and parses it, will throw errors
      * if something went wrong.
      * @param filename
      */
-    void parseLevel(const char * filename);
+    void parseLevel(std::string filename);
 
     int get_level() const;
 

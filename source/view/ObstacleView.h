@@ -22,7 +22,9 @@ public:
 class BorderObstacleView : public  ObstacleView {
 
 public:
-
+    /**
+     * @brief  constructor for a BorderObstacleView (loads assets)
+     */
     BorderObstacleView(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<PassiveEntity> &_entityPtr) :
             ObstacleView(window, _entityPtr) {
 
@@ -40,7 +42,9 @@ public:
 class SporadicObstacleView : public ObstacleView {
 
 public:
-
+    /**
+     * @brief  constructor for a SporadicObstacleView (loads assets)
+     */
     SporadicObstacleView(const std::shared_ptr<sf::RenderWindow>& window, const std::shared_ptr<PassiveEntity> &_entityPtr) :
             ObstacleView(window, _entityPtr) {
 

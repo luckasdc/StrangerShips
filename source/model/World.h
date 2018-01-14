@@ -17,23 +17,14 @@ class World : public Subject {
 
 public:
 
-    /**
-     * @brief A default, empty constructor since initialize() handles all the entities in the world.
-     */
-    World() = default;
 
     /**
      * @brief a constructur which takes a filename of a level, generating a Level object, parsing
      * the file and adding it to the World.
      * @param level
      */
-    World(const char * level);
+    World(std::string level);
 
-    /**
-     * @brief Initializes the current level: constructs a PlayerShip, the EnemyShips and the Obstacles.
-     * It also notifies the Observers.
-     */
-    void initialize();
 
     /**
      *  @brief Initializes the world based on the Level object: constructs a PlayerShip and top/bottom Obstacles.

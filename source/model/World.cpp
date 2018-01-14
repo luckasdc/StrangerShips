@@ -2,11 +2,9 @@
 #include <iostream>
 #include "World.h"
 
-World::World(const char *level) {
+World::World(std::string level) {
 
     _level = std::make_shared<Level> (level);
-
-    //this->loadFromLevel();
 
 }
 
@@ -43,37 +41,6 @@ void World::loadFromLevel() {
     }
 
 
-}
-
-void World::initialize() {
-    // Since you cannot use share_from_this in a constructor (object itself hasn't been created yet,
-    // so a weak ptr will be made), We need to solve this. Paul Houx has found a solution by using
-    // Lamda Functions (https://forum.libcinder.org/topic/solution-calling-shared-from-this-in-the-constructor)
-    auto wptr = std::shared_ptr<World>( this, [](World*){} );
-    _playerShip = std::make_shared<PlayerShip>(this);
-    this->notify("newPlayership");
-    _enemyShipList = {};
-    _bulletList = {};
-    _obstacleList = {};
-
-    //Generate a few enemies TODO will be changed!
-    for (unsigned int i = 0; i < 5; ++i) {
-        _enemyShipList.push_back(std::make_shared<EnemyShip>(this));
-        this->notify("newEnemyship");
-    }
-    //Generate Bottom Obstacles
-    for (unsigned int i = 0; i < 5; ++i) {
-        // the width of every obstacle is 1.5;
-        _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), false));
-        this->notify("newBottomObstacle");
-    }
-
-    //Generate Top Obstacles
-    for (unsigned int i = 0; i < 5; ++i) {
-        // the width of every obstacle is 1.5;
-        _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), true));
-        this->notify("newBottomObstacle");
-    }
 }
 
 /// GETTERS AND SETTERS
