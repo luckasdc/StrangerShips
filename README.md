@@ -5,7 +5,7 @@ Programming Project Advanced Programming UAntwerp 2Ba
 You will need to have **SFML 2.3** or above installed on your computer, otherwise the game won't run. 
 
 ## How to install
-To play the game, you just need to run the install.sh script. 
+To play the game, you just need to run the ```run.sh``` script. 
 Once the game is built and launched, it will prompt a question for which level you want to play.
 Just enter ``1`` , ``2``  or ``3`` , or another number if you created a different level in the *Levels* folder
 
