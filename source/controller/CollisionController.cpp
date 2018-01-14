@@ -47,7 +47,6 @@ void CollisionController::checkPlayerShip() {
 
         {
             _world->getPlayerShip()->hit(2);
-            std::cout << "YOU DUMBASS" << std::endl; // TODO GET THIS AWAY
             waitCounter = 0;
         };
     }
@@ -60,7 +59,7 @@ void CollisionController::checkBulletWithShips(std::shared_ptr<Bullet> bullet) {
         _world->getPlayerShip()->hit(1);
     }
 
-    for (auto enemy : _world->getEnemyShipList()) {
+    for (const auto enemy : _world->getEnemyShipList()) {
 
         if (bullet->fromEnemy()) break;
 
@@ -86,7 +85,6 @@ void CollisionController::checkBulletRange(std::shared_ptr<Bullet> bullet) {
 void CollisionController::checkObstacleRange(std::shared_ptr<Obstacle> obstacle) {
     if (obstacle->get_bottomRightCorner().x + obstacle->get_width() < -4) {
         _world->removeObstacle(obstacle);
-        std::cout << "Obstacle Out Of Range!" << std::endl;
     }
 }
 

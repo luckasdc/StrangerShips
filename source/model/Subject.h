@@ -18,7 +18,7 @@ public:
      * @brief attaches the given observer to the subject (called by observer constructor)
      * @param observer
      */
-    void attach(std::shared_ptr<Observer> observer);`
+    void attach(std::shared_ptr<Observer> observer);
 
     /**
      * @brief detaches the observers
@@ -46,7 +46,7 @@ public:
      * @brief an Observer constructor, will add the given subject to the observer
      * @param _subject
      */
-    Observer(std::shared_ptr<Subject> _subject) : _subject(std::move(_subject)) {
+    explicit Observer(std::shared_ptr<Subject> _subject) : _subject(std::move(_subject)) {
 
         // Since you cannot use share_from_this in a constructor (object itself hasn't been created yet,
         // so a weak ptr will be made), We need to solve this. Paul Houx has found a solution by using

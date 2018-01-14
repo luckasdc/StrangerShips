@@ -61,7 +61,6 @@ void SporadicObstacle::shiftLeft() {
     // if obstacle goes out of range, move it to the front
     if (this->_bottomRightCorner.x + this->_width < -4) {
         this->notify("obstacleDestructed"); // implement this
-        // deleteFromVectorInWorld(hi->;e
 
     }
     this->notify("shift");

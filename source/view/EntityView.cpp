@@ -43,7 +43,7 @@ void ActiveEntityView::update(std::string what) {
     }
 
     if (what == "destruction") {
-        // TODO something?
+        //  something?
 
     }
 }
