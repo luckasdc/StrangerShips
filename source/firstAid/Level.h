@@ -7,9 +7,18 @@
 class Level {
 
 public:
-
+    /**
+     * @brief This constructor will call the parseLevel()-function to instantiate
+     * a level based on the given filename (of a level.json file)
+     * @param filename
+     */
     Level(const char *filename);
 
+    /**
+     * @brief this will read a level.json file and parses it, will throw errors
+     * if something went wrong.
+     * @param filename
+     */
     void parseLevel(const char * filename);
 
     int get_level() const;
