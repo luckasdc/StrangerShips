@@ -25,7 +25,6 @@ void CollisionController::updateBulletsAndObstacles() {
 
     }
 
-
     for (auto &obstacle : snapshotOfObstacles) {
         checkObstacleRange(obstacle);
     }
@@ -102,26 +101,20 @@ bool CollisionController::circleCollisionTest(Location first, Location second) {
 
 bool CollisionController::circleRectangleCollisionTest(Location circle, Location rectangle, float width, float height, bool inversed) {
 
-    float radius_circle = 0.2;
-    //std::cout << circle.x << ", " << circle.y << std::endl;
+    float radius_circle = 0.15;
+
+    // TODO werkt voor boven- en onderkant, niet voor de SporadicObstacles
 
     if (inversed) {
-
-        if (rectangle.y >= 0) {
-            float dx = circle.x - std::max(rectangle.x , std::min(circle.x, rectangle.x + width ));
-            float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height  ));
-            return (dx * dx + dy * dy) < (radius_circle * radius_circle);
-        }
-
-        float dx = circle.x - std::max(rectangle.x , std::min(circle.x, rectangle.x + width ));
-        float dy = circle.y - std::max(rectangle.y, std::min(circle.y, rectangle.y + height));
+        float dx = circle.x - std::max(rectangle.x + width, std::min(circle.x, rectangle.x + width + width));
+        float dy = circle.y - std::max(rectangle.y + height, std::min(circle.y, rectangle.y + height + height));
         return (dx * dx + dy * dy) < (radius_circle * radius_circle);
-
     }
 
-    float dx = circle.x - std::max(rectangle.x - width , std::min(circle.x, rectangle.x + width - width ));
-    float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height ));
+    float dx = circle.x - std::max(rectangle.x - width, std::min(circle.x, rectangle.x + width - width));
+    float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height));
     return (dx * dx + dy * dy) < (radius_circle * radius_circle);
+
 
     }
 

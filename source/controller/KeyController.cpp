@@ -10,6 +10,11 @@ KeyController &KeyController::getKeyController() {
 
 Direction KeyController::processDirection() {
 
+    // TODO Multiplayer implementation here
+    /*
+     *  ptr<Ship> in arguments?
+     */
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) return Left;
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) return Left;
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) return Right;

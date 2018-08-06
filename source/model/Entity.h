@@ -84,4 +84,5 @@ protected:
 
 };
 
+
 #endif //STRANGERSHIPS_ENTITY_H

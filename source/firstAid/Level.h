@@ -23,6 +23,8 @@ public:
 
     int get_level() const;
 
+
+
     int get_initialEnemies() const;
 
     int get_enemiesInWave() const;
@@ -38,6 +40,7 @@ public:
 private:
 
     int _level{};
+    int _difficulty{};
     int _initialEnemies{};
     int _enemiesInWave{};
     int _amountOfWaves{};

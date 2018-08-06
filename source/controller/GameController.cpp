@@ -6,10 +6,13 @@
 #include "CollisionController.h"
 #include "AIController.h"
 
-Game::Game(uint width, uint height, std::string title)
+Game::Game(uint width, uint height, std::string title, bool multiplayer)
 {
 
     ////     CHANGE LEVEL HERE  (CLI)   ////
+
+    // TODO hier moet het menu gelaunched worden
+    // TODO current game file maken en opslagen
 
     std::cout << "Type the number of level you want to play: "
             "(level 1, 2 and 3 are ready to play)" << std::endl;
@@ -25,6 +28,11 @@ Game::Game(uint width, uint height, std::string title)
     catch (const std::exception& e){
         std::cerr << "This is not a valid Level file! Error given: " << e.what() << std::endl;
     }
+
+    this->_multiplayer = multiplayer;
+
+    // TODO eigen exception class op basis van een exception tree
+
 
     this->_window = std::make_shared<sf::RenderWindow> (sf::VideoMode(width, height), "Stranger Ships");
     this->_window->create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
@@ -67,6 +75,9 @@ void Game::run()
         }
 
         // check which keys are currently pressed to control movement (we cannot use events)
+
+        // TODO dit zou in een aparte functie/klasse gedaan moeten worden.. Rekening houden met meerdere schepen
+
         Direction dir = KeyController::getKeyController().processDirection();
         if(dir != Idle) _world->getPlayerShip()->move(dir);
 
@@ -77,7 +88,7 @@ void Game::run()
         // AI-controller: launch obstalces
         aictr.launchSporadicObstacle();
 
-        // CollisionController: Check if there were any collions and handle them
+        // CollisionController: Check if there were any collisions and handle them
         cctr.updateBulletsAndObstacles();
         cctr.checkPlayerShip();
 
@@ -95,6 +106,9 @@ void Game::run()
         _window->display();
 
     }
+    
+}
 
-
+bool Game::isMultiplayer() {
+    return this->_multiplayer;
 }
