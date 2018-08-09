@@ -22,14 +22,14 @@ public:
      * @brief returns the right direction based on the currently pressed buttons
      * @return enum Direction
      */
-    Direction processDirection();
+    Direction processDirection(bool multiplayer);
 
     /**
      * @brief returns true if space bar is pressed
      * @param event
      * @return boolean
      */
-    bool processShooting(sf::Event& event);
+    bool processShooting(sf::Event& event, bool multiplayer);
 
 
 };

@@ -21,9 +21,9 @@ public:
     /**
      * @brief a constructur which takes a filename of a level, generating a Level object, parsing
      * the file and adding it to the World.
-     * @param level
+     * @param level, multiplayer
      */
-    World(std::string level);
+    World(std::string level, bool multiplayer);
 
 
     /**
@@ -41,6 +41,12 @@ public:
     * @return shared_ptr<PlayerShip>
     */
     const std::shared_ptr<PlayerShip>& getPlayerShip() const;
+
+    /**
+    * @brief Getter for the shared pointer of the the secondPlayerShip
+    * @return shared_ptr<PlayerShip>
+    */
+    const std::shared_ptr<PlayerShip>& getSecondPlayerShip() const;
 
     /**
     * @brief Getter for the list of shared pointers of EnemyShips (used for notifying observers)
@@ -107,10 +113,12 @@ public:
 
 private:
     std::shared_ptr<PlayerShip> _playerShip;
+    std::shared_ptr<PlayerShip> _secondPlayerShip;
     std::vector<std::shared_ptr<EnemyShip>> _enemyShipList;
     std::vector<std::shared_ptr<Bullet>> _bulletList;
     std::vector<std::shared_ptr<Obstacle>> _obstacleList;
     std::shared_ptr<Level> _level;
+    bool _multiplayer;
 
 
 };

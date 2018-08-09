@@ -27,6 +27,10 @@ void WorldView::update(std::string what) {
         auto ps = std::make_shared<PlayerShipView> (this->_window, this->_world->getPlayerShip());
         _entityViews.push_back(ps);
     }
+    if (what == "newSecondPlayership") {
+        auto ps = std::make_shared<PlayerShipView()> (this->_window, this->_world->getSecondPlayerShip());
+        _entityViews.push_back(ps);
+    }
     if (what == "newEnemyship") {
         auto es = std::make_shared<EnemyShipView> (this->_window, this->_world->getEnemyShipList().back());
         _entityViews.push_back(es);

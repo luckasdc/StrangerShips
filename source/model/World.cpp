@@ -2,9 +2,10 @@
 #include <iostream>
 #include "World.h"
 
-World::World(std::string level) {
+World::World(std::string level, bool multiplayer) {
 
     _level = std::make_shared<Level> (level);
+    _multiplayer = multiplayer;
 
 }
 
@@ -18,17 +19,22 @@ void World::loadFromLevel() {
     _playerShip = std::make_shared<PlayerShip>(this);
     this->notify("newPlayership");
 
+    if (_multiplayer) {
+        _secondPlayerShip = std::make_shared<PlayerShip>(this);
+        this->notify("newSecondPlayership");
+    }
+
     _enemyShipList = {};
     _bulletList = {};
     _obstacleList = {};
 
-    //Generate Bottom Obstacles
+    //Generate Bottom Obstacles !NOTE! these iterations are necessary to create a full-width border, it's not meant to be changed
     for (unsigned int i = 0; i < 5; ++i) {
         _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), false));
         this->notify("newBottomObstacle");
     }
 
-    //Generate Top Obstacles
+    //Generate Top Obstacles !NOTE! these iterations are necessary to create a full-width border, it's not meant to be changed
     for (unsigned int i = 0; i < 5; ++i) {
         _obstacleList.push_back(std::make_shared<BorderObstacle>(0.01, ((-4) + i * 2.0), true));
         this->notify("newBottomObstacle");
@@ -49,6 +55,9 @@ const std::shared_ptr<PlayerShip> &World::getPlayerShip() const {
     return _playerShip;
 }
 
+const std::shared_ptr<PlayerShip> &World::getSecondPlayerShip() const {
+    return _secondPlayerShip;
+}
 
 const std::vector<std::shared_ptr<Bullet>> &World::getBulletList() const {
     return _bulletList;
@@ -129,6 +138,8 @@ void World::addSporadicObstacle(float speed, float xValueBottomRightCorner) {
 const std::shared_ptr<Level> &World::get_level() const {
     return _level;
 }
+
+
 
 
 

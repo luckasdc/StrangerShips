@@ -22,7 +22,7 @@ Game::Game(uint width, uint height, std::string title, bool multiplayer)
     try {
         std::string level = "../Levels/level" + number + ".json";
         std::cout << "loading levelfile: " << level << "..." << std::endl;
-        this->_world = std::make_shared<World> (level);  ////
+        this->_world = std::make_shared<World> (level, multiplayer);  ////
 
     }
     catch (const std::exception& e){
@@ -70,16 +70,24 @@ void Game::run()
                 _window->close();
             }
             // check if the player is shooting
-            if (KeyController::getKeyController().processShooting(event)) _world->getPlayerShip()->shoot();
+            if (KeyController::getKeyController().processShooting(event, false)) _world->getPlayerShip()->shoot();
+
+            // check if the second player is shooting
+            if(_multiplayer) {
+                if (KeyController::getKeyController().processShooting(event, true)) _world->getSecondPlayerShip()->shoot();
+            }
 
         }
 
         // check which keys are currently pressed to control movement (we cannot use events)
 
-        // TODO dit zou in een aparte functie/klasse gedaan moeten worden.. Rekening houden met meerdere schepen
+        Direction dir = KeyController::getKeyController().processDirection(false);
+        Direction dir2 = KeyController::getKeyController().processDirection(true);
 
-        Direction dir = KeyController::getKeyController().processDirection();
         if(dir != Idle) _world->getPlayerShip()->move(dir);
+        if(dir2 != Idle && _multiplayer) _world->getSecondPlayerShip()->move(dir2);
+
+
 
         // AI-controller: decides what the enemies are going to do
         aictr.makeDecisions();
