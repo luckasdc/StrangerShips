@@ -71,6 +71,11 @@ void PlayerShip::shoot() {
 
 }
 
+SecondPlayerShip::SecondPlayerShip(World *myWorld) : PlayerShip(myWorld) {
+    this->_location.x = -3;
+    this->_location.y = -1;
+}
+
 /*
  * ENEMY SHIP
  */

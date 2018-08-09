@@ -55,6 +55,17 @@ private:
 
 };
 
+class SecondPlayerShip : public PlayerShip {
+
+public:
+
+    /**
+    * @brief Same as above, but has some different settings regarding the starting position.
+    */
+    SecondPlayerShip(World *myWorld);
+
+};
+
 class World;
 class EnemyShip : public Ship {
 public:

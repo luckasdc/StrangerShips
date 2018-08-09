@@ -19,8 +19,9 @@ void World::loadFromLevel() {
     _playerShip = std::make_shared<PlayerShip>(this);
     this->notify("newPlayership");
 
+    // generate a second playership in case of multiplayer
     if (_multiplayer) {
-        _secondPlayerShip = std::make_shared<PlayerShip>(this);
+        _secondPlayerShip = std::make_shared<SecondPlayerShip>(this);
         this->notify("newSecondPlayership");
     }
 
