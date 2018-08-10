@@ -14,6 +14,9 @@ Just enter ``1`` , ``2``  or ``3`` , or another number if you created a differen
 You can move the playership using the ``up``, ``down``, ``left``  and ``right``  arrow keys
 and you can use the ``spacebar`` to fire some bullets.   
 
+Playing in *multiplayer-mode*? You can control the second (yellow)  bird using the ``z``, ``s``, ``q`` and ``d`` 
+keys and you can hit the ```LSHIFT``` key to fireee!
+
 ## Dumb ways to die
 - You will lose a point when an enemy hits you.  
 - You will lose two points when you hit the ground or the super toxic sky. 
