@@ -15,8 +15,8 @@ public:
      * + add an Overlay object to the WorldView and initialize it.
      * @param window
      */
-    WorldView(const std::shared_ptr<World> &world, std::shared_ptr<sf::RenderWindow> window)
-            : Observer(world), _world(world), _window(std::move(window))  {
+    WorldView(const std::shared_ptr<World> &world, std::shared_ptr<sf::RenderWindow> &window)
+            : Observer(world), _world(world), _window(window)  {
         initBackground();
         _overlay = std::make_shared<OverlayView>(_window, _world);
         _overlay->initHeart();

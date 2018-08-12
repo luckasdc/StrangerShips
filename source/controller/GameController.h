@@ -5,19 +5,20 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "../view/WorldView.h"
-#include "StateManager.h"
 #include <memory>
+
+class StateManager;
 
 class GamePreferences {
 
 public:
 
-    GamePreferences() = default;
+    GamePreferences();
 
     // TODO ombouwen tot Class met default value constructor en parser voor settings-file
 
     std::shared_ptr<sf::RenderWindow> _window;
-    StateManager stateManager;
+    std::unique_ptr<StateManager> stateManager;
     bool _multiplayer = true;
     uint width = 1200;
     uint height = 900;

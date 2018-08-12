@@ -7,8 +7,6 @@
 
 PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _preferences(std::move(preferences)) {
 
-    this->aictr = std::make_shared<AIController>(_world);
-    this->cctr = std::make_shared<CollisionController>(_world);
 
 }
 
@@ -26,7 +24,7 @@ void PlayingState::Init() {
     try {
         std::string level = "../Levels/level1.json"; // HARDCODE WEGHALEN TODO
         std::cout << "loading levelfile: " << level << "..." << std::endl;
-        this->_world = std::make_shared<World> (level, _preferences->_multiplayer);  ////
+        this->_world = std::make_shared<World> (level, this->_preferences->_multiplayer);  ////
 
     }
     catch (const std::exception& e){
@@ -39,6 +37,10 @@ void PlayingState::Init() {
     // Load World and Parse Level:
     this->_view = std::make_shared<WorldView> (this->_world, this->_preferences->_window);
     this->_world->loadFromLevel();
+
+
+    this->aictr = std::make_shared<AIController>(this->_world);
+    this->cctr = std::make_shared<CollisionController>(this->_world);
 
 
 }
@@ -97,9 +99,14 @@ void PlayingState::Update() {
 
 void PlayingState::Draw() {
 
+    // Everything's ready for the next iteration!
+    // clear the window with black color
     _preferences->_window->clear();
 
+    // draw everything again...
     _view->draw();
+    // and finally display the current frame!
+    _preferences->_window->display();
 
 }
 
