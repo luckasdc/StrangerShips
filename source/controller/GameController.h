@@ -5,7 +5,24 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "../view/WorldView.h"
+#include "StateManager.h"
 #include <memory>
+
+class GamePreferences {
+
+public:
+
+    GamePreferences() = default;
+
+    // TODO ombouwen tot Class met default value constructor en parser voor settings-file
+
+    std::shared_ptr<sf::RenderWindow> _window;
+    StateManager stateManager;
+    bool _multiplayer = true;
+    uint width = 1200;
+    uint height = 900;
+
+};
 
 class Game {
 public:
@@ -24,17 +41,12 @@ public:
      */
     void run ();
 
-    /**
-    * @brief function to check if a game has started in Multiplayer mode
-    */
-    bool isMultiplayer();
 
 
 private:
-    std::shared_ptr<sf::RenderWindow> _window;
-    std::shared_ptr<WorldView> _view;
-    std::shared_ptr<World> _world;
-    bool _multiplayer;
+
+    std::shared_ptr<GamePreferences> _preferences;
+
 
 };
 
