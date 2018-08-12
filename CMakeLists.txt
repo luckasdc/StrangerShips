@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 project(StrangerShips)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 # Extend the CMake module path to find the FindSFML.cmake
 # file in {project root}/cmake/Modules
