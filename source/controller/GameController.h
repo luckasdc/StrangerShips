@@ -7,6 +7,12 @@
 #include "../view/WorldView.h"
 #include <memory>
 
+typedef struct {
+    std::string name;
+    int highscore;
+} Highscore;
+
+//forward declaration
 class StateManager;
 
 class GamePreferences {
@@ -22,6 +28,7 @@ public:
     bool _multiplayer = true;
     uint width = 1200;
     uint height = 900;
+    std::vector<Highscore> _highscores;
 
 };
 
@@ -47,6 +54,7 @@ public:
 private:
 
     std::shared_ptr<GamePreferences> _preferences;
+
 
 
 };

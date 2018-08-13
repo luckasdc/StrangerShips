@@ -73,6 +73,40 @@ class PausedState : public State {
 
 };
 
+class ScoresState : public State {
+
+public:
+
+    explicit ScoresState(std::shared_ptr<GamePreferences> preferences, int score);
+
+    void Init() override;
+    void HandleInput() override;
+    void Update() override;
+    void Draw() override;
+
+private:
+
+    std::shared_ptr<GamePreferences> _preferences;
+    std::shared_ptr<sf::Sprite> _BgSprite;
+    std::shared_ptr<sf::Texture> _BgTexture;
+
+    std::shared_ptr<sf::Sprite> _GOTitle;
+    std::shared_ptr<sf::Texture> _GOTitleTexture;
+    std::shared_ptr<sf::Sprite> _GOContainer;
+    std::shared_ptr<sf::Texture> _GOContainerTexture;
+    std::shared_ptr<sf::Sprite> _retryButton;
+    std::shared_ptr<sf::Texture> _retryButtonTexture;
+
+    sf::Text _scoreText;
+    int _score;
+
+    sf::Font _font;
+
+    std::shared_ptr<KeyController> _cctr;
+
+
+};
+
 
 
 

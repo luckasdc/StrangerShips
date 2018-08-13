@@ -185,3 +185,89 @@ void MenuState::Draw() {
     // and finally display the current frame!
     _preferences->_window->display();
 }
+
+
+
+ScoresState::ScoresState(std::shared_ptr<GamePreferences> preferences, int score) : _preferences(std::move(preferences)), _score(score) {
+
+}
+
+void ScoresState::Init() {
+
+    _cctr = std::make_shared<KeyController>();
+    // Set texture background
+    this->_BgSprite = std::make_shared<sf::Sprite>();
+    std::unique_ptr<sf::Texture> texture(new sf::Texture);
+    this->_GOTitle = std::make_shared<sf::Sprite>();
+    std::unique_ptr<sf::Texture> _GOTitleTexture(new sf::Texture);
+    this->_GOContainer = std::make_shared<sf::Sprite>();
+    std::unique_ptr<sf::Texture> _GOContainerTexture(new sf::Texture);
+    this->_retryButton = std::make_shared<sf::Sprite>();
+    std::unique_ptr<sf::Texture> _retryButtonTexture(new sf::Texture);
+
+    try {
+        if (!texture->loadFromFile("../assets/bg.png",sf::IntRect(0, 0, _preferences->width, _preferences->height))){
+            throw std::runtime_error("Could not load texture from file");
+        }
+        if (!_GOTitleTexture->loadFromFile("../assets/Game-Over-Title.png")){
+            throw std::runtime_error("Could not load texture from file");
+        }
+        if (!_GOContainerTexture->loadFromFile("../assets/Game-Over-Body.png")){
+            throw std::runtime_error("Could not load texture from file");
+        }
+        if (!_retryButtonTexture->loadFromFile("../assets/PlayButton.png")){
+            throw std::runtime_error("Could not load texture from file");
+        }
+    }
+    catch (std::runtime_error& e) {
+        std::cerr << "Fatal error: " << e.what() << std::endl;
+    }
+
+    // transfer ownership of texture to MenuState
+    this->_BgTexture = std::move(texture);
+    this->_BgSprite->setTexture(*this->_BgTexture);
+    this->_GOTitleTexture = std::move(_GOTitleTexture);
+    this->_GOTitle->setTexture(*this->_GOTitleTexture);
+    this->_GOContainerTexture = std::move(_GOContainerTexture);
+    this->_GOContainer->setTexture(*this->_GOContainerTexture);
+    this->_retryButtonTexture = std::move(_retryButtonTexture);
+    this->_retryButton->setTexture(*this->_retryButtonTexture);
+
+    _GOContainer->setPosition(sf::Vector2f((_preferences->width / 2) - (_GOContainer->getGlobalBounds().width / 2), (_preferences->height / 2) - (_GOContainer->getGlobalBounds().height / 2)));
+    _GOTitle->setPosition(sf::Vector2f((_preferences->width / 2) - (_GOTitle->getGlobalBounds().width / 2), _preferences->height - (_GOTitle->getGlobalBounds().height * 1.2)));
+    _retryButton->setPosition(sf::Vector2f((_preferences->width / 2) - (_retryButton->getGlobalBounds().width / 2), _preferences->height + _GOContainer->getGlobalBounds().height + (_retryButton->getGlobalBounds().height * 0.2)));
+
+    _font.loadFromFile("../assets/FlappyFont.ttf");
+    _scoreText.setFont(_font);
+    _scoreText.setString(std::to_string(_score));
+    _scoreText.setCharacterSize(56);
+    _scoreText.setFillColor(sf::Color::White);
+    _scoreText.setOrigin(sf::Vector2f(_scoreText.getGlobalBounds().width / 2, _scoreText.getGlobalBounds().height / 2));
+    _scoreText.setPosition(sf::Vector2f(_preferences->width / 10 * 7.25, _preferences->height / 2.15));
+
+
+
+}
+
+void ScoresState::HandleInput() {
+
+}
+
+void ScoresState::Update() {
+
+}
+
+void ScoresState::Draw() {
+    // Everything's ready for the next iteration!
+    // clear the window with black color
+    _preferences->_window->clear();
+
+    _preferences->_window->draw(*_BgSprite);
+    _preferences->_window->draw(*_GOTitle);
+    _preferences->_window->draw(*_GOContainer);
+    _preferences->_window->draw(*_retryButton);
+
+    // draw everything again...
+    // and finally display the current frame!
+    _preferences->_window->display();
+}
