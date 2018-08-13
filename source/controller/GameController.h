@@ -24,7 +24,7 @@ public:
     // TODO ombouwen tot Class met default value constructor en parser voor settings-file
 
     std::shared_ptr<sf::RenderWindow> _window;
-    std::unique_ptr<StateManager> stateManager;
+    std::shared_ptr<StateManager> stateManager;
     bool _multiplayer = true;
     uint width = 1200;
     uint height = 900;

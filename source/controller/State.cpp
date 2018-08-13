@@ -25,7 +25,7 @@ void PlayingState::Init() {
     try {
         std::string level = "../Levels/level1.json"; // HARDCODE WEGHALEN TODO
         std::cout << "loading levelfile: " << level << "..." << std::endl;
-        this->_world = std::make_shared<World> (level, this->_preferences->_multiplayer);  ////
+        this->_world = std::make_shared<World> (level, this->_preferences->_multiplayer, _preferences);  ////
 
     }
     catch (const std::exception& e){
@@ -36,7 +36,8 @@ void PlayingState::Init() {
 
 
     // Load World and Parse Level:
-    this->_view = std::make_shared<WorldView> (this->_world, this->_preferences->_window);
+    this->_view = std::make_shared<WorldView> (_world, _preferences->_window);
+
     this->_world->loadFromLevel();
 
 
@@ -145,7 +146,6 @@ void MenuState::Init() {
 
     _ButtonSprite->setPosition((_preferences->width / 2) - (_ButtonSprite->getGlobalBounds().width / 2), (_preferences->height / 2) - (_ButtonSprite->getGlobalBounds().height / 2));
 
-
 }
 
 void MenuState::HandleInput() {
@@ -234,8 +234,8 @@ void ScoresState::Init() {
     this->_retryButton->setTexture(*this->_retryButtonTexture);
 
     _GOContainer->setPosition(sf::Vector2f((_preferences->width / 2) - (_GOContainer->getGlobalBounds().width / 2), (_preferences->height / 2) - (_GOContainer->getGlobalBounds().height / 2)));
-    _GOTitle->setPosition(sf::Vector2f((_preferences->width / 2) - (_GOTitle->getGlobalBounds().width / 2), _preferences->height - (_GOTitle->getGlobalBounds().height * 1.2)));
-    _retryButton->setPosition(sf::Vector2f((_preferences->width / 2) - (_retryButton->getGlobalBounds().width / 2), _preferences->height + _GOContainer->getGlobalBounds().height + (_retryButton->getGlobalBounds().height * 0.2)));
+    _GOTitle->setPosition(sf::Vector2f((_preferences->width / 2) - (_GOTitle->getGlobalBounds().width / 2), _GOContainer->getPosition().y - (_GOTitle->getGlobalBounds().height * 1.2)));
+    _retryButton->setPosition(sf::Vector2f((_preferences->width / 2) - (_retryButton->getGlobalBounds().width / 2), _GOContainer->getPosition().y + _GOContainer->getGlobalBounds().height + (_retryButton->getGlobalBounds().height * 0.2)));
 
     _font.loadFromFile("../assets/FlappyFont.ttf");
     _scoreText.setFont(_font);
@@ -245,12 +245,24 @@ void ScoresState::Init() {
     _scoreText.setOrigin(sf::Vector2f(_scoreText.getGlobalBounds().width / 2, _scoreText.getGlobalBounds().height / 2));
     _scoreText.setPosition(sf::Vector2f(_preferences->width / 10 * 7.25, _preferences->height / 2.15));
 
-
-
 }
 
 void ScoresState::HandleInput() {
 
+    sf::Event event{};
+
+    while (_preferences->_window->pollEvent(event)) {
+        // "close requested" event: we close the window
+        if (event.type == sf::Event::Closed) {
+            _preferences->_window->close();
+        }
+        // check if button has clicked
+        if (_cctr->IsSpriteClicked(this->_retryButton, sf::Mouse::Left, _preferences->_window)) {
+            // Switch To Main Menu
+            this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
+
+        }
+    }
 }
 
 void ScoresState::Update() {
@@ -263,9 +275,11 @@ void ScoresState::Draw() {
     _preferences->_window->clear();
 
     _preferences->_window->draw(*_BgSprite);
-    _preferences->_window->draw(*_GOTitle);
     _preferences->_window->draw(*_GOContainer);
+    _preferences->_window->draw(*_GOTitle);
     _preferences->_window->draw(*_retryButton);
+    _preferences->_window->draw(_scoreText);
+
 
     // draw everything again...
     // and finally display the current frame!

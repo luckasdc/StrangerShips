@@ -1,11 +1,14 @@
 
 #include <iostream>
 #include "World.h"
+#include "../controller/State.h"
+#include "../controller/StateManager.h"
 
-World::World(std::string level, bool multiplayer) {
+World::World(std::string level, bool multiplayer, std::shared_ptr<GamePreferences> preferences) {
 
     _level = std::make_shared<Level> (level);
     _multiplayer = multiplayer;
+    _preferences = preferences;
 
 }
 
@@ -110,10 +113,13 @@ void World::updateEntities() {
     auto snapshotOfEnemies = _enemyShipList;
     auto snapshotOfObstacles = _obstacleList;
 
-
     if (_playerShip->getHealth() == 0) {
         std::cout << "PLAYERSHIP IS DEAD, GAME OVER" << std::endl;
-        this->notify("GAME OVER");
+        _preferences->stateManager->popState();
+        _preferences->stateManager->pushState(std::make_unique<ScoresState>(_preferences, 5));
+
+
+        //this->notify("GAME OVER");
     }
     for(auto& o : snapshotOfObstacles) {
         o->shiftLeft();

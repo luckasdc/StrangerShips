@@ -6,6 +6,8 @@
 #include "ObstacleView.h"
 #include "OverlayView.h"
 
+#include "../controller/StateManager.h"
+
 void WorldView::draw() {
 
     _window->draw(*_BgSprite);
@@ -91,3 +93,11 @@ void WorldView::initBackground() {
     this->_BgSprite->setTexture(*this->_BgTexture);
 
 }
+
+WorldView::WorldView(const std::shared_ptr<World> &world, std::shared_ptr<sf::RenderWindow> &window)
+        : Observer(world), _world(world), _window(window)  {
+        initBackground();
+        _overlay = std::make_shared<OverlayView>(_window, _world);
+        _overlay->initHeart();
+
+        }

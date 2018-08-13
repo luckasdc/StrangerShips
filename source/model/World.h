@@ -12,6 +12,7 @@
 #include <vector>
 #include <list>
 
+class GamePreferences;
 
 class World : public Subject {
 
@@ -23,7 +24,7 @@ public:
      * the file and adding it to the World.
      * @param level, multiplayer
      */
-    World(std::string level, bool multiplayer);
+    World(std::string level, bool multiplayer, std::shared_ptr<GamePreferences> preferences);
 
 
     /**
@@ -118,6 +119,7 @@ private:
     std::vector<std::shared_ptr<Bullet>> _bulletList;
     std::vector<std::shared_ptr<Obstacle>> _obstacleList;
     std::shared_ptr<Level> _level;
+    std::shared_ptr<GamePreferences> _preferences;
     bool _multiplayer;
 
 
