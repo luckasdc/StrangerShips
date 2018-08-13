@@ -27,6 +27,24 @@ public:
 
 class MenuState : public State {
 
+public:
+
+    explicit MenuState(std::shared_ptr<GamePreferences> preferences);
+
+    void Init() override;
+    void HandleInput() override;
+    void Update() override;
+    void Draw() override;
+
+private:
+
+    std::shared_ptr<GamePreferences> _preferences;
+    std::shared_ptr<sf::Sprite> _BgSprite;
+    std::shared_ptr<sf::Texture> _BgTexture;
+    std::shared_ptr<sf::Sprite> _ButtonSprite;
+    std::shared_ptr<sf::Texture> _ButtonTexture;
+    std::shared_ptr<KeyController> _cctr;
+
 
 };
 

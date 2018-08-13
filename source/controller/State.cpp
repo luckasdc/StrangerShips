@@ -4,6 +4,7 @@
 
 #include "State.h"
 #include <utility>
+#include "StateManager.h"
 
 PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _preferences(std::move(preferences)) {
 
@@ -110,5 +111,77 @@ void PlayingState::Draw() {
 
 }
 
+// MENU STATE
+MenuState::MenuState(std::shared_ptr<GamePreferences> preferences) : _preferences(std::move(preferences)){
+
+}
+
+void MenuState::Init() {
+
+    _cctr = std::make_shared<KeyController>();
+    // Set texture background
+    this->_BgSprite = std::make_shared<sf::Sprite>();
+    std::unique_ptr<sf::Texture> texture(new sf::Texture);
+    this->_ButtonSprite = std::make_shared<sf::Sprite>();
+    std::unique_ptr<sf::Texture> buttontexture(new sf::Texture);
+
+    try {
+        if (!texture->loadFromFile("../assets/bg.png",sf::IntRect(0, 0, _preferences->width, _preferences->height))){
+            throw std::runtime_error("Could not load texture from file");
+        }
+        if (!buttontexture->loadFromFile("../assets/PlayButton.png")){
+            throw std::runtime_error("Could not load texture from file");
+        }
+    }
+    catch (std::runtime_error& e) {
+        std::cerr << "Fatal error: " << e.what() << std::endl;
+    }
+
+    // transfer ownership of texture to MenuState
+    this->_BgTexture = std::move(texture);
+    this->_BgSprite->setTexture(*this->_BgTexture);
+    this->_ButtonTexture = std::move(buttontexture);
+    this->_ButtonSprite->setTexture(*this->_ButtonTexture);
+
+    _ButtonSprite->setPosition((_preferences->width / 2) - (_ButtonSprite->getGlobalBounds().width / 2), (_preferences->height / 2) - (_ButtonSprite->getGlobalBounds().height / 2));
 
 
+}
+
+void MenuState::HandleInput() {
+
+    sf::Event event{};
+
+    while (_preferences->_window->pollEvent(event)) {
+        // "close requested" event: we close the window
+        if (event.type == sf::Event::Closed) {
+            _preferences->_window->close();
+        }
+        // check if button has clicked
+        if (_cctr->IsSpriteClicked(this->_ButtonSprite, sf::Mouse::Left, _preferences->_window)) {
+            // Switch To Main Menu
+            this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
+
+
+        }
+
+
+    }
+}
+
+void MenuState::Update() {
+
+}
+
+void MenuState::Draw() {
+    // Everything's ready for the next iteration!
+    // clear the window with black color
+    _preferences->_window->clear();
+
+    _preferences->_window->draw(*_BgSprite);
+    _preferences->_window->draw(*_ButtonSprite);
+
+    // draw everything again...
+    // and finally display the current frame!
+    _preferences->_window->display();
+}

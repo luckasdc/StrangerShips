@@ -35,17 +35,11 @@ void EntityView::draw() {
 
 void ActiveEntityView::update(std::string what) {
 
-    //std::cout << "update! the model has notified the following: " << what << std::endl;
-
     if (what == "movement") {
         this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
                                    Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
     }
 
-    if (what == "destruction") {
-        //  something?
-
-    }
 }
 
 const std::shared_ptr<ActiveEntity> &ActiveEntityView::get_entityPtr() const {
@@ -58,15 +52,12 @@ const std::shared_ptr<ActiveEntity> &ActiveEntityView::get_entityPtr() const {
 
 void PassiveEntityView::update(std::string what) {
 
-    //std::cout << "update! the model has notified the following: " << what << std::endl;
-
     if (what == "shift") {
         int x = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().x, _window->getSize().x));
         int y = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().y, _window->getSize().y));
         this->_sprite->setPosition(x, y);
 
     }
-
 }
 
 void PassiveEntityView::makeSprite(const std::string &file) {
@@ -85,11 +76,9 @@ void PassiveEntityView::makeSprite(const std::string &file) {
         std::cerr << "Fatal error: " << e.what() << std::endl;
     }
 
-
     // transfer ownership of texture to EntityView
     this->_texture = std::move(texture);
     this->_sprite->setTexture(*this->_texture);
-
 
 }
 

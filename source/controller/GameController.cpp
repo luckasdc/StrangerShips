@@ -25,7 +25,7 @@ Game::Game(uint width, uint height, std::string title, bool multiplayer)
     // Only one bullet can be shot at a time
     this->_preferences->_window->setKeyRepeatEnabled(false);
 
-    this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
+    this->_preferences->stateManager->pushState(std::make_unique<MenuState>(this->_preferences));
 }
 
 void Game::run()

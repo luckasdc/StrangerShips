@@ -53,3 +53,20 @@ bool KeyController::processShooting(sf::Event &event, bool multiplayer) {
     return false;
 }
 
+bool KeyController::IsSpriteClicked(std::shared_ptr<sf::Sprite> object, sf::Mouse::Button button, std::shared_ptr<sf::RenderWindow> window) {
+    if (sf::Mouse::isButtonPressed(button))
+    {
+        sf::IntRect playButtonRect(static_cast<int>(object->getPosition().x),
+                                   static_cast<int>(object->getPosition().y),
+                                   static_cast<int>(object->getGlobalBounds().width),
+                                   static_cast<int>(object->getGlobalBounds().height));
+
+        if (playButtonRect.contains(sf::Mouse::getPosition(*window)))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
