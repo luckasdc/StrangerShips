@@ -48,8 +48,6 @@ void Game::run()
         _preferences->stateManager->getCurrentState()->Update();
         _preferences->stateManager->getCurrentState()->Draw();
 
-
-
     }
     
 }
