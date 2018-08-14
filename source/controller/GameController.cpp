@@ -7,19 +7,15 @@
 #include "StateManager.h"
 
 
-
-//// Since there's a lack of make_unique<>() in cpp11.. here it is!
-//template<typename T, typename... Args>
-//std::unique_ptr<T> make_unique(Args&&... args)
-//{
-//    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-//}
-
-// Implementation
-
-Game::Game(uint width, uint height, std::string title, bool multiplayer)
+Game::Game(const std::string &configfile)
 {
-    this->_preferences = std::make_shared<GamePreferences>();
+    this->_config = std::make_shared<Settings>(configfile);
+
+    this->_preferences = std::make_shared<GamePreferences>(_config->get_width(), _config->get_height());
+    _preferences->width = _config->get_width();
+    _preferences->height = _config->get_height();
+    _preferences->_config = _config;
+
     this->_preferences->stateManager = std::make_unique<StateManager>();
 
     // Only one bullet can be shot at a time
@@ -52,7 +48,7 @@ void Game::run()
     
 }
 
-GamePreferences::GamePreferences() {
+GamePreferences::GamePreferences(int width, int height) {
 
     _window = std::make_shared<sf::RenderWindow> (sf::VideoMode(width, height), "Flappy Ships");
     _window->create(sf::VideoMode(width, height), "Flappy Ships", sf::Style::Close | sf::Style::Titlebar);

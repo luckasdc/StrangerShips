@@ -6,11 +6,7 @@
 #include <SFML/Audio.hpp>
 #include "../view/WorldView.h"
 #include <memory>
-
-typedef struct {
-    std::string name;
-    int highscore;
-} Highscore;
+#include "../firstAid/Settings.h"
 
 //forward declaration
 class StateManager;
@@ -19,16 +15,16 @@ class GamePreferences {
 
 public:
 
-    GamePreferences();
+    GamePreferences(int width, int height);
 
     // TODO ombouwen tot Class met default value constructor en parser voor settings-file
 
     std::shared_ptr<sf::RenderWindow> _window;
     std::shared_ptr<StateManager> stateManager;
-    bool _multiplayer = true;
-    uint width = 1200;
-    uint height = 900;
-    std::vector<Highscore> _highscores;
+    bool _multiplayer = false;
+    int width{};
+    int height{};
+    std::shared_ptr<Settings> _config;
 
 };
 
@@ -42,7 +38,7 @@ public:
      * @param height
      * @param title
      */
-    Game(uint width, uint height, std::string title, bool multiplayer);
+    Game(const std::string& configfile);
 
     /**
      * @brief this function has the main Game loop and launches the game
@@ -54,8 +50,7 @@ public:
 private:
 
     std::shared_ptr<GamePreferences> _preferences;
-
-
+    std::shared_ptr<Settings> _config;
 
 };
 

@@ -8,14 +8,14 @@ int main()
      * THIS PARAMETERS! 1200/900
      */
 
-    try {
-        Game game(1200, 900, "Stranger Ships", true);
 
+    try {
+        Game game("../config.json");
         game.run();
     }
 
-    catch (...){
-        std::cout << "das kapot é" << std::endl;
+    catch (std::exception& what){
+        std::cout << "das kapot é: " << what.what() << std::endl;
     }
 
 
