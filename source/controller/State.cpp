@@ -243,7 +243,7 @@ void ScoresState::Init() {
     _scoreText.setCharacterSize(56);
     _scoreText.setFillColor(sf::Color::White);
     _scoreText.setOrigin(sf::Vector2f(_scoreText.getGlobalBounds().width / 2, _scoreText.getGlobalBounds().height / 2));
-    _scoreText.setPosition(sf::Vector2f(_preferences->width / 10 * 7.25, _preferences->height / 2.15));
+    _scoreText.setPosition(sf::Vector2f(_preferences->width / 10 * 6.5, _preferences->height / 2.20));
 
 }
 

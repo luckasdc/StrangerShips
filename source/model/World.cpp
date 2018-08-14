@@ -116,7 +116,7 @@ void World::updateEntities() {
     if (_playerShip->getHealth() == 0) {
         std::cout << "PLAYERSHIP IS DEAD, GAME OVER" << std::endl;
         _preferences->stateManager->popState();
-        _preferences->stateManager->pushState(std::make_unique<ScoresState>(_preferences, 5));
+        _preferences->stateManager->pushState(std::make_unique<ScoresState>(_preferences, this->score));
 
 
         //this->notify("GAME OVER");
@@ -146,6 +146,9 @@ const std::shared_ptr<Level> &World::get_level() const {
     return _level;
 }
 
+void World::incrementScore() {
+    this->score++;
+}
 
 
 

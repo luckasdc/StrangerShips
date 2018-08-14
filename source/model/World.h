@@ -112,6 +112,13 @@ public:
      */
     const std::shared_ptr<Level> &get_level() const;
 
+    /**
+     * @brief increment score with 1 point, called when enemy is hit
+     */
+    void incrementScore();
+
+
+
 private:
     std::shared_ptr<PlayerShip> _playerShip;
     std::shared_ptr<PlayerShip> _secondPlayerShip;
@@ -121,6 +128,7 @@ private:
     std::shared_ptr<Level> _level;
     std::shared_ptr<GamePreferences> _preferences;
     bool _multiplayer;
+    int score = 0;
 
 
 };

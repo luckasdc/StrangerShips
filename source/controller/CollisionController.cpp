@@ -66,6 +66,8 @@ void CollisionController::checkBulletWithShips(std::shared_ptr<Bullet> bullet) {
             //std::cout << "COLLISION" << std::endl;
             bullet->hit(1);
             enemy->hit(3);
+            _world->incrementScore();
+
 
         }
     }
