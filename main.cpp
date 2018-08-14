@@ -18,7 +18,5 @@ int main()
         std::cout << "das kapot é: " << what.what() << std::endl;
     }
 
-
-
     return 0;
 }  
