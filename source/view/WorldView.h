@@ -15,7 +15,7 @@ public:
      * + add an Overlay object to the WorldView and initialize it.
      * @param world, window, stateManager
      */
-    WorldView(const std::shared_ptr<World> &world, std::shared_ptr<sf::RenderWindow> &window);
+    WorldView(const std::shared_ptr<World> &world, std::shared_ptr<GamePreferences>& preferences);
 
     ~WorldView() override = default;
 
@@ -43,13 +43,13 @@ public:
 
 
 protected:
-    std::shared_ptr<sf::RenderWindow> _window;
     std::shared_ptr<World> _world;
     std::vector<std::shared_ptr<ActiveEntityView> > _entityViews = {};
     std::vector<std::shared_ptr<PassiveEntityView> > _passiveEntityViews = {};
     std::shared_ptr<sf::Sprite> _BgSprite;
     std::unique_ptr<sf::Texture> _BgTexture;
     std::shared_ptr<OverlayView> _overlay;
+    std::shared_ptr<GamePreferences> _preferences;
 
 
 };

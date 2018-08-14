@@ -22,8 +22,8 @@ public:
      * @param window
      * @param _entityPtr
      */
-    EntityView(const std::shared_ptr<sf::RenderWindow> &window, const std::shared_ptr<Entity> _entityPtr)
-            : Observer(_entityPtr), _window(window) {};
+    EntityView(std::shared_ptr<GamePreferences> preferences, const std::shared_ptr<Entity> _entityPtr)
+            : Observer(_entityPtr), _preferences(std::move(preferences)) {};
 
     /**
      * @brief initialises a sprite based on the given filename;
@@ -38,7 +38,7 @@ public:
 
 
 protected:
-    std::shared_ptr<sf::RenderWindow> _window;
+    std::shared_ptr<GamePreferences> _preferences;
     std::shared_ptr<sf::Sprite> _sprite;
     std::unique_ptr<sf::Texture> _texture = nullptr;
 
@@ -53,8 +53,8 @@ public:
      * @param window
      * @param entityPtr
      */
-    ActiveEntityView(const std::shared_ptr <sf::RenderWindow> &window, const std::shared_ptr <ActiveEntity> &entityPtr)
-        : EntityView(window, entityPtr), _entityPtr(entityPtr) {};
+    ActiveEntityView(const std::shared_ptr <GamePreferences> &preferences, const std::shared_ptr <ActiveEntity> &entityPtr)
+        : EntityView(preferences, entityPtr), _entityPtr(entityPtr) {};
 
     /**
      * @brief override the Observer function 'update'();
@@ -82,8 +82,8 @@ public:
      * @param window
      * @param entityPtr
      */
-    PassiveEntityView(const std::shared_ptr <sf::RenderWindow> &window, const std::shared_ptr <PassiveEntity> &entityPtr)
-            : EntityView(window, entityPtr), _entityPtr(entityPtr) {
+    PassiveEntityView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr <PassiveEntity> &entityPtr)
+            : EntityView(preferences, entityPtr), _entityPtr(entityPtr) {
         this->_width = _entityPtr->get_width();
         this->_height = _entityPtr->get_height();
     };

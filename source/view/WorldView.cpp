@@ -10,7 +10,7 @@
 
 void WorldView::draw() {
 
-    _window->draw(*_BgSprite);
+    _preferences->_window->draw(*_BgSprite);
 
     for (const auto& passiveEntity : this->_passiveEntityViews) {
         passiveEntity->draw();
@@ -26,27 +26,27 @@ void WorldView::draw() {
 void WorldView::update(std::string what) {
 
     if (what == "newPlayership") {
-        auto ps = std::make_shared<PlayerShipView> (this->_window, this->_world->getPlayerShip());
+        auto ps = std::make_shared<PlayerShipView> (_preferences, this->_world->getPlayerShip());
         _entityViews.push_back(ps);
     }
     if (what == "newSecondPlayership") {
-        auto ps = std::make_shared<SecondPlayerShipView> (this->_window, this->_world->getSecondPlayerShip());
+        auto ps = std::make_shared<SecondPlayerShipView> (_preferences, this->_world->getSecondPlayerShip());
         _entityViews.push_back(ps);
     }
     if (what == "newEnemyship") {
-        auto es = std::make_shared<EnemyShipView> (this->_window, this->_world->getEnemyShipList().back());
+        auto es = std::make_shared<EnemyShipView> (_preferences, this->_world->getEnemyShipList().back());
         _entityViews.push_back(es);
     }
     if (what == "newBullet") {
-        auto b = std::make_shared<BulletView> (this->_window, this->_world->getBulletList().back());
+        auto b = std::make_shared<BulletView> (_preferences, this->_world->getBulletList().back());
         _entityViews.push_back(b);
     }
     if (what == "newBottomObstacle") {
-        auto o = std::make_shared<BorderObstacleView> (this->_window, this->_world->getObstacleList().back());
+        auto o = std::make_shared<BorderObstacleView> (_preferences, this->_world->getObstacleList().back());
         _passiveEntityViews.push_back(o);
     }
     if (what == "newSporadicObstacle") {
-        auto o = std::make_shared<SporadicObstacleView> (this->_window, this->_world->getObstacleList().back());
+        auto o = std::make_shared<SporadicObstacleView> (_preferences, this->_world->getObstacleList().back());
         _passiveEntityViews.push_back(o);
     }
     if (what == "EntityDestructed") {
@@ -65,12 +65,6 @@ void WorldView::update(std::string what) {
             }
         }
     }
-    if (what == "GAME OVER") {
-        this->_window->close();
-    }
-    if (what == "YOU WON") {
-        this->_window->close();
-    }
 
 }
 
@@ -80,7 +74,7 @@ void WorldView::initBackground() {
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
 
     try {
-        if (!texture->loadFromFile("../assets/bg.png", sf::IntRect(0, 0, _window->getSize().x, _window->getSize().y))){
+        if (!texture->loadFromFile("../assets/bg.png", sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
             throw std::runtime_error("Could not load texture from file");
         }
     }
@@ -94,10 +88,10 @@ void WorldView::initBackground() {
 
 }
 
-WorldView::WorldView(const std::shared_ptr<World> &world, std::shared_ptr<sf::RenderWindow> &window)
-        : Observer(world), _world(world), _window(window)  {
+WorldView::WorldView(const std::shared_ptr<World> &world, std::shared_ptr<GamePreferences>& preferences)
+        : Observer(world), _world(world), _preferences(preferences)  {
         initBackground();
-        _overlay = std::make_shared<OverlayView>(_window, _world);
+        _overlay = std::make_shared<OverlayView>(_preferences->_window, _world);
         _overlay->initHeart();
 
         }

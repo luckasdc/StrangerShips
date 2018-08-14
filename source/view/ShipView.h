@@ -5,7 +5,7 @@
 
 #include "WorldView.h"
 #include "EntityView.h"
-
+#include "../controller/GameController.h"
 #include <utility>
 
 class PlayerShipView : public ActiveEntityView {
@@ -17,13 +17,13 @@ public:
      * @param shared_ptr<window>
      * @param shared_ptr<playerShip>
      */
-    PlayerShipView(const std::shared_ptr<sf::RenderWindow> &window, const std::shared_ptr<ActiveEntity> &_entityPtr) :
-            ActiveEntityView( window, _entityPtr) {
+    PlayerShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr) :
+            ActiveEntityView(preferences, _entityPtr) {
 
         this->makeSprite("../assets/bluebird-midflap.png");
         // initialize the position
-        this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
-                                   Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
+        this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _preferences->_window->getSize().x),
+                                   Transformation::transformHeight(_entityPtr->getLocation().y, _preferences->_window->getSize().y));
 
         this->_sprite->setOrigin(17, 12);
     }
@@ -40,14 +40,14 @@ public:
      * @param shared_ptr<window>
      * @param shared_ptr<playerShip>
      */
-    SecondPlayerShipView(const std::shared_ptr<sf::RenderWindow> &window,
+    SecondPlayerShipView(const std::shared_ptr<GamePreferences> &preferences,
                          const std::shared_ptr<ActiveEntity> &_entityPtr) :
-            PlayerShipView(window, _entityPtr) {
+            PlayerShipView(preferences, _entityPtr) {
 
         this->makeSprite("../assets/yellowbird-midflap.png");
         // initialize the position
-        this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
-                                   Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
+        this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _preferences->_window->getSize().x),
+                                   Transformation::transformHeight(_entityPtr->getLocation().y, _preferences->_window->getSize().y));
 
         this->_sprite->setOrigin(17, 12);
     }
@@ -65,14 +65,14 @@ public:
  * @param shared_ptr<window>
  * @param shared_ptr<playerShip>
  */
-    EnemyShipView(const std::shared_ptr<sf::RenderWindow> &window, const std::shared_ptr<ActiveEntity> &_entityPtr) :
-            ActiveEntityView( window, _entityPtr) {
+    EnemyShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr) :
+            ActiveEntityView(preferences, _entityPtr) {
 
         this->makeSprite("../assets/angrybird.png");
 
         // initialize the position
-        this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _window->getSize().x),
-                                   Transformation::transformHeight(_entityPtr->getLocation().y, _window->getSize().y));
+        this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _preferences->_window->getSize().x),
+                                   Transformation::transformHeight(_entityPtr->getLocation().y, _preferences->_window->getSize().y));
 
         this->_sprite->setOrigin(17, 12);
     }

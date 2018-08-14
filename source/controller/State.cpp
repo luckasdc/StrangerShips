@@ -36,7 +36,7 @@ void PlayingState::Init() {
 
 
     // Load World and Parse Level:
-    this->_view = std::make_shared<WorldView> (_world, _preferences->_window);
+    this->_view = std::make_shared<WorldView> (_world, _preferences);
 
     this->_world->loadFromLevel();
 
