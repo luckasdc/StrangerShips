@@ -1,6 +1,7 @@
 
 
 #include <SFML/Window/Event.hpp>
+#include <iostream>
 #include "KeyController.h"
 
 KeyController &KeyController::getKeyController() {

@@ -150,6 +150,10 @@ void World::incrementScore() {
     this->score++;
 }
 
+int World::getScore() const {
+    return score;
+}
+
 
 
 

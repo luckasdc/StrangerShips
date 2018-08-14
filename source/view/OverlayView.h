@@ -16,6 +16,7 @@ public:
      */
     OverlayView(std::shared_ptr<GamePreferences>& preferences, std::shared_ptr<World> _world) : _preferences(preferences), _world(std::move(_world)) {
         initHeart();
+        initScore();
     };
 
     /**
@@ -24,10 +25,19 @@ public:
     void drawLives();
 
     /**
+     * @brief draws the score of the player on screen
+     */
+    void drawScore();
+
+    /**
     * @brief generates the right sprite for the hearts
     */
     void initHeart();
 
+    /**
+    * @brief generates the text for the score
+    */
+    void initScore();
 
 private:
 
@@ -35,6 +45,8 @@ private:
     std::shared_ptr<World> _world;
     std::shared_ptr<sf::Sprite> _heartSprite;
     std::unique_ptr<sf::Texture> _heartTexture;
+    sf::Text _scoreText;
+    sf::Font _font;
 
 
 

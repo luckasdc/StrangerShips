@@ -20,6 +20,7 @@ void WorldView::draw() {
         entityView->draw();
     }
     _overlay->drawLives();
+    _overlay->drawScore();
 
 }
 
@@ -92,6 +93,5 @@ WorldView::WorldView(const std::shared_ptr<World> &world, std::shared_ptr<GamePr
         : Observer(world), _world(world), _preferences(preferences)  {
         initBackground();
         _overlay = std::make_shared<OverlayView>(_preferences, _world);
-        _overlay->initHeart();
 
         }

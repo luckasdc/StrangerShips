@@ -49,8 +49,9 @@ public:
         this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _preferences->_window->getSize().x),
                                    Transformation::transformHeight(_entityPtr->getLocation().y, _preferences->_window->getSize().y));
 
+        // TODO NO HARDCODE
         this->_sprite->setOrigin(17, 12);
-    }
+}
 
 
 };
@@ -74,6 +75,7 @@ public:
         this->_sprite->setPosition(Transformation::transformWidth(_entityPtr->getLocation().x, _preferences->_window->getSize().x),
                                    Transformation::transformHeight(_entityPtr->getLocation().y, _preferences->_window->getSize().y));
 
+        // TODO NO HARDCODE
         this->_sprite->setOrigin(17, 12);
     }
 

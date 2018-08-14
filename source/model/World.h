@@ -117,6 +117,13 @@ public:
      */
     void incrementScore();
 
+    /**
+     * @brief score getter
+     * @return score
+     */
+    int getScore() const;
+
+
 
 
 private:
