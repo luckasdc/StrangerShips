@@ -74,7 +74,7 @@ void WorldView::initBackground() {
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
 
     try {
-        if (!texture->loadFromFile("../assets/bg.png", sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
+        if (!texture->loadFromFile("../assets/" + _preferences->_config->get_texture_background(), sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
             throw std::runtime_error("Could not load texture from file");
         }
     }
@@ -91,7 +91,7 @@ void WorldView::initBackground() {
 WorldView::WorldView(const std::shared_ptr<World> &world, std::shared_ptr<GamePreferences>& preferences)
         : Observer(world), _world(world), _preferences(preferences)  {
         initBackground();
-        _overlay = std::make_shared<OverlayView>(_preferences->_window, _world);
+        _overlay = std::make_shared<OverlayView>(_preferences, _world);
         _overlay->initHeart();
 
         }

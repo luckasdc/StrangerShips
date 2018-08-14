@@ -28,8 +28,8 @@ public:
     BorderObstacleView(const std::shared_ptr<GamePreferences>& preferences, const std::shared_ptr<PassiveEntity> &_entityPtr) :
             ObstacleView(preferences, _entityPtr) {
 
-        if (this->_entityPtr->is_inversed()) this->makeSprite("../assets/top.png");
-        else this->makeSprite("../assets/base.png");
+        if (this->_entityPtr->is_inversed()) this->makeSprite("../assets/" + _preferences->_config->get_texture_sky());
+        else this->makeSprite("../assets/" + _preferences->_config->get_texture_floor());
 
 
         int x = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().x, _preferences->_window->getSize().x));
@@ -48,7 +48,7 @@ public:
     SporadicObstacleView(const std::shared_ptr<GamePreferences>& preferences, const std::shared_ptr<PassiveEntity> &_entityPtr) :
             ObstacleView(preferences, _entityPtr) {
 
-        this->makeSprite("../assets/horizontal_tube.png");
+        this->makeSprite("../assets/" + _preferences->_config->get_texture_sporadicobstacle());
 
 
         int x = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().x, _preferences->_window->getSize().x));

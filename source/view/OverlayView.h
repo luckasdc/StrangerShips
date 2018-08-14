@@ -11,11 +11,10 @@ class OverlayView {
 public:
     /**
      * @brief default constructor for the OverlayView
-     * @param _window
+     * @param _preferences
      * @param _world
      */
-    OverlayView(std::shared_ptr<sf::RenderWindow> _window, std::shared_ptr<World> _world) : _window(std::move(
-            _window)), _world(std::move(_world)) {
+    OverlayView(std::shared_ptr<GamePreferences>& preferences, std::shared_ptr<World> _world) : _preferences(preferences), _world(std::move(_world)) {
         initHeart();
     };
 
@@ -32,7 +31,7 @@ public:
 
 private:
 
-    std::shared_ptr<sf::RenderWindow> _window;
+    std::shared_ptr<GamePreferences> _preferences;
     std::shared_ptr<World> _world;
     std::shared_ptr<sf::Sprite> _heartSprite;
     std::unique_ptr<sf::Texture> _heartTexture;
