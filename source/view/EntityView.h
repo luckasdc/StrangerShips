@@ -3,7 +3,7 @@
 #ifndef STRANGERSHIPS_ENTITYVIEW_H
 #define STRANGERSHIPS_ENTITYVIEW_H
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 #include "../model/Subject.h"
 #include "../firstAid/Singletons.h"

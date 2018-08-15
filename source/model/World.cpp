@@ -3,6 +3,8 @@
 #include "World.h"
 #include "../controller/State.h"
 #include "../controller/StateManager.h"
+#include "../controller/GameController.h"
+
 
 World::World(std::string level, bool multiplayer, std::shared_ptr<GamePreferences> preferences) {
 

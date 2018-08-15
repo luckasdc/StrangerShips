@@ -5,6 +5,10 @@
 #include "State.h"
 #include <utility>
 #include "StateManager.h"
+#include "../view/WorldView.h"
+#include "GameController.h"
+
+
 
 PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _preferences(std::move(preferences)) {
 
@@ -75,6 +79,8 @@ void PlayingState::HandleInput() {
     Direction dir = KeyController::getKeyController().processDirection(false);
     Direction dir2 = KeyController::getKeyController().processDirection(true);
 
+    std::cout << std::to_string(dir) << std::endl;
+
     if(dir != Idle) _world->getPlayerShip()->move(dir);
     if(dir2 != Idle && _preferences->_multiplayer) _world->getSecondPlayerShip()->move(dir2);
 
@@ -119,7 +125,6 @@ MenuState::MenuState(std::shared_ptr<GamePreferences> preferences) : _preference
 
 void MenuState::Init() {
 
-    _cctr = std::make_shared<KeyController>();
     // Set texture background
     this->_BgSprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
@@ -158,7 +163,7 @@ void MenuState::HandleInput() {
             _preferences->_window->close();
         }
         // check if button has clicked
-        if (_cctr->IsSpriteClicked(this->_ButtonSprite, sf::Mouse::Left, _preferences->_window)) {
+        if (KeyController::getKeyController().IsSpriteClicked(this->_ButtonSprite, sf::Mouse::Left, _preferences->_window)) {
             // Switch To Main Menu
             this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
 
@@ -194,7 +199,6 @@ ScoresState::ScoresState(std::shared_ptr<GamePreferences> preferences, int score
 
 void ScoresState::Init() {
 
-    _cctr = std::make_shared<KeyController>();
     // Set texture background
     this->_BgSprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
@@ -257,7 +261,7 @@ void ScoresState::HandleInput() {
             _preferences->_window->close();
         }
         // check if button has clicked
-        if (_cctr->IsSpriteClicked(this->_retryButton, sf::Mouse::Left, _preferences->_window)) {
+        if (KeyController::getKeyController().IsSpriteClicked(this->_retryButton, sf::Mouse::Left, _preferences->_window)) {
             // Switch To Main Menu
             this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
 

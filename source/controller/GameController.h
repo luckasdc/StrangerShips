@@ -3,7 +3,7 @@
 #define STRANGERSHIPS_GAME_H
 
 #include <SFML/Audio.hpp>
-#include "../view/WorldView.h"
+#include <SFML/Graphics.hpp>
 #include <memory>
 #include "../firstAid/Settings.h"
 
