@@ -9,6 +9,7 @@
 #include "CollisionController.h"
 #include "AIController.h"
 #include "KeyController.h"
+#include "../firstAid/Settings.h"
 
 
 class WorldView;
@@ -101,6 +102,8 @@ private:
     std::shared_ptr<sf::Texture> _retryButtonTexture;
 
     sf::Text _scoreText;
+    sf::Text _highscores;
+
     int _score;
 
     sf::Font _font;

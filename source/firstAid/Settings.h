@@ -45,6 +45,11 @@ private:
     int _width;
     int _height;
     bool _azerty;
+    std::string _username{};
+public:
+    const std::string &get_username() const;
+
+private:
 
     std::string _texture_playership{};
     std::string _texture_secondplayership{};
@@ -66,6 +71,10 @@ private:
 
 
 public:
+
+    void append_score(Highscore highscore);
+
+    bool save();
 
     int get_width() const;
 
@@ -101,7 +110,7 @@ public:
 
     const std::vector<Levelfile> &get_levels() const;
 
-    const std::vector<Highscore> &get_highscores() const;
+    const std::vector<Highscore> get_highscores() const;
 };
 
 

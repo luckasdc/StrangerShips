@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include "Settings.h"
+#include <algorithm>
 #include "../controller/GameController.h"
 
 using json = nlohmann::json;
@@ -29,6 +30,7 @@ void Settings::parseSettings(std::string filename) {
         _width = j["width"].get<int>();
         _height = j["height"].get<int>();
         _azerty = j["azerty"].get<bool>();
+        _username = j["username"].get<std::string>();
 
         _texture_playership = j["texture_playership"].get<std::string>();
         _texture_secondplayership = j["texture_secondplayership"].get<std::string>();
@@ -65,6 +67,51 @@ void Settings::parseSettings(std::string filename) {
         std::cerr << "Fatal error parsing values in file: " << e.what() << std::endl;
     }
 
+}
+
+void Settings::append_score(Highscore highscore) {
+    _highscores.push_back(highscore);
+}
+
+bool Settings::save(){
+
+    json j;
+
+    j["width"] = _width;
+    j["height"] = _height;
+    j["azerty"] = _azerty;
+    j["username"] = _username;
+
+
+    j["texture_playership"] = _texture_playership;
+    j["texture_secondplayership"] = _texture_secondplayership;
+    j["texture_enemyship"]= _texture_enemyship;
+    j["texture_bullet"] = _texture_bullet;
+    j["texture_sporadicobstacle"] = _texture_sporadicobstacle;
+    j["texture_heart"] = _texture_heart;
+    j["texture_background"] = _texture_background;
+    j["texture_floor"] = _texture_floor;
+    j["texture_sky"] = _texture_sky;
+    j["texture_playbutton"] = _texture_playbutton;
+    j["texture_gameovertitle"] = _texture_gameovertitle;
+    j["texture_gameoverbody"] = _texture_gameoverbody;
+    j["texture_youwontitle"] = _texture_youwontitle;
+
+    for (int i = 0; i<this->_levels.size(); i++) {
+        j["Levels"][i]["name"] = _levels[i].name;
+        j["Levels"][i]["file"] = _levels[i].file;
+    }
+
+    for (int i = 0; i<this->_highscores.size(); i++) {
+        j["Highscores"][i]["name"] = _highscores[i].name;
+        j["Highscores"][i]["score"] = _highscores[i].highscore;
+    }
+
+
+    std::ofstream file("../config.json");
+    file << std::setw(4) << j;
+
+    return false;
 }
 
 int Settings::get_width() const {
@@ -135,6 +182,23 @@ const std::vector<Levelfile> &Settings::get_levels() const {
     return _levels;
 }
 
-const std::vector<Highscore> &Settings::get_highscores() const {
-    return _highscores;
+const std::vector<Highscore> Settings::get_highscores() const {
+    std::vector<Highscore> scores = _highscores;
+
+    // use lambda functions to sort vector
+    std::sort( scores.begin( ), scores.end( ), [ ]( const auto& lhs, const auto& rhs )
+    {
+        return lhs.highscore > rhs.highscore;
+    });
+
+    // return the first 10 elements
+    scores.resize(10);
+
+    return scores;
 }
+
+const std::string &Settings::get_username() const {
+    return _username;
+}
+
+

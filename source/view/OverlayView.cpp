@@ -47,7 +47,7 @@ void OverlayView::initScore() {
     _scoreText.setFont(_font);
     _scoreText.setString(std::to_string(_world->getScore()));
     _scoreText.setCharacterSize(56);
-    _scoreText.setFillColor(sf::Color::Red);
+    _scoreText.setColor(sf::Color::Red);
     _scoreText.setOrigin(sf::Vector2f(_scoreText.getGlobalBounds().width / 2, _scoreText.getGlobalBounds().height / 2));
     _scoreText.setPosition(sf::Vector2f(_preferences->width / 10 * 9, _preferences->height - 60));
 }

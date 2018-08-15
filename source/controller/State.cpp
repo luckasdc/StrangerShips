@@ -7,7 +7,7 @@
 #include "StateManager.h"
 #include "../view/WorldView.h"
 #include "GameController.h"
-
+#include "../firstAid/Settings.h"
 
 
 PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _preferences(std::move(preferences)) {
@@ -71,8 +71,6 @@ void PlayingState::HandleInput() {
 
     Direction dir = KeyController::getKeyController().processDirection(false);
     Direction dir2 = KeyController::getKeyController().processDirection(true);
-
-    std::cout << std::to_string(dir) << std::endl;
 
     if(dir != Idle) _world->getPlayerShip()->move(dir);
     if(dir2 != Idle && _preferences->_multiplayer) _world->getSecondPlayerShip()->move(dir2);
@@ -231,16 +229,30 @@ void ScoresState::Init() {
     this->_retryButton->setTexture(*this->_retryButtonTexture);
 
     _GOContainer->setPosition(sf::Vector2f((_preferences->width / 2) - (_GOContainer->getGlobalBounds().width / 2), (_preferences->height / 2) - (_GOContainer->getGlobalBounds().height / 2)));
-    _GOTitle->setPosition(sf::Vector2f((_preferences->width / 2) - (_GOTitle->getGlobalBounds().width / 2), _GOContainer->getPosition().y - (_GOTitle->getGlobalBounds().height * 1.2)));
+    _GOTitle->setPosition(sf::Vector2f((_preferences->width / 3*2) - (_GOTitle->getGlobalBounds().width / 2), _GOContainer->getPosition().y - (_GOTitle->getGlobalBounds().height * 2)));
     _retryButton->setPosition(sf::Vector2f((_preferences->width / 2) - (_retryButton->getGlobalBounds().width / 2), _GOContainer->getPosition().y + _GOContainer->getGlobalBounds().height + (_retryButton->getGlobalBounds().height * 0.2)));
 
+    std::string scoretext = "Your score is: \n \n" + std::to_string(_score);
     _font.loadFromFile("../assets/FlappyFont.ttf");
     _scoreText.setFont(_font);
-    _scoreText.setString(std::to_string(_score));
+    _scoreText.setString(scoretext);
     _scoreText.setCharacterSize(56);
-    _scoreText.setFillColor(sf::Color::White);
+    _scoreText.setColor(sf::Color::White);
     _scoreText.setOrigin(sf::Vector2f(_scoreText.getGlobalBounds().width / 2, _scoreText.getGlobalBounds().height / 2));
-    _scoreText.setPosition(sf::Vector2f(_preferences->width / 10 * 6.5, _preferences->height / 2.20));
+    _scoreText.setPosition(sf::Vector2f(_preferences->width / 3*2, _preferences->height / 2.20));
+
+    std::string scores = "";
+
+    for (auto& score : _preferences->_config->get_highscores()) {
+        scores += score.name + "    " + std::to_string(score.highscore) + "\n";
+    }
+
+    _highscores.setFont(_font);
+    _highscores.setString(scores);
+    _highscores.setCharacterSize(45);
+    _highscores.setColor(sf::Color::White);
+    _highscores.setOrigin(sf::Vector2f(_highscores.getGlobalBounds().width / 2, _highscores.getGlobalBounds().height / 2));
+    _highscores.setPosition(sf::Vector2f(_preferences->width / 10 * 2.2, _preferences->height / 2.7 ));
 
 }
 
@@ -272,10 +284,13 @@ void ScoresState::Draw() {
     _preferences->_window->clear();
 
     _preferences->_window->draw(*_BgSprite);
-    _preferences->_window->draw(*_GOContainer);
+    //_preferences->_window->draw(*_GOContainer);
     _preferences->_window->draw(*_GOTitle);
     _preferences->_window->draw(*_retryButton);
+    _preferences->_window->draw(_highscores);
     _preferences->_window->draw(_scoreText);
+
+
 
 
     // draw everything again...

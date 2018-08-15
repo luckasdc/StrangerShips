@@ -4,6 +4,7 @@
 #include "../controller/State.h"
 #include "../controller/StateManager.h"
 #include "../controller/GameController.h"
+#include "../firstAid/Settings.h"
 
 
 World::World(std::string level, bool multiplayer, std::shared_ptr<GamePreferences> preferences) {
@@ -117,6 +118,11 @@ void World::updateEntities() {
 
     if (_playerShip->getHealth() == 0) {
         std::cout << "PLAYERSHIP IS DEAD, GAME OVER" << std::endl;
+        Highscore newscore;
+        newscore.highscore = this->score;
+        newscore.name = _preferences->_config->get_username();
+        _preferences->_config->append_score(newscore);
+        _preferences->_config->save();
         _preferences->stateManager->popState();
         _preferences->stateManager->pushState(std::make_unique<ScoresState>(_preferences, this->score));
 
