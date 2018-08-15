@@ -14,13 +14,7 @@ PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _pref
 
 void PlayingState::Init() {
 
-    ////     CHANGE LEVEL HERE  (CLI)   ////
-
-    // TODO hier moet het menu gelaunched worden
-    // TODO current game file maken en opslagen
-
     // TODO LEVEL HARDCODED OP 1
-
 
     try {
         std::string level = "../Levels/level1.json"; // HARDCODE WEGHALEN TODO
@@ -43,7 +37,6 @@ void PlayingState::Init() {
 
     this->aictr = std::make_shared<AIController>(this->_world);
     this->cctr = std::make_shared<CollisionController>(this->_world);
-
 
 }
 
