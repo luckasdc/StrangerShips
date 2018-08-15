@@ -2,7 +2,6 @@
 #ifndef STRANGERSHIPS_GAME_H
 #define STRANGERSHIPS_GAME_H
 
-#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "../view/WorldView.h"
 #include <memory>
