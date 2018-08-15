@@ -7,6 +7,8 @@
 #include "OverlayView.h"
 
 #include "../controller/StateManager.h"
+#include "../controller/GameController.h"
+
 
 void WorldView::draw() {
 

@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "EntityView.h"
-#include "../controller/GameController.h"
 
 class ObstacleView : public PassiveEntityView {
 
@@ -25,18 +24,8 @@ public:
     /**
      * @brief  constructor for a BorderObstacleView (loads assets)
      */
-    BorderObstacleView(const std::shared_ptr<GamePreferences>& preferences, const std::shared_ptr<PassiveEntity> &_entityPtr) :
-            ObstacleView(preferences, _entityPtr) {
+    BorderObstacleView(const std::shared_ptr<GamePreferences>& preferences, const std::shared_ptr<PassiveEntity> &_entityPtr);
 
-        if (this->_entityPtr->is_inversed()) this->makeSprite("../assets/" + _preferences->_config->get_texture_sky());
-        else this->makeSprite("../assets/" + _preferences->_config->get_texture_floor());
-
-
-        int x = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().x, _preferences->_window->getSize().x));
-        int y = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().y, _preferences->_window->getSize().y));
-        this->_sprite->setPosition(x, y);
-
-    }
 };
 
 class SporadicObstacleView : public ObstacleView {
@@ -45,17 +34,8 @@ public:
     /**
      * @brief  constructor for a SporadicObstacleView (loads assets)
      */
-    SporadicObstacleView(const std::shared_ptr<GamePreferences>& preferences, const std::shared_ptr<PassiveEntity> &_entityPtr) :
-            ObstacleView(preferences, _entityPtr) {
+    SporadicObstacleView(const std::shared_ptr<GamePreferences>& preferences, const std::shared_ptr<PassiveEntity> &_entityPtr);
 
-        this->makeSprite("../assets/" + _preferences->_config->get_texture_sporadicobstacle());
-
-
-        int x = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().x, _preferences->_window->getSize().x));
-        int y = static_cast<int>(Transformation::transformWidth(_entityPtr->get_bottomRightCorner().y, _preferences->_window->getSize().y));
-        this->_sprite->setPosition(x, y);
-
-    }
 
 };
 

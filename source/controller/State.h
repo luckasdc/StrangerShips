@@ -5,15 +5,18 @@
 #ifndef STRANGERSHIPS_STATE_H
 #define STRANGERSHIPS_STATE_H
 
-
-#include "GameController.h"
-#include "KeyController.h"
+#include <SFML/Graphics.hpp>
 #include "CollisionController.h"
 #include "AIController.h"
+#include "KeyController.h"
+
+
+class WorldView;
 
 class GamePreferences;
 
 class State {
+
 public:
     virtual void Init() = 0;
 
@@ -43,7 +46,6 @@ private:
     std::shared_ptr<sf::Texture> _BgTexture;
     std::shared_ptr<sf::Sprite> _ButtonSprite;
     std::shared_ptr<sf::Texture> _ButtonTexture;
-    std::shared_ptr<KeyController> _cctr;
 
 
 };
@@ -65,6 +67,7 @@ private:
     std::shared_ptr<World> _world;
     std::shared_ptr<CollisionController> cctr;
     std::shared_ptr<AIController> aictr;
+    std::shared_ptr<KeyController>kctr;
 
 };
 
@@ -102,7 +105,6 @@ private:
 
     sf::Font _font;
 
-    std::shared_ptr<KeyController> _cctr;
 
 
 };
