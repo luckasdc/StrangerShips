@@ -66,8 +66,9 @@ public:
 
     /**
      * @brief controls the waves and generates new enemies;
+     * @return bool if level succeeded
      */
-    void controlWaves();
+    bool controlWaves();
 
 private:
     std::shared_ptr<World> _world;

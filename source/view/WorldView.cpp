@@ -23,6 +23,7 @@ void WorldView::draw() {
     }
     _overlay->drawLives();
     _overlay->drawScore();
+    _overlay->drawLevel();
 
 }
 

@@ -70,7 +70,7 @@ void AIController::launchSporadicObstacle() {
      }
 }
 
-void AIController::controlWaves() {
+bool AIController::controlWaves() {
 
     if (_world->getEnemyShipList().empty() and _wavesToGo < _world->get_level()->get_amountOfWaves()) {
 
@@ -83,7 +83,9 @@ void AIController::controlWaves() {
     else if (_world->getEnemyShipList().empty() and _wavesToGo == _world->get_level()->get_amountOfWaves()){
         std::cout << "YOU WON THE GAME! CONGRATULATIONS!" << std::endl;
         _world->notify("YOU WON");
+        return true;
     }
 
+    return false;
 }
 

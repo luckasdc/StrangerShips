@@ -124,7 +124,7 @@ void World::updateEntities() {
         _preferences->_config->append_score(newscore);
         _preferences->_config->save();
         _preferences->stateManager->popState();
-        _preferences->stateManager->pushState(std::make_unique<ScoresState>(_preferences, this->score));
+        _preferences->stateManager->pushState(std::make_unique<ScoresState>(_preferences, this->score, false));
 
 
         //this->notify("GAME OVER");

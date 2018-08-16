@@ -81,7 +81,7 @@ class ScoresState : public State {
 
 public:
 
-    explicit ScoresState(std::shared_ptr<GamePreferences> preferences, int score);
+    explicit ScoresState(std::shared_ptr<GamePreferences> preferences, int score, bool won);
 
     void Init() override;
     void HandleInput() override;
@@ -105,6 +105,7 @@ private:
     sf::Text _highscores;
 
     int _score;
+    bool _won;
 
     sf::Font _font;
 

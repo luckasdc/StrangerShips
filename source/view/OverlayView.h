@@ -17,6 +17,8 @@ public:
     OverlayView(std::shared_ptr<GamePreferences>& preferences, std::shared_ptr<World> _world) : _preferences(preferences), _world(std::move(_world)) {
         initHeart();
         initScore();
+        initLevelText();
+        initLevelText();
     };
 
     /**
@@ -30,6 +32,11 @@ public:
     void drawScore();
 
     /**
+     * @brief draws the name of the current level
+     */
+     void drawLevel();
+
+    /**
     * @brief generates the right sprite for the hearts
     */
     void initHeart();
@@ -39,6 +46,11 @@ public:
     */
     void initScore();
 
+    /**
+    * @brief generates the text for the current level
+    */
+    void initLevelText();
+
 private:
 
     std::shared_ptr<GamePreferences> _preferences;
@@ -46,6 +58,7 @@ private:
     std::shared_ptr<sf::Sprite> _heartSprite;
     std::unique_ptr<sf::Texture> _heartTexture;
     sf::Text _scoreText;
+    sf::Text _levelText;
     sf::Font _font;
 
 

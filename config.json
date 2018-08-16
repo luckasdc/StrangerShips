@@ -13,32 +13,32 @@
             "score": 2
         },
         {
-            "name": "stom",
-            "score": 5
-        },
-        {
-            "name": "ded",
-            "score": 1
-        },
-        {
-            "name": "adsd",
-            "score": 2
-        },
-        {
-            "name": "Luckadadas",
-            "score": 2
-        },
-        {
-            "name": "asdda",
-            "score": 6
-        },
-        {
-            "name": "dsadsa",
+            "name": "loeckie",
             "score": 4
         },
         {
-            "name": "asdasd",
-            "score": 9
+            "name": "loeckie",
+            "score": 11
+        },
+        {
+            "name": "loeckie",
+            "score": 12
+        },
+        {
+            "name": "loeckie",
+            "score": 6
+        },
+        {
+            "name": "loeckie",
+            "score": 16
+        },
+        {
+            "name": "loeckie",
+            "score": 0
+        },
+        {
+            "name": "loeckie",
+            "score": 6
         },
         {
             "name": "loeckie",
@@ -47,16 +47,36 @@
         {
             "name": "loeckie",
             "score": 11
+        },
+        {
+            "name": "loeckie",
+            "score": 0
+        },
+        {
+            "name": "loeckie",
+            "score": 9
+        },
+        {
+            "name": "loeckie",
+            "score": 4
+        },
+        {
+            "name": "loeckie",
+            "score": 12
+        },
+        {
+            "name": "loeckie",
+            "score": 15
         }
     ],
     "Levels": [
         {
             "file": "level1.json",
-            "name": "1"
+            "name": "Level 1"
         },
         {
             "file": "level2.json",
-            "name": "2"
+            "name": "Level 2"
         }
     ],
     "azerty": true,

@@ -21,7 +21,7 @@ void PlayingState::Init() {
     // TODO LEVEL HARDCODED OP 1
 
     try {
-        std::string level = "../Levels/level1.json"; // HARDCODE WEGHALEN TODO
+        std::string level = "../Levels/" + _preferences->_config->get_levels()[_preferences->currentLevel % _preferences->_config->get_levels().size()].file;
         std::cout << "loading levelfile: " << level << "..." << std::endl;
         this->_world = std::make_shared<World> (level, this->_preferences->_multiplayer, _preferences);  ////
 
@@ -37,7 +37,6 @@ void PlayingState::Init() {
     this->_view = std::make_shared<WorldView> (_world, _preferences);
 
     this->_world->loadFromLevel();
-
 
     this->aictr = std::make_shared<AIController>(this->_world);
     this->cctr = std::make_shared<CollisionController>(this->_world);
@@ -83,7 +82,17 @@ void PlayingState::Update() {
     // AI-controller: decides what the enemies are going to do
     aictr->makeDecisions();
     // AI-controller: launch a new wave and check if game is won
-    aictr->controlWaves();
+    if (aictr->controlWaves()) {
+        std::cout << "YOU SURVIVED THE LEVEL! " << std::endl;
+        Highscore newscore;
+        newscore.highscore = _world->getScore();
+        newscore.name = _preferences->_config->get_username();
+        _preferences->_config->append_score(newscore);
+        _preferences->_config->save();
+        _preferences->stateManager->popState();
+        _preferences->stateManager->pushState(std::make_unique<ScoresState>(_preferences, _world->getScore(), true));
+    }
+
     // AI-controller: launch obstalces
     aictr->launchSporadicObstacle();
 
@@ -184,7 +193,7 @@ void MenuState::Draw() {
 
 
 
-ScoresState::ScoresState(std::shared_ptr<GamePreferences> preferences, int score) : _preferences(std::move(preferences)), _score(score) {
+ScoresState::ScoresState(std::shared_ptr<GamePreferences> preferences, int score, bool won) : _preferences(std::move(preferences)), _score(score), _won(won) {
 
 }
 
@@ -200,13 +209,23 @@ void ScoresState::Init() {
     this->_retryButton = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> _retryButtonTexture(new sf::Texture);
 
+
+    // TODO hardcode weghalen
     try {
         if (!texture->loadFromFile("../assets/bg.png",sf::IntRect(0, 0, _preferences->width, _preferences->height))){
             throw std::runtime_error("Could not load texture from file");
         }
-        if (!_GOTitleTexture->loadFromFile("../assets/Game-Over-Title.png")){
-            throw std::runtime_error("Could not load texture from file");
+
+        if (_won) {
+            if (!_GOTitleTexture->loadFromFile("../assets/You-Won-Title.png")){
+                throw std::runtime_error("Could not load texture from file");
+            }
+        } else {
+            if (!_GOTitleTexture->loadFromFile("../assets/Game-Over-Title.png")){
+                throw std::runtime_error("Could not load texture from file");
+            }
         }
+
         if (!_GOContainerTexture->loadFromFile("../assets/Game-Over-Body.png")){
             throw std::runtime_error("Could not load texture from file");
         }
@@ -268,6 +287,7 @@ void ScoresState::HandleInput() {
         // check if button has clicked
         if (KeyController::getKeyController().IsSpriteClicked(this->_retryButton, sf::Mouse::Left, _preferences->_window)) {
             // Switch To Main Menu
+            if(_won) this->_preferences->currentLevel++;
             this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
 
         }
@@ -289,9 +309,6 @@ void ScoresState::Draw() {
     _preferences->_window->draw(*_retryButton);
     _preferences->_window->draw(_highscores);
     _preferences->_window->draw(_scoreText);
-
-
-
 
     // draw everything again...
     // and finally display the current frame!

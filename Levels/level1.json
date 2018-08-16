@@ -1,8 +1,8 @@
 {
   "Level": 1,
-  "InitialEnemies": 3,
-  "EnemiesInWave": 2,
-  "AmountOfWaves": 2,
+  "InitialEnemies": 0,
+  "EnemiesInWave": 1,
+  "AmountOfWaves": 1,
 
   "EnemyShipSpeed": 0.03,
   "PlayerShipSpeed": 0.1,

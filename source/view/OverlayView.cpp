@@ -2,6 +2,7 @@
 #include <iostream>
 #include "OverlayView.h"
 #include "../controller/GameController.h"
+#include "../firstAid/Settings.h"
 
 void OverlayView::drawLives() {
 
@@ -50,4 +51,18 @@ void OverlayView::initScore() {
     _scoreText.setColor(sf::Color::Red);
     _scoreText.setOrigin(sf::Vector2f(_scoreText.getGlobalBounds().width / 2, _scoreText.getGlobalBounds().height / 2));
     _scoreText.setPosition(sf::Vector2f(_preferences->width / 10 * 9, _preferences->height - 60));
+}
+
+void OverlayView::initLevelText() {
+    _font.loadFromFile("../assets/FlappyFont.ttf");
+    _levelText.setFont(_font);
+    _levelText.setString(_preferences->_config->get_levels()[_preferences->currentLevel].name);
+    _levelText.setCharacterSize(56);
+    _levelText.setColor(sf::Color::Black);
+    _levelText.setOrigin(sf::Vector2f(_scoreText.getGlobalBounds().width / 2, _scoreText.getGlobalBounds().height / 2));
+    _levelText.setPosition(sf::Vector2f(30,  30));
+}
+
+void OverlayView::drawLevel() {
+    _preferences->_window->draw(_levelText);
 }

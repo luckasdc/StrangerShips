@@ -24,6 +24,7 @@ public:
     int width{};
     int height{};
     std::shared_ptr<Settings> _config;
+    int currentLevel = 0;
 
 };
 
