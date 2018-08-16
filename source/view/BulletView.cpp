@@ -2,7 +2,6 @@
 #include "BulletView.h"
 #include "../controller/GameController.h"
 
-
 BulletView::BulletView(const std::shared_ptr<GamePreferences> &preferences,
                        const std::shared_ptr<ActiveEntity> &_entityPtr) :
         ActiveEntityView(preferences, _entityPtr) {
