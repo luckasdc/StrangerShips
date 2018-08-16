@@ -132,10 +132,10 @@ void MenuState::Init() {
     std::unique_ptr<sf::Texture> buttontexture(new sf::Texture);
 
     try {
-        if (!texture->loadFromFile("../assets/" + _preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
+        if (!texture->loadFromFile(_preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
             throw std::runtime_error("Could not load texture from file");
         }
-        if (!buttontexture->loadFromFile("../assets/" + _preferences->_config->get_texture_playbutton())){
+        if (!buttontexture->loadFromFile(_preferences->_config->get_texture_playbutton())){
             throw std::runtime_error("Could not load texture from file");
         }
     }
@@ -212,20 +212,20 @@ void ScoresState::Init() {
 
     // TODO hardcode weghalen
     try {
-        if (!texture->loadFromFile("../assets/" + _preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
+        if (!texture->loadFromFile(_preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
             throw std::runtime_error("Could not load texture from file");
         }
 
         if (_won) {
-            if (!_GOTitleTexture->loadFromFile("../assets/" + _preferences->_config->get_texture_youwontitle())){
+            if (!_GOTitleTexture->loadFromFile(_preferences->_config->get_texture_youwontitle())){
                 throw std::runtime_error("Could not load texture from file");
             }
         } else {
-            if (!_GOTitleTexture->loadFromFile("../assets/" + _preferences->_config->get_texture_gameovertitle())){
+            if (!_GOTitleTexture->loadFromFile(_preferences->_config->get_texture_gameovertitle())){
                 throw std::runtime_error("Could not load texture from file");
             }
         }
-        if (!_retryButtonTexture->loadFromFile("../assets/" + _preferences->_config->get_texture_playbutton())){
+        if (!_retryButtonTexture->loadFromFile(_preferences->_config->get_texture_playbutton())){
             throw std::runtime_error("Could not load texture from file");
         }
     }

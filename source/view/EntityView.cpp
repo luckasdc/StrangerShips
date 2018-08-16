@@ -11,14 +11,10 @@ void EntityView::makeSprite(const std::string &file) {
     this->_sprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture>  texture(new sf::Texture);
 
-    try {
-        if (!texture->loadFromFile(file, sf::IntRect(0, 0, 150, 150))) {
-            throw std::runtime_error("Could not load texture from file");
-        }
+    if (!texture->loadFromFile(file, sf::IntRect(0, 0, 150, 150))) {
+        throw ex::ResourceException(file);
     }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error: " << e.what() << std::endl;
-    }
+
     // transfer ownership of texture to EntityView
     this->_texture = std::move(texture);
     this->_sprite->setTexture(*this->_texture);
@@ -68,14 +64,10 @@ void PassiveEntityView::makeSprite(const std::string &file) {
     int w = static_cast<int>((_entityPtr->get_width() / 8) * _preferences->_window->getSize().x);
     int h = static_cast<int>((_entityPtr->get_height() / 6) * _preferences->_window->getSize().y);
 
-    try {
         if (!texture->loadFromFile(file, sf::IntRect(0, 0, w, h))){
-            throw std::runtime_error("Could not load texture from file");
+            throw ex::ResourceException(file);
         }
-    }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error: " << e.what() << std::endl;
-    }
+
 
     // transfer ownership of texture to EntityView
     this->_texture = std::move(texture);

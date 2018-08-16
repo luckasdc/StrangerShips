@@ -1,73 +1,6 @@
 {
     "Highscores": [
-        {
-            "name": "Luckas",
-            "score": 2
-        },
-        {
-            "name": "Barry",
-            "score": 1
-        },
-        {
-            "name": "Jef",
-            "score": 2
-        },
-        {
-            "name": "loeckie",
-            "score": 4
-        },
-        {
-            "name": "loeckie",
-            "score": 11
-        },
-        {
-            "name": "loeckie",
-            "score": 12
-        },
-        {
-            "name": "loeckie",
-            "score": 6
-        },
-        {
-            "name": "loeckie",
-            "score": 16
-        },
-        {
-            "name": "loeckie",
-            "score": 0
-        },
-        {
-            "name": "loeckie",
-            "score": 6
-        },
-        {
-            "name": "loeckie",
-            "score": 12
-        },
-        {
-            "name": "loeckie",
-            "score": 11
-        },
-        {
-            "name": "loeckie",
-            "score": 0
-        },
-        {
-            "name": "loeckie",
-            "score": 9
-        },
-        {
-            "name": "loeckie",
-            "score": 4
-        },
-        {
-            "name": "loeckie",
-            "score": 12
-        },
-        {
-            "name": "loeckie",
-            "score": 15
-        },
+
         {
             "name": "loeckie",
             "score": 0
@@ -75,38 +8,6 @@
         {
             "name": "loeckie",
             "score": 0
-        },
-        {
-            "name": "loeckie",
-            "score": 4
-        },
-        {
-            "name": "loeckie",
-            "score": 14
-        },
-        {
-            "name": "loeckie",
-            "score": 0
-        },
-        {
-            "name": "loeckie",
-            "score": 8
-        },
-        {
-            "name": "loeckie",
-            "score": 0
-        },
-        {
-            "name": "loeckie",
-            "score": 4
-        },
-        {
-            "name": "loeckie",
-            "score": 0
-        },
-        {
-            "name": "loeckie",
-            "score": 14
         }
     ],
     "Levels": [
@@ -120,22 +21,22 @@
         }
     ],
     "azerty": true,
-    "font": "FlappyFont.ttf",
+    "font": "../assets/FlappyFont.ttf",
     "height": 900,
-    "texture_background": "bg.png",
-    "texture_bossbird": "bossbird.png",
-    "texture_bullet": "bullet.png",
-    "texture_enemyship": "angrybird.png",
-    "texture_floor": "base.png",
-    "texture_gameoverbody": "Game-Over-Body.png",
-    "texture_gameovertitle": "Game-Over-Title.png",
-    "texture_heart": "heart.png",
-    "texture_playbutton": "PlayButton.png",
-    "texture_playership": "bluebird-midflap.png",
-    "texture_secondplayership": "yellowbird-midflap.png",
-    "texture_sky": "top.png",
-    "texture_sporadicobstacle": "horizontal_tube.png",
-    "texture_youwontitle": "You-Won-Title.png",
-    "username": "loeckie",
+    "texture_background": "../assets/bg.png",
+    "texture_bossbird": "../assets/bossbird.png",
+    "texture_bullet": "../assets/bullet.png",
+    "texture_enemyship": "../assets/angrybird.png",
+    "texture_floor": "../assets/base.png",
+    "texture_gameoverbody": "../assets/Game-Over-Body.png",
+    "texture_gameovertitle": "../assets/Game-Over-Title.png",
+    "texture_heart": "../assets/heart.png",
+    "texture_playbutton": "../assets/PlayButton.png",
+    "texture_playership": "../assets/bluebird-midflap.png",
+    "texture_secondplayership": "../assets/yellowbird-midflap.png",
+    "texture_sky": "../assets/top.png",
+    "texture_sporadicobstacle": "../assets/horizontal_tube.png",
+    "texture_youwontitle": "../assets/You-Won-Title.png",
+    "username": "barry",
     "width": 1200
 }

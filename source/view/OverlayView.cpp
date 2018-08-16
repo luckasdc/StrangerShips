@@ -3,6 +3,7 @@
 #include "OverlayView.h"
 #include "../controller/GameController.h"
 #include "../firstAid/Settings.h"
+#include "../firstAid/Exception.h"
 
 void OverlayView::drawLives() {
 
@@ -22,15 +23,9 @@ void OverlayView::initHeart() {
     this->_heartSprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
 
-    try {
-        if (!texture->loadFromFile("../assets/" + _preferences->_config->get_texture_heart(), sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
-            throw std::runtime_error("Could not load texture from file");
-        }
+    if (!texture->loadFromFile(_preferences->_config->get_texture_heart(), sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
+        throw ex::ResourceException(_preferences->_config->get_texture_heart());
     }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error: " << e.what() << std::endl;
-    }
-
 
     // transfer ownership of texture to EntityView
     this->_heartTexture = std::move(texture);
@@ -44,7 +39,9 @@ void OverlayView::drawScore() {
 }
 
 void OverlayView::initScore() {
-    _font.loadFromFile("../assets/" + _preferences->_config->get_font());
+    if (!_font.loadFromFile(_preferences->_config->get_font())) {
+        throw ex::ResourceException(_preferences->_config->get_font());
+    };
     _scoreText.setFont(_font);
     _scoreText.setString(std::to_string(_world->getScore()));
     _scoreText.setCharacterSize(56);
@@ -54,7 +51,11 @@ void OverlayView::initScore() {
 }
 
 void OverlayView::initLevelText() {
-    _font.loadFromFile("../assets/" + _preferences->_config->get_font());
+
+    if (!_font.loadFromFile(_preferences->_config->get_font())) {
+        throw ex::ResourceException(_preferences->_config->get_font());
+    }
+
     _levelText.setFont(_font);
     _levelText.setString(_preferences->_config->get_levels()[_preferences->currentLevel].name);
     _levelText.setCharacterSize(56);

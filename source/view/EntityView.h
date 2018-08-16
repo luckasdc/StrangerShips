@@ -7,6 +7,7 @@
 
 #include "../model/Subject.h"
 #include "../firstAid/Singletons.h"
+#include "../firstAid/Exception.h"
 #include "../model/World.h"
 #include "../model/Entity.h"
 #include "../model/Subject.h"

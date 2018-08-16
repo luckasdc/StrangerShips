@@ -1,5 +1,6 @@
 
 #include "source/controller/GameController.h"
+#include "source/firstAid/Exception.h"
 
 int main()
 {
@@ -9,8 +10,11 @@ int main()
         game.run();
     }
 
-    catch (std::exception& what){
-        std::cout << "das kapot é: " << what.what() << std::endl;
+    catch (ex::Exception what){
+        std::cerr << "Gradius error: " << what.what() << std::endl;
+    }
+    catch (std::exception what2) {
+        std::cerr << "something went seriously wrong!" << std::endl;
     }
 
     return 0;

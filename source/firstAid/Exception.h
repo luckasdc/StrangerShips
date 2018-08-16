@@ -10,19 +10,20 @@ namespace ex {
 
     class Exception : public std::exception {
 
-    protected:
-        /**
-         * @brief default Base-constructor for the custom Exception-class
-         * @param msg
-         */
-        Exception(std::string msg, std::string filename) : _errorMsg(std::move(msg)), _filename(std::move(filename)){};
-
+    public:
         /**
          * @brief override the basic what()-function
          */
         const char* what() const noexcept override {
-            return _errorMsg.c_str();
+            return (_errorMsg + _filename).c_str();
         };
+
+    protected:
+        /**
+          * @brief default Base-constructor for the custom Exception-class
+          * @param msg
+          */
+        Exception(std::string msg, std::string filename) : _errorMsg(std::move(msg)), _filename(std::move(filename)){};
 
     private:
         std::string _errorMsg;

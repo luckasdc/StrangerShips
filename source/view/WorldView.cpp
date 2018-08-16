@@ -81,13 +81,8 @@ void WorldView::initBackground() {
     this->_BgSprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
 
-    try {
-        if (!texture->loadFromFile("../assets/" + _preferences->_config->get_texture_background(), sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
-            throw std::runtime_error("Could not load texture from file");
-        }
-    }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error: " << e.what() << std::endl;
+    if (!texture->loadFromFile(_preferences->_config->get_texture_background(), sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
+        throw ex::ResourceException(_preferences->_config->get_texture_background());
     }
 
     // transfer ownership of texture to EntityView
