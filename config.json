@@ -67,6 +67,46 @@
         {
             "name": "loeckie",
             "score": 15
+        },
+        {
+            "name": "loeckie",
+            "score": 0
+        },
+        {
+            "name": "loeckie",
+            "score": 0
+        },
+        {
+            "name": "loeckie",
+            "score": 4
+        },
+        {
+            "name": "loeckie",
+            "score": 14
+        },
+        {
+            "name": "loeckie",
+            "score": 0
+        },
+        {
+            "name": "loeckie",
+            "score": 8
+        },
+        {
+            "name": "loeckie",
+            "score": 0
+        },
+        {
+            "name": "loeckie",
+            "score": 4
+        },
+        {
+            "name": "loeckie",
+            "score": 0
+        },
+        {
+            "name": "loeckie",
+            "score": 14
         }
     ],
     "Levels": [
@@ -80,9 +120,10 @@
         }
     ],
     "azerty": true,
-    "height": 900,
     "font": "FlappyFont.ttf",
+    "height": 900,
     "texture_background": "bg.png",
+    "texture_bossbird": "bossbird.png",
     "texture_bullet": "bullet.png",
     "texture_enemyship": "angrybird.png",
     "texture_floor": "base.png",

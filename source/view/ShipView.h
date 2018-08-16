@@ -40,12 +40,26 @@ class EnemyShipView : public ActiveEntityView {
 
 public:
     /**
- * @brief default constructor of a EnemyShipView
- * @param shared_ptr<window>
- * @param shared_ptr<playerShip>
- */
+     * @brief default constructor of a EnemyShipView
+     * @param shared_ptr<window>
+     * @param shared_ptr<EnemyShip>
+     */
     EnemyShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr);
 
+};
+
+class BossEnemyShipView : public EnemyShipView {
+
+public:
+
+    /**
+    * @brief default constructor of a BossEnemyShipView
+    * @param shared_ptr<window>
+    * @param shared_ptr<BossEnemyShop>
+    */
+    BossEnemyShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr);
+
+    void makeSprite(const std::string &file);
 };
 
 

@@ -54,6 +54,11 @@ private:
     std::string _texture_playership{};
     std::string _texture_secondplayership{};
     std::string _texture_enemyship{};
+    std::string _texture_bossbird{};
+public:
+    const std::string &get_texture_bossbird() const;
+
+private:
     std::string _texture_bullet{};
     std::string _texture_sporadicobstacle{};
     std::string _texture_heart{};

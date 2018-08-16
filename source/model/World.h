@@ -87,6 +87,11 @@ public:
     void addEnemy();
 
     /**
+     * @brief launches the final enemy in the level
+     */
+    void launchBossEnemy();
+
+    /**
      * @brief removes an enemy from te enemyshiplist
      * @param enemy
      */

@@ -91,6 +91,13 @@ void World::addEnemy() {
     this->notify("newEnemyship");
 }
 
+void World::launchBossEnemy() {
+    _enemyShipList.push_back(std::make_shared<BossShip>(this));
+    this->notify("newBossEnemyShip");
+
+}
+
+
 
 void World::removeEnemy(std::shared_ptr<EnemyShip> enemy) {
     enemy->notify("destruction");

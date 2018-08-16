@@ -35,6 +35,7 @@ void Settings::parseSettings(std::string filename) {
         _texture_playership = j["texture_playership"].get<std::string>();
         _texture_secondplayership = j["texture_secondplayership"].get<std::string>();
         _texture_enemyship = j["texture_enemyship"].get<std::string>();
+        _texture_bossbird = j["texture_bossbird"].get<std::string>();
         _texture_bullet = j["texture_bullet"].get<std::string>();
         _texture_sporadicobstacle = j["texture_sporadicobstacle"].get<std::string>();
         _texture_heart = j["texture_heart"].get<std::string>();
@@ -87,6 +88,7 @@ bool Settings::save(){
     j["font"] = _font;
 
     j["texture_playership"] = _texture_playership;
+    j["texture_bossbird"] = _texture_bossbird;
     j["texture_secondplayership"] = _texture_secondplayership;
     j["texture_enemyship"]= _texture_enemyship;
     j["texture_bullet"] = _texture_bullet;
@@ -205,6 +207,10 @@ const std::vector<Highscore> Settings::get_highscores() const {
 
 const std::string &Settings::get_username() const {
     return _username;
+}
+
+const std::string &Settings::get_texture_bossbird() const {
+    return _texture_bossbird;
 }
 
 

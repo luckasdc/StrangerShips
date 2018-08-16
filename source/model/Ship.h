@@ -93,12 +93,33 @@ public:
      */
     void escape();
 
-private:
+protected:
     World* _myWorld;
     int _shotCounter;
     Direction _curdir;
     int _moveCounter;
     int _outOfRangecounter = 0;
+
+};
+
+
+class BossShip : public EnemyShip {
+
+public:
+
+    /**
+    * @brief default constructor, initializes all the params in BossShipView.cpp
+    * using the given WorldPointer.
+    */
+    BossShip(World* myWorld);
+
+    /**
+    * @brief increments the bullet counter, and shoots a bullet in the right direction
+    * when the bullet reaches an integer x (and will reset to 0 when shot).
+    */
+    void shoot() override ;
+
+
 
 };
 

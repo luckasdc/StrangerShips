@@ -127,3 +127,22 @@ void EnemyShip::escape() {
 
 }
 
+BossShip::BossShip(World *myWorld) : EnemyShip(myWorld) {
+
+    this->_location.x = randfrom(4.5, 6.5);
+    this->_location.y = randfrom(-3, 3);
+    this->_health = 30;
+    this->_speed = myWorld->get_level()->get_enemyShipSpeed();
+    this->_myWorld = myWorld;
+
+}
+
+void BossShip::shoot() {
+    _shotCounter ++;
+    // use the shotcounter to minimalize the amount of shots fired
+    if (_shotCounter >= 10 and _location.x <= 4) {
+        this->_myWorld->addBullet(std::make_shared<Bullet>(true, this->_location));
+        this->notify("newBullet");
+        _shotCounter = 0;
+    }
+}

@@ -34,12 +34,16 @@ void WorldView::update(std::string what) {
         _entityViews.push_back(ps);
     }
     if (what == "newSecondPlayership") {
-        auto ps = std::make_shared<SecondPlayerShipView> (_preferences, this->_world->getSecondPlayerShip());
-        _entityViews.push_back(ps);
+        auto sps = std::make_shared<SecondPlayerShipView> (_preferences, this->_world->getSecondPlayerShip());
+        _entityViews.push_back(sps);
     }
     if (what == "newEnemyship") {
         auto es = std::make_shared<EnemyShipView> (_preferences, this->_world->getEnemyShipList().back());
         _entityViews.push_back(es);
+    }
+    if (what == "newBossEnemyShip") {
+        auto bes = std::make_shared<BossEnemyShipView> (_preferences, this->_world->getEnemyShipList().back());
+        _entityViews.push_back(bes);
     }
     if (what == "newBullet") {
         auto b = std::make_shared<BulletView> (_preferences, this->_world->getBulletList().back());
@@ -50,8 +54,8 @@ void WorldView::update(std::string what) {
         _passiveEntityViews.push_back(o);
     }
     if (what == "newSporadicObstacle") {
-        auto o = std::make_shared<SporadicObstacleView> (_preferences, this->_world->getObstacleList().back());
-        _passiveEntityViews.push_back(o);
+        auto so = std::make_shared<SporadicObstacleView> (_preferences, this->_world->getObstacleList().back());
+        _passiveEntityViews.push_back(so);
     }
     if (what == "EntityDestructed") {
         for (auto ev : this->_entityViews) {
