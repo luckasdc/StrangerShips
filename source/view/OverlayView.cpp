@@ -44,7 +44,7 @@ void OverlayView::drawScore() {
 }
 
 void OverlayView::initScore() {
-    _font.loadFromFile("../assets/FlappyFont.ttf");
+    _font.loadFromFile("../assets/" + _preferences->_config->get_font());
     _scoreText.setFont(_font);
     _scoreText.setString(std::to_string(_world->getScore()));
     _scoreText.setCharacterSize(56);
@@ -54,7 +54,7 @@ void OverlayView::initScore() {
 }
 
 void OverlayView::initLevelText() {
-    _font.loadFromFile("../assets/FlappyFont.ttf");
+    _font.loadFromFile("../assets/" + _preferences->_config->get_font());
     _levelText.setFont(_font);
     _levelText.setString(_preferences->_config->get_levels()[_preferences->currentLevel].name);
     _levelText.setCharacterSize(56);

@@ -64,6 +64,7 @@ private:
     std::string _texture_gameovertitle{};
     std::string _texture_youwontitle{};
     std::string _texture_gameoverbody{};
+    std::string _font{};
 
     std::vector<Levelfile> _levels;
 
@@ -111,7 +112,10 @@ public:
     const std::vector<Levelfile> &get_levels() const;
 
     const std::vector<Highscore> get_highscores() const;
+
+    const std::string &get_font() const;
 };
+
 
 
 #endif //STRANGERSHIPS_SETTINGS_H

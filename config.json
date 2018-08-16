@@ -81,6 +81,7 @@
     ],
     "azerty": true,
     "height": 900,
+    "font": "FlappyFont.ttf",
     "texture_background": "bg.png",
     "texture_bullet": "bullet.png",
     "texture_enemyship": "angrybird.png",

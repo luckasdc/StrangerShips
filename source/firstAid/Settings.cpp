@@ -45,6 +45,7 @@ void Settings::parseSettings(std::string filename) {
         _texture_gameovertitle = j["texture_gameovertitle"].get<std::string>();
         _texture_gameoverbody = j["texture_gameoverbody"].get<std::string>();
         _texture_youwontitle = j["texture_youwontitle"].get<std::string>();
+        _font = j["font"].get<std::string>();
 
         for (auto &l : j["Levels"]) {
             Levelfile newlevel;
@@ -75,13 +76,15 @@ void Settings::append_score(Highscore highscore) {
 
 bool Settings::save(){
 
+    // TODO error handling
+
     json j;
 
     j["width"] = _width;
     j["height"] = _height;
     j["azerty"] = _azerty;
     j["username"] = _username;
-
+    j["font"] = _font;
 
     j["texture_playership"] = _texture_playership;
     j["texture_secondplayership"] = _texture_secondplayership;
@@ -107,11 +110,10 @@ bool Settings::save(){
         j["Highscores"][i]["score"] = _highscores[i].highscore;
     }
 
-
     std::ofstream file("../config.json");
     file << std::setw(4) << j;
 
-    return false;
+    return true;
 }
 
 int Settings::get_width() const {
@@ -176,6 +178,10 @@ const std::string &Settings::get_texture_youwontitle() const {
 
 const std::string &Settings::get_texture_gameoverbody() const {
     return _texture_gameoverbody;
+}
+
+const std::string &Settings::get_font() const {
+    return _font;
 }
 
 const std::vector<Levelfile> &Settings::get_levels() const {

@@ -132,10 +132,10 @@ void MenuState::Init() {
     std::unique_ptr<sf::Texture> buttontexture(new sf::Texture);
 
     try {
-        if (!texture->loadFromFile("../assets/bg.png",sf::IntRect(0, 0, _preferences->width, _preferences->height))){
+        if (!texture->loadFromFile("../assets/" + _preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
             throw std::runtime_error("Could not load texture from file");
         }
-        if (!buttontexture->loadFromFile("../assets/PlayButton.png")){
+        if (!buttontexture->loadFromFile("../assets/" + _preferences->_config->get_texture_playbutton())){
             throw std::runtime_error("Could not load texture from file");
         }
     }
@@ -212,24 +212,20 @@ void ScoresState::Init() {
 
     // TODO hardcode weghalen
     try {
-        if (!texture->loadFromFile("../assets/bg.png",sf::IntRect(0, 0, _preferences->width, _preferences->height))){
+        if (!texture->loadFromFile("../assets/" + _preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
             throw std::runtime_error("Could not load texture from file");
         }
 
         if (_won) {
-            if (!_GOTitleTexture->loadFromFile("../assets/You-Won-Title.png")){
+            if (!_GOTitleTexture->loadFromFile("../assets/" + _preferences->_config->get_texture_youwontitle())){
                 throw std::runtime_error("Could not load texture from file");
             }
         } else {
-            if (!_GOTitleTexture->loadFromFile("../assets/Game-Over-Title.png")){
+            if (!_GOTitleTexture->loadFromFile("../assets/" + _preferences->_config->get_texture_gameovertitle())){
                 throw std::runtime_error("Could not load texture from file");
             }
         }
-
-        if (!_GOContainerTexture->loadFromFile("../assets/Game-Over-Body.png")){
-            throw std::runtime_error("Could not load texture from file");
-        }
-        if (!_retryButtonTexture->loadFromFile("../assets/PlayButton.png")){
+        if (!_retryButtonTexture->loadFromFile("../assets/" + _preferences->_config->get_texture_playbutton())){
             throw std::runtime_error("Could not load texture from file");
         }
     }
@@ -242,8 +238,6 @@ void ScoresState::Init() {
     this->_BgSprite->setTexture(*this->_BgTexture);
     this->_GOTitleTexture = std::move(_GOTitleTexture);
     this->_GOTitle->setTexture(*this->_GOTitleTexture);
-    this->_GOContainerTexture = std::move(_GOContainerTexture);
-    this->_GOContainer->setTexture(*this->_GOContainerTexture);
     this->_retryButtonTexture = std::move(_retryButtonTexture);
     this->_retryButton->setTexture(*this->_retryButtonTexture);
 
@@ -252,7 +246,7 @@ void ScoresState::Init() {
     _retryButton->setPosition(sf::Vector2f((_preferences->width / 2) - (_retryButton->getGlobalBounds().width / 2), _GOContainer->getPosition().y + _GOContainer->getGlobalBounds().height + (_retryButton->getGlobalBounds().height * 0.2)));
 
     std::string scoretext = "Your score is: \n \n" + std::to_string(_score);
-    _font.loadFromFile("../assets/FlappyFont.ttf");
+    _font.loadFromFile("../assets/" + _preferences->_config->get_font());
     _scoreText.setFont(_font);
     _scoreText.setString(scoretext);
     _scoreText.setCharacterSize(56);
@@ -304,7 +298,6 @@ void ScoresState::Draw() {
     _preferences->_window->clear();
 
     _preferences->_window->draw(*_BgSprite);
-    //_preferences->_window->draw(*_GOContainer);
     _preferences->_window->draw(*_GOTitle);
     _preferences->_window->draw(*_retryButton);
     _preferences->_window->draw(_highscores);
