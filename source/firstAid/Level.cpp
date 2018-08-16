@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include "Level.h"
+#include "Exception.h"
 
 using json = nlohmann::json;
 
@@ -16,22 +17,29 @@ void Level::parseLevel(std::string filename) {
         std::ifstream i (filename);
         i >> j;
     }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error loading file: " << e.what() << std::endl;
+    catch (...) {
+        throw ex::LevelFileException(filename);
     }
 
+    std::string entry;
     try {
+        entry = "_level";
         _level = j["Level"].get<int>();
+        entry = "_initialEnemies";
         _initialEnemies = j["InitialEnemies"].get<int>();
+        entry = "_enemiesInWave";
         _enemiesInWave = j["EnemiesInWave"].get<int>();
+        entry = "_amountOfWaves";
         _amountOfWaves = j["AmountOfWaves"].get<int>();
-
+        entry = "_enemyShipSpeed";
         _enemyShipSpeed = j["EnemyShipSpeed"].get<float>();
+        entry = "_playerShipSpeed";
         _playerShipSpeed = j["PlayerShipSpeed"].get<float>();
+        entry = "_sporadicObstacleSpeed";
         _sporadicObstacleSpeed = j["SporadicObstacleSpeed"].get<float>();
     }
     catch (std::runtime_error& e) {
-        std::cerr << "Fatal error parsing values in file: " << e.what() << std::endl;
+        throw ex::LevelEntryException(filename, entry);
     }
 }
 

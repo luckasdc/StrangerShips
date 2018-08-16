@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 14/08/18.
-//
 
 #ifndef STRANGERSHIPS_SETTINGS_H
 #define STRANGERSHIPS_SETTINGS_H

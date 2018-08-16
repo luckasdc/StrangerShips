@@ -1,11 +1,9 @@
-//
-// Created by Luckas Declerck on 14/08/18.
-//
 
 #include <fstream>
 #include "Settings.h"
 #include <algorithm>
 #include "../controller/GameController.h"
+#include "Exception.h"
 
 using json = nlohmann::json;
 
@@ -21,32 +19,54 @@ void Settings::parseSettings(std::string filename) {
         std::ifstream i (filename);
         i >> j;
     }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error loading file: " << e.what() << std::endl;
+    catch (...) {
+        throw ex::ParserFileException(filename);
     }
 
-    try {
+    std::string entry;
 
+    try {
+        std::string entry;
+        entry = "_width";
         _width = j["width"].get<int>();
+        entry = "_height";
         _height = j["height"].get<int>();
+        entry = "_azerty";
         _azerty = j["azerty"].get<bool>();
+        entry = "_username";
         _username = j["username"].get<std::string>();
 
+        entry = "_texture_playership";
         _texture_playership = j["texture_playership"].get<std::string>();
+        entry = "_texture_secondplayership";
         _texture_secondplayership = j["texture_secondplayership"].get<std::string>();
+        entry = "_texture_enemyship";
         _texture_enemyship = j["texture_enemyship"].get<std::string>();
+        entry = "_texture_bossbird";
         _texture_bossbird = j["texture_bossbird"].get<std::string>();
+        entry = "_texture_bullet";
         _texture_bullet = j["texture_bullet"].get<std::string>();
+        entry = "_texture_sporadicobstacle";
         _texture_sporadicobstacle = j["texture_sporadicobstacle"].get<std::string>();
+        entry = "_texture_heart";
         _texture_heart = j["texture_heart"].get<std::string>();
+        entry = "_texture_background";
         _texture_background = j["texture_background"].get<std::string>();
+        entry = "_texture_floor";
         _texture_floor = j["texture_floor"].get<std::string>();
+        entry = "_texture_sky";
         _texture_sky = j["texture_sky"].get<std::string>();
+        entry = "_texture_playbutton";
         _texture_playbutton = j["texture_playbutton"].get<std::string>();
+        entry = "_texture_gameovertitle";
         _texture_gameovertitle = j["texture_gameovertitle"].get<std::string>();
+        entry = "_texture_gameoverbody";
         _texture_gameoverbody = j["texture_gameoverbody"].get<std::string>();
+        entry = "_texture_youwontitle";
         _texture_youwontitle = j["texture_youwontitle"].get<std::string>();
+        entry = "_font";
         _font = j["font"].get<std::string>();
+        entry = "level";
 
         for (auto &l : j["Levels"]) {
             Levelfile newlevel;
@@ -54,6 +74,7 @@ void Settings::parseSettings(std::string filename) {
             newlevel.file = l["file"].get<std::string>();
             _levels.push_back(newlevel);
         }
+        entry = "highscores";
 
         for (auto &s : j["Highscores"]) {
             Highscore newscore;
@@ -61,12 +82,9 @@ void Settings::parseSettings(std::string filename) {
             newscore.highscore = s["score"].get<int>();
             _highscores.push_back(newscore);
         }
-
-
-
     }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error parsing values in file: " << e.what() << std::endl;
+    catch (...) {
+        throw ex::ParserEntryException(filename, entry);
     }
 
 }
@@ -76,8 +94,6 @@ void Settings::append_score(Highscore highscore) {
 }
 
 bool Settings::save(){
-
-    // TODO error handling
 
     json j;
 
