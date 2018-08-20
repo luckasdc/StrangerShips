@@ -86,7 +86,6 @@ bool AIController::controlWaves() {
     }
 
     else if (_world->getEnemyShipList().empty() and _wavesToGo == _world->get_level()->get_amountOfWaves() + 1){
-        std::cout << "YOU WON THE GAME! CONGRATULATIONS!" << std::endl;
         _world->notify("YOU WON");
         return true;
     }

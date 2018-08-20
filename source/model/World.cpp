@@ -124,7 +124,6 @@ void World::updateEntities() {
     auto snapshotOfObstacles = _obstacleList;
 
     if (_playerShip->getHealth() == 0) {
-        std::cout << "PLAYERSHIP IS DEAD, GAME OVER" << std::endl;
         Highscore newscore;
         newscore.highscore = this->score;
         newscore.name = _preferences->_config->get_username();

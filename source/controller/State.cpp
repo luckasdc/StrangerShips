@@ -57,7 +57,6 @@ void PlayingState::Update() {
     aictr->makeDecisions();
     // AI-controller: launch a new wave and check if game is won
     if (aictr->controlWaves()) {
-        std::cout << "YOU SURVIVED THE LEVEL! " << std::endl;
         Highscore newscore;
         newscore.highscore = _world->getScore();
         newscore.name = _preferences->_config->get_username();
