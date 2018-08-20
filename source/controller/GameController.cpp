@@ -28,8 +28,6 @@ void Game::run()
 {
     Stopwatch::getInstance().start();
 
-    sf::Event event{};
-
     while (this->_preferences->_window->isOpen()) {
 
         // wait 'till the following amount of time has passed to maintain the right FPS

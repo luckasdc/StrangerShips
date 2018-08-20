@@ -118,12 +118,12 @@ bool Settings::save(){
     j["texture_gameoverbody"] = _texture_gameoverbody;
     j["texture_youwontitle"] = _texture_youwontitle;
 
-    for (int i = 0; i<this->_levels.size(); i++) {
+    for (uint i = 0; i<this->_levels.size(); i++) {
         j["Levels"][i]["name"] = _levels[i].name;
         j["Levels"][i]["file"] = _levels[i].file;
     }
 
-    for (int i = 0; i<this->_highscores.size(); i++) {
+    for (uint i = 0; i<this->_highscores.size(); i++) {
         j["Highscores"][i]["name"] = _highscores[i].name;
         j["Highscores"][i]["score"] = _highscores[i].highscore;
     }

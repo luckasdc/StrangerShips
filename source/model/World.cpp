@@ -48,7 +48,7 @@ void World::loadFromLevel() {
     }
 
     // set initial amount of Enemies
-    for (unsigned int i = 0; i < _level->get_initialEnemies(); ++i) {
+    for (int i = 0; i < _level->get_initialEnemies(); ++i) {
         _enemyShipList.push_back(std::make_shared<EnemyShip>(this));
         this->notify("newEnemyship");
     }

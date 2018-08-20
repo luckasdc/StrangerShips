@@ -109,7 +109,7 @@ void EnemyShip::moveRandomDirection() {
 
     if (_outOfRangecounter >= 80) {
         _curdir = Direction(Left);
-        _moveCounter = _moveCounter = 0;
+        _moveCounter = 0;
     }
     if (_location.y >= 3) {
         _curdir = Direction(Up);

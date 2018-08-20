@@ -13,7 +13,7 @@ double ActiveEntity::getHealth() {
 
 
 void ActiveEntity::hit(int health) {
-    if (health > this->_health) {this->_health = 0 ; return; }
+    if (health > (int)this->_health) {this->_health = 0 ; return; }
     this->_health -= health;
 }
 
