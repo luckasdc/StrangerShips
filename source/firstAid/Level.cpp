@@ -35,10 +35,18 @@ void Level::parseLevel(std::string filename) {
         _enemyShipSpeed = j["EnemyShipSpeed"].get<float>();
         entry = "_playerShipSpeed";
         _playerShipSpeed = j["PlayerShipSpeed"].get<float>();
+        entry = "_bossShipSpeed";
+        _bossShipSpeed = j["BossShipSpeed"].get<float>();
+        entry = "_playerShipHealth";
+        _playerShipHealth = j["PlayerShipHealth"].get<float>();
+        entry = "_enemyShipHealth";
+        _enemyShipHealth = j["EnemyShipHealth"].get<float>();
+        entry = "_bossShipHealth";
+        _bossShipHealth = j["BossShipHealth"].get<float>();
         entry = "_sporadicObstacleSpeed";
         _sporadicObstacleSpeed = j["SporadicObstacleSpeed"].get<float>();
     }
-    catch (std::runtime_error& e) {
+    catch (...) {
         throw ex::LevelEntryException(filename, entry);
     }
 }
@@ -69,6 +77,22 @@ float Level::get_playerShipSpeed() const {
 
 float Level::get_sporadicObstacleSpeed() const {
     return _sporadicObstacleSpeed;
+}
+
+float Level::get_bossShipSpeed() const {
+    return _bossShipSpeed;
+}
+
+int Level::get_playerShipHealth() const {
+    return _playerShipHealth;
+}
+
+int Level::get_enemyShipHealth() const {
+    return _enemyShipHealth;
+}
+
+int Level::get_bossShipHealth() const {
+    return _bossShipHealth;
 }
 
 

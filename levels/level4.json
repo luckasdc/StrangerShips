@@ -4,7 +4,11 @@
   "EnemiesInWave": 10,
   "AmountOfWaves": 5,
 
-  "EnemyShipSpeed": 0.08,
+  "EnemyShipSpeed": 0.05,
+  "EnemyShipHealth": 4,
   "PlayerShipSpeed": 0.1,
+  "PlayerShipHealth": 10,
+  "BossShipSpeed": 0.05,
+  "BossShipHealth": 30,
   "SporadicObstacleSpeed": 0.025
 }

@@ -36,17 +36,29 @@ public:
     float get_sporadicObstacleSpeed() const;
 
 private:
+public:
+    float get_bossShipSpeed() const;
 
+    int get_playerShipHealth() const;
+
+    int get_enemyShipHealth() const;
+
+    int get_bossShipHealth() const;
+
+private:
     int _level{};
-    int _difficulty{};
     int _initialEnemies{};
     int _enemiesInWave{};
     int _amountOfWaves{};
 
     float _enemyShipSpeed{};
     float _playerShipSpeed{};
+    float _bossShipSpeed{};
     float _sporadicObstacleSpeed{};
 
+    int _playerShipHealth{};
+    int _enemyShipHealth{};
+    int _bossShipHealth{};
 };
 
 

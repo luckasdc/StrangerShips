@@ -52,7 +52,7 @@ public:
 protected:
     Location _location;
     float _speed;
-    unsigned int _health;
+    int _health;
 
 };
 

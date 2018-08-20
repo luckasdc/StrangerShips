@@ -4,8 +4,7 @@
 #include "World.h"
 
 /* generate a random floating point number from min to max */
-float randfrom(float min, float max)
-{
+float randfrom(float min, float max) {
     float range = (max - min);
     float div = RAND_MAX / range;
     return min + (rand() / div);
@@ -15,10 +14,7 @@ float randfrom(float min, float max)
  * SHIP
  */
 
-// Member Functions
-
 void Ship::move(Direction dir) {
-
     switch (dir) {
         case Up : {
             float newYU {_location.y - _speed};
@@ -46,10 +42,8 @@ void Ship::move(Direction dir) {
         }
         case Idle : break;
     }
-
     this->notify("movement");
 }
-
 
 /*
  * PLAYER SHIP
@@ -58,17 +52,14 @@ void Ship::move(Direction dir) {
 PlayerShip::PlayerShip(World* myWorld) {
     this->_location.x = -3;
     this->_location.y = 0;
-    this->_health = 10;
     this->_myWorld = myWorld;
+    this->_health =_myWorld->get_level()->get_playerShipHealth();
     this->_speed = _myWorld->get_level()->get_playerShipSpeed();
-
 }
 
 void PlayerShip::shoot() {
-
     this->_myWorld->addBullet(std::make_shared<Bullet>(false, this->_location));
     this->notify("newBullet");
-
 }
 
 SecondPlayerShip::SecondPlayerShip(World *myWorld) : PlayerShip(myWorld) {
@@ -79,12 +70,13 @@ SecondPlayerShip::SecondPlayerShip(World *myWorld) : PlayerShip(myWorld) {
 /*
  * ENEMY SHIP
  */
+
 EnemyShip::EnemyShip(World* myWorld) {
     this->_location.x = randfrom(4.5, 6.5);
     this->_location.y = randfrom(-3, 3);
-    this->_health = 10;
-    this->_speed = myWorld->get_level()->get_enemyShipSpeed();
     this->_myWorld = myWorld;
+    this->_health = _myWorld->get_level()->get_enemyShipHealth();
+    this->_speed = _myWorld->get_level()->get_enemyShipSpeed();
 }
 
 void EnemyShip::shoot() {
@@ -124,22 +116,19 @@ void EnemyShip::escape() {
     _curdir = newdir;
     _moveCounter = 0;
     move(_curdir);
-
 }
 
 BossShip::BossShip(World *myWorld) : EnemyShip(myWorld) {
-
     this->_location.x = randfrom(4.5, 6.5);
     this->_location.y = randfrom(-3, 3);
-    this->_health = 30;
-    this->_speed = myWorld->get_level()->get_enemyShipSpeed();
     this->_myWorld = myWorld;
-
+    this->_health = _myWorld->get_level()->get_bossShipHealth();
+    this->_speed = _myWorld->get_level()->get_bossShipSpeed();
 }
 
 void BossShip::shoot() {
     _shotCounter ++;
-    // use the shotcounter to minimalize the amount of shots fired
+    // use the shotcounter to minimalize the amount of shots fired (delay between shots)
     if (_shotCounter >= 10 and _location.x <= 4) {
         this->_myWorld->addBullet(std::make_shared<Bullet>(true, this->_location));
         this->notify("newBullet");
