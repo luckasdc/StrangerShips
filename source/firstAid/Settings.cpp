@@ -30,8 +30,6 @@ void Settings::parseSettings(std::string filename) {
         _width = j["width"].get<int>();
         entry = "_height";
         _height = j["height"].get<int>();
-        entry = "_azerty";
-        _azerty = j["azerty"].get<bool>();
         entry = "_username";
         _username = j["username"].get<std::string>();
 
@@ -97,7 +95,6 @@ bool Settings::save(){
 
     j["width"] = _width;
     j["height"] = _height;
-    j["azerty"] = _azerty;
     j["username"] = _username;
     j["font"] = _font;
 
@@ -138,10 +135,6 @@ int Settings::get_width() const {
 
 int Settings::get_height() const {
     return _height;
-}
-
-bool Settings::is_azerty() const {
-    return _azerty;
 }
 
 const std::string &Settings::get_texture_playership() const {

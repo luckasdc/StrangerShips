@@ -39,7 +39,6 @@ public:
 private:
     int _width;
     int _height;
-    bool _azerty;
 
     std::string _username{};
     std::string _texture_playership{};
@@ -69,8 +68,6 @@ public:
     int get_width() const;
 
     int get_height() const;
-
-    bool is_azerty() const;
 
     const std::string &get_username() const;
 

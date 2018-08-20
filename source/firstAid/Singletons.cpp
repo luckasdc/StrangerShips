@@ -1,6 +1,7 @@
 
 #include "Singletons.h"
 
+
 void Stopwatch::start() {
     this->startTime = clock.now().time_since_epoch();
 }

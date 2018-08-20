@@ -6,16 +6,17 @@ You will need to have **SFML 2.3** or above installed on your computer, otherwis
 
 ## How to install
 To play the game, you just need to run the ```run.sh``` script. 
-Once the game is built and launched, it will prompt a question for which level you want to play.
-Just enter ``1`` , ``2``  or ``3`` , or another number if you created a different level in the *Levels* folder
-
+Once the game is built and launched, you'll see the main menu. You can change your settings in the config.json file. 
+Please be careful while changing settings, as the game won't run if it can't be parsed.
 
 ## How To Play
 You can move the playership using the ``up``, ``down``, ``left``  and ``right``  arrow keys
-and you can use the ``spacebar`` to fire some bullets.   
+and you can use the ``spacebar`` to launch some bullets.   
 
-Playing in *multiplayer-mode*? You can control the second (yellow)  bird using the ``z``, ``s``, ``q`` and ``d`` 
+Playing in *multiplayer-mode*? You can control the second (yellow)  bird using the ``W``, ``S``, ``A`` and ``D`` 
 keys and you can hit the ```LSHIFT``` key to fireee!
+
+Your score will rise each time you hit an enemy. 
 
 ## Dumb ways to die
 - You will lose a point when an enemy hits you.  
@@ -25,6 +26,6 @@ the longer you stay there, the more points you'll lose.
 - You will lose two points when you hit or fly through a Pipe (sporadic obstacle)
 
 ## Easy way to win
-- Each level has a certain amount of Enemy Waves. When you survive 'em all, you WIN!
+- Each level has a certain amount of Enemy Waves, and after them you'll need to defeat the BossBird. When you kan kill it, you WIN! When you press the play button on the score menu, you'll be transferred to the next level!
 
  Enjoy!

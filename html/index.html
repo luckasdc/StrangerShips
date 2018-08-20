@@ -96,10 +96,11 @@ $(document).ready(function(){initNavTree('index.html','');});
 <h2>Dependencies</h2>
 <p>You will need to have <b>SFML 2.3</b> or above installed on your computer, otherwise the game won't run.</p>
 <h2>How to install</h2>
-<p>To play the game, you just need to run the <code>run.sh</code> script. Once the game is built and launched, it will prompt a question for which level you want to play. Just enter <code>1</code> , <code>2</code> or <code>3</code> , or another number if you created a different level in the <em>Levels</em> folder</p>
+<p>To play the game, you just need to run the <code>run.sh</code> script. Once the game is built and launched, you'll see the main menu. You can change your settings in the config.json file. Please be careful while changing settings, as the game won't run if it can't be parsed.</p>
 <h2>How To Play</h2>
-<p>You can move the playership using the <code>up</code>, <code>down</code>, <code>left</code> and <code>right</code> arrow keys and you can use the <code>spacebar</code> to fire some bullets. <br />
- Playing in <em>multiplayer-mode</em>? You can control the second (yellow) bird using the <code>z</code>, <code>s</code>, <code>q</code> and <code>d</code> keys and you can hit the <code>LSHIFT</code> key to fireee!</p>
+<p>You can move the playership using the <code>up</code>, <code>down</code>, <code>left</code> and <code>right</code> arrow keys and you can use the <code>spacebar</code> to launch some bullets. <br />
+ Playing in <em>multiplayer-mode</em>? You can control the second (yellow) bird using the <code>W</code>, <code>S</code>, <code>A</code> and <code>D</code> keys and you can hit the <code>LSHIFT</code> key to fireee!</p>
+<p>Your score will rise each time you hit an enemy.</p>
 <h2>Dumb ways to die</h2>
 <ul>
 <li>You will lose a point when an enemy hits you. <br />
@@ -109,7 +110,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </ul>
 <h2>Easy way to win</h2>
 <ul>
-<li><p class="startli">Each level has a certain amount of Enemy Waves. When you survive 'em all, you WIN!</p>
+<li><p class="startli">Each level has a certain amount of Enemy Waves, and after them you'll need to defeat the BossBird. When you kan kill it, you WIN! When you press the play button on the score menu, you'll be transferred to the next level!</p>
 <p class="startli">Enjoy! </p>
 </li>
 </ul>

@@ -25,7 +25,7 @@ var searchData=
   ['state',['State',['../class_state.html',1,'']]],
   ['state_2ecpp',['State.cpp',['../_state_8cpp.html',1,'']]],
   ['state_2eh',['State.h',['../_state_8h.html',1,'']]],
-  ['statemanager',['StateManager',['../class_state_manager.html',1,'StateManager'],['../class_game_preferences.html#a57e56e9bee12b68332b18a35ebb35249',1,'GamePreferences::stateManager()'],['../class_state_manager.html#a1f30c5e25d1b642feb3230523edc7211',1,'StateManager::StateManager()']]],
+  ['statemanager',['StateManager',['../class_state_manager.html',1,'StateManager'],['../class_state_manager.html#a1f30c5e25d1b642feb3230523edc7211',1,'StateManager::StateManager()'],['../class_game_preferences.html#a57e56e9bee12b68332b18a35ebb35249',1,'GamePreferences::stateManager()']]],
   ['statemanager_2ecpp',['StateManager.cpp',['../_state_manager_8cpp.html',1,'']]],
   ['statemanager_2eh',['StateManager.h',['../_state_manager_8h.html',1,'']]],
   ['stopwatch',['Stopwatch',['../class_stopwatch.html',1,'']]],

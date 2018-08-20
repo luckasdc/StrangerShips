@@ -11,9 +11,9 @@ KeyController &KeyController::getKeyController() {
 
 Direction KeyController::processDirection(bool multiplayer) {
     if (multiplayer) {
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) return Left;
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) return Left;
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) return Right;
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) return Up;
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)) return Up;
         else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) return Down;
         return Idle;
     };

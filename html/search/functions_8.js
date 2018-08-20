@@ -6,7 +6,6 @@ var searchData=
   ['initheart',['initHeart',['../class_overlay_view.html#a0c693d2a0dcb801833831d020a69f412',1,'OverlayView']]],
   ['initleveltext',['initLevelText',['../class_overlay_view.html#a876c0c354c8b536ab5220f8d8f5cbd86',1,'OverlayView']]],
   ['initscore',['initScore',['../class_overlay_view.html#a5c7bd4a74f532c25a8889e800f18d618',1,'OverlayView']]],
-  ['is_5fazerty',['is_azerty',['../class_settings.html#a83fe0ec749e46f312b523760156b2958',1,'Settings']]],
   ['is_5finversed',['is_inversed',['../class_passive_entity.html#a41da2b8280dd00decec96651be6d363d',1,'PassiveEntity']]],
   ['isspriteclicked',['IsSpriteClicked',['../class_key_controller.html#a0caa3d57e1eae54db813f303239195bb',1,'KeyController']]]
 ];
