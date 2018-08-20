@@ -2,10 +2,8 @@
 #ifndef STRANGERSHIPS_SHIP_H
 #define STRANGERSHIPS_SHIP_H
 
-
 #include <tuple>
 #include "Entity.h"
-
 
 class Ship : public ActiveEntity {
 
@@ -29,11 +27,11 @@ public:
      * enemyship class
      */
     virtual void shoot() = 0;
-
-
 };
 
+
 class World;
+
 
 class PlayerShip : public Ship {
 
@@ -56,7 +54,6 @@ private:
 };
 
 class SecondPlayerShip : public PlayerShip {
-
 public:
 
     /**
@@ -66,7 +63,10 @@ public:
 
 };
 
+
 class World;
+
+
 class EnemyShip : public Ship {
 public:
     /**
@@ -99,14 +99,11 @@ protected:
     Direction _curdir;
     int _moveCounter;
     int _outOfRangecounter = 0;
-
 };
 
 
 class BossShip : public EnemyShip {
-
 public:
-
     /**
     * @brief default constructor, initializes all the params in BossShipView.cpp
     * using the given WorldPointer.
@@ -118,10 +115,6 @@ public:
     * when the bullet reaches an integer x (and will reset to 0 when shot).
     */
     void shoot() override ;
-
-
-
 };
-
 
 #endif //STRANGERSHIPS_SHIP_H

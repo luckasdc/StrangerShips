@@ -31,15 +31,31 @@
         {
             "name": "barry",
             "score": 3
+        },
+        {
+            "name": "barry",
+            "score": 3
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 7
+        },
+        {
+            "name": "barry",
+            "score": 7
         }
     ],
     "Levels": [
         {
-            "file": "level1.json",
+            "file": "../Levels/level1.json",
             "name": "Level 1"
         },
         {
-            "file": "level2.json",
+            "file": "../Levels/level2.json",
             "name": "Level 2"
         }
     ],

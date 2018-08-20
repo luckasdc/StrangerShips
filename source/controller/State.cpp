@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 9/08/18.
-//
 
 #include "State.h"
 #include <utility>
@@ -12,44 +9,26 @@
 
 PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _preferences(std::move(preferences)) {
 
-
 }
 
-
 void PlayingState::Init() {
-
-    // TODO LEVEL HARDCODED OP 1
-
     try {
-        std::string level = "../Levels/" + _preferences->_config->get_levels()[_preferences->currentLevel % _preferences->_config->get_levels().size()].file;
+        std::string level = _preferences->_config->get_levels()[_preferences->currentLevel % _preferences->_config->get_levels().size()].file;
         std::cout << "loading levelfile: " << level << "..." << std::endl;
         this->_world = std::make_shared<World> (level, this->_preferences->_multiplayer, _preferences);  ////
-
     }
     catch (const std::exception& e){
         std::cerr << "This is not a valid Level file! Error given: " << e.what() << std::endl;
     }
-
-    // TODO eigen exception class op basis van een exception tree
-
-
     // Load World and Parse Level:
     this->_view = std::make_shared<WorldView> (_world, _preferences);
-
     this->_world->loadFromLevel();
-
     this->aictr = std::make_shared<AIController>(this->_world);
     this->cctr = std::make_shared<CollisionController>(this->_world);
-
 }
 
-
-
-
 void PlayingState::HandleInput() {
-
     sf::Event event{};
-
     while (_preferences->_window->pollEvent(event))
     {
         // "close requested" event: we close the window
@@ -63,9 +42,7 @@ void PlayingState::HandleInput() {
         if(_preferences->_multiplayer) {
             if (KeyController::getKeyController().processShooting(event, true)) _world->getSecondPlayerShip()->shoot();
         }
-
     }
-
     // check which keys are currently pressed to control movement (we cannot use events)
 
     Direction dir = KeyController::getKeyController().processDirection(false);
@@ -73,12 +50,9 @@ void PlayingState::HandleInput() {
 
     if(dir != Idle) _world->getPlayerShip()->move(dir);
     if(dir2 != Idle && _preferences->_multiplayer) _world->getSecondPlayerShip()->move(dir2);
-
-
 }
 
 void PlayingState::Update() {
-
     // AI-controller: decides what the enemies are going to do
     aictr->makeDecisions();
     // AI-controller: launch a new wave and check if game is won
@@ -106,7 +80,6 @@ void PlayingState::Update() {
 }
 
 void PlayingState::Draw() {
-
     // Everything's ready for the next iteration!
     // clear the window with black color
     _preferences->_window->clear();
@@ -124,13 +97,11 @@ MenuState::MenuState(std::shared_ptr<GamePreferences> preferences) : _preference
 }
 
 void MenuState::Init() {
-
     // Set texture background
     this->_BgSprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
     this->_ButtonSprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> buttontexture(new sf::Texture);
-
     try {
         if (!texture->loadFromFile(_preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
             throw std::runtime_error("Could not load texture from file");
@@ -142,7 +113,6 @@ void MenuState::Init() {
     catch (std::runtime_error& e) {
         std::cerr << "Fatal error: " << e.what() << std::endl;
     }
-
     // transfer ownership of texture to MenuState
     this->_BgTexture = std::move(texture);
     this->_BgSprite->setTexture(*this->_BgTexture);
@@ -150,7 +120,6 @@ void MenuState::Init() {
     this->_ButtonSprite->setTexture(*this->_ButtonTexture);
 
     _ButtonSprite->setPosition((_preferences->width / 2) - (_ButtonSprite->getGlobalBounds().width / 2), (_preferences->height / 2) - (_ButtonSprite->getGlobalBounds().height / 2));
-
 }
 
 void MenuState::HandleInput() {
@@ -166,11 +135,7 @@ void MenuState::HandleInput() {
         if (KeyController::getKeyController().IsSpriteClicked(this->_ButtonSprite, sf::Mouse::Left, _preferences->_window)) {
             // Switch To Main Menu
             this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
-
-
         }
-
-
     }
 }
 
@@ -191,14 +156,11 @@ void MenuState::Draw() {
     _preferences->_window->display();
 }
 
-
-
 ScoresState::ScoresState(std::shared_ptr<GamePreferences> preferences, int score, bool won) : _preferences(std::move(preferences)), _score(score), _won(won) {
 
 }
 
 void ScoresState::Init() {
-
     // Set texture background
     this->_BgSprite = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> texture(new sf::Texture);
@@ -209,8 +171,6 @@ void ScoresState::Init() {
     this->_retryButton = std::make_shared<sf::Sprite>();
     std::unique_ptr<sf::Texture> _retryButtonTexture(new sf::Texture);
 
-
-    // TODO hardcode weghalen
     try {
         if (!texture->loadFromFile(_preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
             throw std::runtime_error("Could not load texture from file");
@@ -266,7 +226,6 @@ void ScoresState::Init() {
     _highscores.setColor(sf::Color::White);
     _highscores.setOrigin(sf::Vector2f(_highscores.getGlobalBounds().width / 2, _highscores.getGlobalBounds().height / 2));
     _highscores.setPosition(sf::Vector2f(_preferences->width / 10 * 2.2, _preferences->height / 2.7 ));
-
 }
 
 void ScoresState::HandleInput() {
@@ -283,7 +242,6 @@ void ScoresState::HandleInput() {
             // Switch To Main Menu
             if(_won) this->_preferences->currentLevel++;
             this->_preferences->stateManager->pushState(std::make_unique<PlayingState>(this->_preferences));
-
         }
     }
 }

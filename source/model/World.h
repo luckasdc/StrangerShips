@@ -17,8 +17,6 @@ class GamePreferences;
 class World : public Subject {
 
 public:
-
-
     /**
      * @brief a constructur which takes a filename of a level, generating a Level object, parsing
      * the file and adding it to the World.
@@ -68,7 +66,6 @@ public:
     * @return std::vector<std::shared_ptr<EnemyShip>>
     */
     const std::vector<std::shared_ptr<Obstacle>> &getObstacleList() const;
-
 
     /**
      * @brief adds a bullet to the bulletList
@@ -128,9 +125,6 @@ public:
      */
     int getScore() const;
 
-
-
-
 private:
     std::shared_ptr<PlayerShip> _playerShip;
     std::shared_ptr<PlayerShip> _secondPlayerShip;
@@ -141,9 +135,6 @@ private:
     std::shared_ptr<GamePreferences> _preferences;
     bool _multiplayer;
     int score = 0;
-
-
 };
-
 
 #endif //STRANGERSHIPS_WORLD_H

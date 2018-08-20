@@ -2,10 +2,8 @@
 #ifndef STRANGERSHIPS_WorldView_H
 #define STRANGERSHIPS_WorldView_H
 
-
 #include "EntityView.h"
 #include "OverlayView.h"
-
 
 class WorldView : public Observer {
 
@@ -40,8 +38,6 @@ public:
      */
     void initBackground();
 
-
-
 protected:
     std::shared_ptr<World> _world;
     std::vector<std::shared_ptr<ActiveEntityView> > _entityViews = {};
@@ -50,8 +46,6 @@ protected:
     std::unique_ptr<sf::Texture> _BgTexture;
     std::shared_ptr<OverlayView> _overlay;
     std::shared_ptr<GamePreferences> _preferences;
-
-
 };
 
 

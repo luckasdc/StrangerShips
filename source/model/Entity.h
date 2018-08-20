@@ -11,16 +11,19 @@ struct Location {
     float y;
 };
 
+
 class Entity : public Subject {
 
+protected:
+      Entity() = default;
+     ~Entity() = default;
 };
-
-
 
 
 class ActiveEntity : public Entity {
 public:
-
+    ActiveEntity() = default;
+    ~ActiveEntity() = default;
 
     /**
      * @brief returns the location of an object in [-3, 3] x [-4, 4] dimensions
@@ -45,9 +48,6 @@ public:
      * @param int health,
      */
     void hit(int health);
-
-
-
 
 protected:
     Location _location;
@@ -75,13 +75,11 @@ public:
      */
     bool is_inversed() const;
 
-
 protected:
     Location _bottomRightCorner = {};
     float _width {};
     float _height {};
     bool _inversed = true;
-
 };
 
 

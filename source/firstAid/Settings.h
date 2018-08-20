@@ -6,22 +6,22 @@
 #include <string>
 #include <vector>
 
+
 typedef struct {
     std::string name;
     int highscore;
 } Highscore;
+
 
 typedef struct {
     std::string name;
     std::string file;
 } Levelfile;
 
+
 class Settings {
 
 public:
-
-
-
     /**
      * @brief This constructor will call the parseSettings()-function to instantiate
      * everything based on the given filename (of a settings.json file)
@@ -36,26 +36,16 @@ public:
     */
     void parseSettings(std::string filename);
 
-
 private:
-
     int _width;
     int _height;
     bool _azerty;
+
     std::string _username{};
-public:
-    const std::string &get_username() const;
-
-private:
-
     std::string _texture_playership{};
     std::string _texture_secondplayership{};
     std::string _texture_enemyship{};
     std::string _texture_bossbird{};
-public:
-    const std::string &get_texture_bossbird() const;
-
-private:
     std::string _texture_bullet{};
     std::string _texture_sporadicobstacle{};
     std::string _texture_heart{};
@@ -69,12 +59,9 @@ private:
     std::string _font{};
 
     std::vector<Levelfile> _levels;
-
     std::vector<Highscore> _highscores;
 
-
 public:
-
     void append_score(Highscore highscore);
 
     bool save();
@@ -84,6 +71,10 @@ public:
     int get_height() const;
 
     bool is_azerty() const;
+
+    const std::string &get_username() const;
+
+    const std::string &get_texture_bossbird() const;
 
     const std::string &get_texture_playership() const;
 

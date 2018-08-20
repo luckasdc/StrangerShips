@@ -16,9 +16,6 @@ void Obstacle::shiftLeft() {
     this->notify("shift");
 }
 
-
-
-
 /*
  * BorderObstacle
  */
@@ -35,7 +32,6 @@ BorderObstacle::BorderObstacle(float speed, float xValueBottomRightCorner, bool 
 
     this->_width = 2;
     this->_height = 0.76;
-
 }
 
 /*
@@ -53,7 +49,6 @@ SporadicObstacle::SporadicObstacle(float speed, float yValueBottomRightCorner) {
 
     this->_width = 2.15;
     this->_height = 0.35;
-
 }
 
 void SporadicObstacle::shiftLeft() {

@@ -19,10 +19,10 @@ public:
     PlayerShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr);
 };
 
+
 class SecondPlayerShipView : public PlayerShipView {
 
 public:
-
     /**
      * @brief default constructor of a PlayerShipView
      * @param shared_ptr<window>
@@ -30,14 +30,10 @@ public:
      */
     SecondPlayerShipView(const std::shared_ptr<GamePreferences> &preferences,
                          const std::shared_ptr<ActiveEntity> &_entityPtr);
-
-
 };
 
 
-
 class EnemyShipView : public ActiveEntityView {
-
 public:
     /**
      * @brief default constructor of a EnemyShipView
@@ -45,13 +41,11 @@ public:
      * @param shared_ptr<EnemyShip>
      */
     EnemyShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr);
-
 };
 
+
 class BossEnemyShipView : public EnemyShipView {
-
 public:
-
     /**
     * @brief default constructor of a BossEnemyShipView
     * @param shared_ptr<window>
@@ -61,6 +55,5 @@ public:
 
     void makeSprite(const std::string &file);
 };
-
 
 #endif //STRANGERSHIPS_SHIPVIEW_H

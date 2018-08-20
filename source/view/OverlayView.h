@@ -52,7 +52,6 @@ public:
     void initLevelText();
 
 private:
-
     std::shared_ptr<GamePreferences> _preferences;
     std::shared_ptr<World> _world;
     std::shared_ptr<sf::Sprite> _heartSprite;
@@ -60,10 +59,6 @@ private:
     sf::Text _scoreText;
     sf::Text _levelText;
     sf::Font _font;
-
-
-
 };
-
 
 #endif //STRANGERSHIPS_OVERLAYVIEW_H

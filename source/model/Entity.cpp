@@ -5,18 +5,14 @@ Location ActiveEntity::getLocation() {
     return _location;
 }
 
-/// Getters
-
 double ActiveEntity::getHealth() {
     return _health;
 }
-
 
 void ActiveEntity::hit(int health) {
     if (health > (int)this->_health) {this->_health = 0 ; return; }
     this->_health -= health;
 }
-
 
 const Location &PassiveEntity::get_bottomRightCorner() const {
     return _bottomRightCorner;

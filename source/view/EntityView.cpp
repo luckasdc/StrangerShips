@@ -14,7 +14,6 @@ void EntityView::makeSprite(const std::string &file) {
     if (!texture->loadFromFile(file, sf::IntRect(0, 0, 150, 150))) {
         throw ex::ResourceException(file);
     }
-
     // transfer ownership of texture to EntityView
     this->_texture = std::move(texture);
     this->_sprite->setTexture(*this->_texture);
@@ -67,7 +66,6 @@ void PassiveEntityView::makeSprite(const std::string &file) {
         if (!texture->loadFromFile(file, sf::IntRect(0, 0, w, h))){
             throw ex::ResourceException(file);
         }
-
 
     // transfer ownership of texture to EntityView
     this->_texture = std::move(texture);

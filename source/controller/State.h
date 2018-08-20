@@ -1,6 +1,3 @@
-//
-// Created by Luckas Declerck on 9/08/18.
-//
 
 #ifndef STRANGERSHIPS_STATE_H
 #define STRANGERSHIPS_STATE_H
@@ -19,20 +16,31 @@ class GamePreferences;
 class State {
 
 public:
+    /**
+     * @brief initalizes a given State, initiates values, parses files,... (pure virtual)
+     */
     virtual void Init() = 0;
 
+    /**
+     * @brief handle key inputs and clicks (pure virtual)
+     */
     virtual void HandleInput() = 0;
-    virtual void Update() = 0;
-    virtual void Draw() = 0;
 
-    virtual void Pause() { }
-    virtual void Resume() { }
+    /**
+     * @brief recalculate stuff while playing (pure virtual)
+     */
+    virtual void Update() = 0;
+
+    /**
+     * @brief prints everything on the screen (pure virtual)
+     */
+    virtual void Draw() = 0;
 };
+
 
 class MenuState : public State {
 
 public:
-
     explicit MenuState(std::shared_ptr<GamePreferences> preferences);
 
     void Init() override;
@@ -41,20 +49,17 @@ public:
     void Draw() override;
 
 private:
-
     std::shared_ptr<GamePreferences> _preferences;
     std::shared_ptr<sf::Sprite> _BgSprite;
     std::shared_ptr<sf::Texture> _BgTexture;
     std::shared_ptr<sf::Sprite> _ButtonSprite;
     std::shared_ptr<sf::Texture> _ButtonTexture;
-
-
 };
+
 
 class PlayingState : public State {
 
 public:
-
     explicit PlayingState(std::shared_ptr<GamePreferences> preferences);
 
     void Init() override;
@@ -72,15 +77,10 @@ private:
 
 };
 
-class PausedState : public State {
-
-
-};
 
 class ScoresState : public State {
 
 public:
-
     explicit ScoresState(std::shared_ptr<GamePreferences> preferences, int score, bool won);
 
     void Init() override;
@@ -89,7 +89,6 @@ public:
     void Draw() override;
 
 private:
-
     std::shared_ptr<GamePreferences> _preferences;
     std::shared_ptr<sf::Sprite> _BgSprite;
     std::shared_ptr<sf::Texture> _BgTexture;
@@ -108,12 +107,7 @@ private:
     bool _won;
 
     sf::Font _font;
-
-
-
 };
-
-
 
 
 #endif //STRANGERSHIPS_STATE_H

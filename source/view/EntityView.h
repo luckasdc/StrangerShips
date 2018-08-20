@@ -37,12 +37,10 @@ public:
      */
     virtual void draw();
 
-
 protected:
     std::shared_ptr<GamePreferences> _preferences;
     std::shared_ptr<sf::Sprite> _sprite;
     std::unique_ptr<sf::Texture> _texture = nullptr;
-
 };
 
 
@@ -71,8 +69,6 @@ public:
 
 protected:
     std::shared_ptr<ActiveEntity> _entityPtr;
-
-
 };
 
 
@@ -106,7 +102,6 @@ public:
      * @return shared_ptr<ActiveEntity>
      */
     const std::shared_ptr <PassiveEntity> &get_entityPtr() const;
-
 
 protected:
     std::shared_ptr<PassiveEntity> _entityPtr;

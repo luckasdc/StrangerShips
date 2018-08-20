@@ -35,8 +35,6 @@ public:
 
     float get_sporadicObstacleSpeed() const;
 
-private:
-public:
     float get_bossShipSpeed() const;
 
     int get_playerShipHealth() const;

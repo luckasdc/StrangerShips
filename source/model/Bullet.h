@@ -2,7 +2,6 @@
 #ifndef STRANGERSHIPS_BULLET_H
 #define STRANGERSHIPS_BULLET_H
 
-
 #include "Entity.h"
 
 class Bullet : public ActiveEntity {
@@ -31,7 +30,6 @@ public:
      * @return bool
      */
     bool fromEnemy();
-
 
 private:
     bool _enemyShot;

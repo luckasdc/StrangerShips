@@ -2,7 +2,6 @@
 #ifndef STRANGERSHIPS_SUBJECT_H
 #define STRANGERSHIPS_SUBJECT_H
 
-
 #include <memory>
 #include <utility>
 #include <string>
@@ -33,9 +32,8 @@ public:
 
 private:
     std::vector<std::shared_ptr<Observer>> _observers ;
-
-
 };
+
 
 class Observer : public std::enable_shared_from_this<Observer>{
 protected:

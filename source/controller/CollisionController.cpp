@@ -30,10 +30,7 @@ void CollisionController::updateBulletsAndObstacles() {
     }
 }
 
-
-
 void CollisionController::checkPlayerShip() {
-
     waitCounter++;
     auto snapshotOfObstacles = _world->getObstacleList();
 
@@ -52,34 +49,24 @@ void CollisionController::checkPlayerShip() {
 }
 
 void CollisionController::checkBulletWithShips(std::shared_ptr<Bullet> bullet) {
-
     if (circleCollisionTest(bullet->getLocation(), _world->getPlayerShip()->getLocation()) and bullet->fromEnemy()) {
         bullet->hit(1);
         _world->getPlayerShip()->hit(1);
     }
 
     for (const auto enemy : _world->getEnemyShipList()) {
-
         if (bullet->fromEnemy()) break;
-
         if (circleCollisionTest(enemy->getLocation(), bullet->getLocation())) {
-            //std::cout << "COLLISION" << std::endl;
             bullet->hit(1);
             enemy->hit(3);
             _world->incrementScore();
-
-
         }
     }
-
 }
 
-
 void CollisionController::checkBulletRange(std::shared_ptr<Bullet> bullet) {
-
     if (bullet->getLocation().x == 4 or bullet->getLocation().x == -4) {
         bullet->hit(1);
-        //_world->removeBullet(bullet);
     }
 }
 
@@ -90,7 +77,6 @@ void CollisionController::checkObstacleRange(std::shared_ptr<Obstacle> obstacle)
 }
 
 bool CollisionController::circleCollisionTest(Location first, Location second) {
-
     float radius_circle1 = 0.15;
     float radius_circle2 = 0.15;
 
@@ -102,7 +88,6 @@ bool CollisionController::circleCollisionTest(Location first, Location second) {
 }
 
 bool CollisionController::circleRectangleCollisionTest(Location circle, Location rectangle, float width, float height, bool inversed) {
-
     float radius_circle = 0.15;
 
     // TODO werkt voor boven- en onderkant, niet voor de SporadicObstacles
@@ -116,9 +101,7 @@ bool CollisionController::circleRectangleCollisionTest(Location circle, Location
     float dx = circle.x - std::max(rectangle.x - width, std::min(circle.x, rectangle.x + width - width));
     float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height));
     return (dx * dx + dy * dy) < (radius_circle * radius_circle);
-
-
-    }
+}
 
 
 

@@ -13,7 +13,6 @@ Settings::Settings(std::string filename) {
 }
 
 void Settings::parseSettings(std::string filename) {
-
     json j;
     try {
         std::ifstream i (filename);
@@ -94,7 +93,6 @@ void Settings::append_score(Highscore highscore) {
 }
 
 bool Settings::save(){
-
     json j;
 
     j["width"] = _width;

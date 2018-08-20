@@ -29,7 +29,6 @@ void Bullet::move(Direction dir) {
     }
 
     this->notify("movement");
-
 }
 
 bool Bullet::fromEnemy() {

@@ -9,7 +9,6 @@
 #include "../controller/StateManager.h"
 #include "../controller/GameController.h"
 
-
 void WorldView::draw() {
 
     _preferences->_window->draw(*_BgSprite);
@@ -24,7 +23,6 @@ void WorldView::draw() {
     _overlay->drawLives();
     _overlay->drawScore();
     _overlay->drawLevel();
-
 }
 
 void WorldView::update(std::string what) {
@@ -73,7 +71,6 @@ void WorldView::update(std::string what) {
             }
         }
     }
-
 }
 
 void WorldView::initBackground() {
@@ -84,16 +81,13 @@ void WorldView::initBackground() {
     if (!texture->loadFromFile(_preferences->_config->get_texture_background(), sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
         throw ex::ResourceException(_preferences->_config->get_texture_background());
     }
-
     // transfer ownership of texture to EntityView
     this->_BgTexture = std::move(texture);
     this->_BgSprite->setTexture(*this->_BgTexture);
-
 }
 
 WorldView::WorldView(const std::shared_ptr<World> &world, std::shared_ptr<GamePreferences>& preferences)
         : Observer(world), _world(world), _preferences(preferences)  {
         initBackground();
         _overlay = std::make_shared<OverlayView>(_preferences, _world);
-
         }

@@ -2,7 +2,6 @@
 #ifndef STRANGERSHIPS_BULLETVIEW_H
 #define STRANGERSHIPS_BULLETVIEW_H
 
-
 #include "EntityView.h"
 
 class BulletView : public ActiveEntityView {

@@ -2,7 +2,6 @@
 #ifndef STRANGERSHIPS_OBSTACLE_H
 #define STRANGERSHIPS_OBSTACLE_H
 
-
 #include "Entity.h"
 
 class Obstacle : public PassiveEntity{
@@ -19,8 +18,6 @@ public:
      */
     virtual void shiftLeft();
 
-
-
 protected:
     float _speed{};
 };
@@ -36,7 +33,6 @@ public:
      * @param inversed
      */
     BorderObstacle(float speed, float xValueBottomRightCorner, bool inversed = false);
-
 
 };
 

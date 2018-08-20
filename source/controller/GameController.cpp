@@ -7,8 +7,7 @@
 #include "StateManager.h"
 
 
-Game::Game(const std::string &configfile)
-{
+Game::Game(const std::string &configfile) {
     this->_config = std::make_shared<Settings>(configfile);
 
     this->_preferences = std::make_shared<GamePreferences>(_config->get_width(), _config->get_height());
@@ -24,8 +23,7 @@ Game::Game(const std::string &configfile)
     this->_preferences->stateManager->pushState(std::make_unique<MenuState>(this->_preferences));
 }
 
-void Game::run()
-{
+void Game::run() {
     Stopwatch::getInstance().start();
 
     while (this->_preferences->_window->isOpen()) {
@@ -34,7 +32,6 @@ void Game::run()
         if (Stopwatch::getInstance().elapsedMilliSeconds() < 16) {
             continue;
         }
-
         Stopwatch::getInstance().start();
 
         _preferences->stateManager->processStates();
@@ -43,11 +40,9 @@ void Game::run()
         _preferences->stateManager->getCurrentState()->Draw();
 
     }
-    
 }
 
 GamePreferences::GamePreferences(int width, int height) {
-
     _window = std::make_shared<sf::RenderWindow> (sf::VideoMode(width, height), "Flappy Ships");
     _window->create(sf::VideoMode(width, height), "Flappy Ships", sf::Style::Close | sf::Style::Titlebar);
 

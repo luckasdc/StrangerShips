@@ -15,7 +15,6 @@ void OverlayView::drawLives() {
         newHeart->setPosition(50 + (i * 30), _preferences->_window->getSize().y - 50);
         _preferences->_window->draw(*newHeart);
     }
-
 }
 
 void OverlayView::initHeart() {
@@ -26,11 +25,9 @@ void OverlayView::initHeart() {
     if (!texture->loadFromFile(_preferences->_config->get_texture_heart(), sf::IntRect(0, 0, _preferences->_window->getSize().x, _preferences->_window->getSize().y))){
         throw ex::ResourceException(_preferences->_config->get_texture_heart());
     }
-
     // transfer ownership of texture to EntityView
     this->_heartTexture = std::move(texture);
     this->_heartSprite->setTexture(*this->_heartTexture);
-
 }
 
 void OverlayView::drawScore() {
@@ -55,7 +52,6 @@ void OverlayView::initLevelText() {
     if (!_font.loadFromFile(_preferences->_config->get_font())) {
         throw ex::ResourceException(_preferences->_config->get_font());
     }
-
     _levelText.setFont(_font);
     _levelText.setString(_preferences->_config->get_levels()[_preferences->currentLevel].name);
     _levelText.setCharacterSize(56);
