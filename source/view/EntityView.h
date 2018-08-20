@@ -107,8 +107,6 @@ protected:
     std::shared_ptr<PassiveEntity> _entityPtr;
     float _width {};
     float _height {};
-
-
 };
 
 #endif //STRANGERSHIPS_ENTITYVIEW_H
