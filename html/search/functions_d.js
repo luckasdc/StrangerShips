@@ -1,9 +1,8 @@
-var searchData =
-    [
-        ['parselevel', ['parseLevel', ['../class_level.html#ac44ee131c0de9e66a32f90c80afabe36', 1, 'Level']]],
-        ['passiveentityview', ['PassiveEntityView', ['../class_passive_entity_view.html#a8e9f1ef7fcc981741e4bd41cac28bc4d', 1, 'PassiveEntityView']]],
-        ['playership', ['PlayerShip', ['../class_player_ship.html#aec9ea2fb7e07f6ca941a4e605e250c53', 1, 'PlayerShip']]],
-        ['playershipview', ['PlayerShipView', ['../class_player_ship_view.html#aca48edd14836cb2c3b05466db4082f90', 1, 'PlayerShipView']]],
-        ['processdirection', ['processDirection', ['../class_key_controller.html#a2bc8381a28e97711a174303ca16d1390', 1, 'KeyController']]],
-        ['processshooting', ['processShooting', ['../class_key_controller.html#ad471cdbcc56efa3f21ac89a088e0f4d6', 1, 'KeyController']]]
-    ];
+var searchData=
+[
+  ['observer',['Observer',['../class_observer.html#a179c0538524b51d5de4b244e798caf38',1,'Observer']]],
+  ['obstacle',['Obstacle',['../class_obstacle.html#a2ca1c426c77a3e2763250434ab51dae4',1,'Obstacle']]],
+  ['obstacleview',['ObstacleView',['../class_obstacle_view.html#a5ed928a4f6ec151750a3ac9b2fae989d',1,'ObstacleView']]],
+  ['operator_3d',['operator=',['../class_singleton.html#ab1499464be0243e875fe2fdd2e768982',1,'Singleton']]],
+  ['overlayview',['OverlayView',['../class_overlay_view.html#abeaba9b06c09335b11f686a4ab8d7db9',1,'OverlayView']]]
+];

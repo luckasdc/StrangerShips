@@ -1,6 +1,4 @@
-var searchData =
-    [
-        ['launchsporadicobstacle', ['launchSporadicObstacle', ['../class_a_i_controller.html#a3a17234f5e2a2fd28a1de2f914dae443', 1, 'AIController']]],
-        ['level', ['Level', ['../class_level.html#a5fa303ec69c77e681808d956ee5a0935', 1, 'Level']]],
-        ['loadfromlevel', ['loadFromLevel', ['../class_world.html#a63c168a7d53ef87b88e6e2f210a9592f', 1, 'World']]]
-    ];
+var searchData=
+[
+  ['keycontroller',['KeyController',['../class_key_controller.html#a4a20cc6316c0ab58588052d87bd40271',1,'KeyController']]]
+];

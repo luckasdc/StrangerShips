@@ -1,4 +1,4 @@
-var searchData =
-    [
-        ['collisioncontroller', ['CollisionController', ['../class_collision_controller.html', 1, '']]]
-    ];
+var searchData=
+[
+  ['collisioncontroller',['CollisionController',['../class_collision_controller.html',1,'']]]
+];

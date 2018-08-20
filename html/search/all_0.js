@@ -1,10 +1,29 @@
-var searchData =
-    [
-        ['activeentity', ['ActiveEntity', ['../class_active_entity.html', 1, '']]],
-        ['activeentityview', ['ActiveEntityView', ['../class_active_entity_view.html', 1, 'ActiveEntityView'], ['../class_active_entity_view.html#a28cff5a839729525452d559602340802', 1, 'ActiveEntityView::ActiveEntityView()']]],
-        ['addbullet', ['addBullet', ['../class_world.html#ac3034ba3990fd34d8a5ee7a25edc5aa9', 1, 'World']]],
-        ['addenemy', ['addEnemy', ['../class_world.html#ac0c9e37265b4f3032469fed4ef058f73', 1, 'World']]],
-        ['addsporadicobstacle', ['addSporadicObstacle', ['../class_world.html#a1aaa55af1738e25ab339204f40edc095', 1, 'World']]],
-        ['aicontroller', ['AIController', ['../class_a_i_controller.html', 1, 'AIController'], ['../class_a_i_controller.html#ac34151a60f53b9520f5c42088cf6f6ca', 1, 'AIController::AIController()']]],
-        ['attach', ['attach', ['../class_subject.html#a7e360b2f847983bff270c67b6aeb153b', 1, 'Subject']]]
-    ];
+var searchData=
+[
+  ['_5fbgsprite',['_BgSprite',['../class_world_view.html#a3984040ec0a07ea1db60acfd6efdd58c',1,'WorldView']]],
+  ['_5fbgtexture',['_BgTexture',['../class_world_view.html#a40d9842bade7f23fda851dc310ba2d10',1,'WorldView']]],
+  ['_5fbottomrightcorner',['_bottomRightCorner',['../class_passive_entity.html#a01e165d90c1c168200ce94dc826067f5',1,'PassiveEntity']]],
+  ['_5fconfig',['_config',['../class_game_preferences.html#a4b6b680bef241d53c4f3f328b67049e3',1,'GamePreferences']]],
+  ['_5fcurdir',['_curdir',['../class_enemy_ship.html#ae356db91db5722506709245def76b4d5',1,'EnemyShip']]],
+  ['_5fentityptr',['_entityPtr',['../class_active_entity_view.html#a4df5edf530ee22549037c7727aec0f42',1,'ActiveEntityView::_entityPtr()'],['../class_passive_entity_view.html#a52e37f33778b8a1013b102172a24fc5b',1,'PassiveEntityView::_entityPtr()']]],
+  ['_5fentityviews',['_entityViews',['../class_world_view.html#a54114b8d710d45dc117f3217cfb82250',1,'WorldView']]],
+  ['_5fhealth',['_health',['../class_active_entity.html#af996548cb02a7a42c441de68d9fdd2a3',1,'ActiveEntity']]],
+  ['_5fheight',['_height',['../class_passive_entity.html#acbdebe7e52cb033cb553393a4c68a2b0',1,'PassiveEntity::_height()'],['../class_passive_entity_view.html#ae9412f38df52a3cd9eddc31b01f2def5',1,'PassiveEntityView::_height()']]],
+  ['_5finversed',['_inversed',['../class_passive_entity.html#a5666e99d281d40f201db01fbac7c3897',1,'PassiveEntity']]],
+  ['_5flocation',['_location',['../class_active_entity.html#a02ac4f9a0b85fc1d2a6e4b9b981f67d5',1,'ActiveEntity']]],
+  ['_5fmovecounter',['_moveCounter',['../class_enemy_ship.html#a7bd2967c07c51fa88da0ccdaca2e15c5',1,'EnemyShip']]],
+  ['_5fmultiplayer',['_multiplayer',['../class_game_preferences.html#a16a3da99556d1c27b69cf37f2348115b',1,'GamePreferences']]],
+  ['_5fmyworld',['_myWorld',['../class_enemy_ship.html#a9f4c0483fa200718e7c369d7bafdf519',1,'EnemyShip']]],
+  ['_5foutofrangecounter',['_outOfRangecounter',['../class_enemy_ship.html#a3497663d563f707578ee31b0b79a6fd5',1,'EnemyShip']]],
+  ['_5foverlay',['_overlay',['../class_world_view.html#ae8dd384ded46dd68385348921c559364',1,'WorldView']]],
+  ['_5fpassiveentityviews',['_passiveEntityViews',['../class_world_view.html#a4c7b625008b8a6b21d53728bd4899f98',1,'WorldView']]],
+  ['_5fpreferences',['_preferences',['../class_entity_view.html#a36ebd5821cb288b6f27e10c8267c03d0',1,'EntityView::_preferences()'],['../class_world_view.html#a9f049d79cb47d9e62135a2d4fa76bc37',1,'WorldView::_preferences()']]],
+  ['_5fshotcounter',['_shotCounter',['../class_enemy_ship.html#add78678ba25dab66101f2aa53251395f',1,'EnemyShip']]],
+  ['_5fspeed',['_speed',['../class_active_entity.html#a5e6bae3c0a0f18fb628f362067c9cf92',1,'ActiveEntity::_speed()'],['../class_obstacle.html#ad41d3ddf0960128647fe09d5637509e1',1,'Obstacle::_speed()']]],
+  ['_5fsprite',['_sprite',['../class_entity_view.html#a58dd0228414a2c6b64902583e8abcacb',1,'EntityView']]],
+  ['_5fsubject',['_subject',['../class_observer.html#a190ca4180e3f28838f3f30af263b8feb',1,'Observer']]],
+  ['_5ftexture',['_texture',['../class_entity_view.html#acf4dc89ac6a1dd6573ce5a3d9e3d88cc',1,'EntityView']]],
+  ['_5fwidth',['_width',['../class_passive_entity.html#a1efaacaeafced0117b41fab4b77c15d0',1,'PassiveEntity::_width()'],['../class_passive_entity_view.html#a8a0595c05b67abffba3bb7d21b9af1dd',1,'PassiveEntityView::_width()']]],
+  ['_5fwindow',['_window',['../class_game_preferences.html#a99957b31ef35b9b9b90c91949ac4bab9',1,'GamePreferences']]],
+  ['_5fworld',['_world',['../class_world_view.html#a77a3485f506974b6b0ce2b8c7eb5cab4',1,'WorldView']]]
+];

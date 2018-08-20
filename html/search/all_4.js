@@ -1,9 +1,10 @@
-var searchData =
-    [
-        ['elapsedmilliseconds', ['elapsedMilliSeconds', ['../class_stopwatch.html#a00ee99fb919ba5c6a18b36a8ca1ae16a', 1, 'Stopwatch']]],
-        ['enemyship', ['EnemyShip', ['../class_enemy_ship.html', 1, 'EnemyShip'], ['../class_enemy_ship.html#abb1df5b9b71ef30c2b39ebdf3562fc52', 1, 'EnemyShip::EnemyShip()']]],
-        ['enemyshipview', ['EnemyShipView', ['../class_enemy_ship_view.html', 1, 'EnemyShipView'], ['../class_enemy_ship_view.html#a47d041f0d22d6926b8ab43ee3ace0a3c', 1, 'EnemyShipView::EnemyShipView()']]],
-        ['entity', ['Entity', ['../class_entity.html', 1, '']]],
-        ['entityview', ['EntityView', ['../class_entity_view.html', 1, 'EntityView'], ['../class_entity_view.html#ab2d2532794957016c09f0369cf5d040c', 1, 'EntityView::EntityView()']]],
-        ['escape', ['escape', ['../class_enemy_ship.html#a466df59585405921ededee16e7cc66b8', 1, 'EnemyShip']]]
-    ];
+var searchData=
+[
+  ['detach',['detach',['../class_subject.html#acf57e8b52ea783aaedd87056a53e0125',1,'Subject']]],
+  ['direction',['Direction',['../_entity_8h.html#a224b9163917ac32fc95a60d8c1eec3aa',1,'Entity.h']]],
+  ['down',['Down',['../_entity_8h.html#a224b9163917ac32fc95a60d8c1eec3aaabcf8c79e9a5f5f9d606fb35645a0fb27',1,'Entity.h']]],
+  ['draw',['Draw',['../class_state.html#a8b0cdb0e7450a9bb3580a33dfbe4d981',1,'State::Draw()'],['../class_menu_state.html#aa031bfad9e24665ff12492e77929f7ee',1,'MenuState::Draw()'],['../class_playing_state.html#a997d94f01b247a53fe10620e3c355dc1',1,'PlayingState::Draw()'],['../class_scores_state.html#ad22a64b974cb761b234223a00d0cf0c5',1,'ScoresState::Draw()'],['../class_entity_view.html#ab380e3eef773330adeffe9628eee71fb',1,'EntityView::draw()'],['../class_world_view.html#a82fc44742e135dae3aebbb36ea35d58a',1,'WorldView::draw()']]],
+  ['drawlevel',['drawLevel',['../class_overlay_view.html#aff2559a0cae748c3efd094da3a74e698',1,'OverlayView']]],
+  ['drawlives',['drawLives',['../class_overlay_view.html#a51a71378bb739049305a766c80d0d4b1',1,'OverlayView']]],
+  ['drawscore',['drawScore',['../class_overlay_view.html#acbb5edad61f221cd70437ff8bb63c817',1,'OverlayView']]]
+];

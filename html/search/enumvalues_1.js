@@ -1,4 +1,4 @@
-var searchData =
-    [
-        ['boolean', ['boolean', ['../namespacenlohmann_1_1detail.html#a90aa5ef615aa8305e9ea20d8a947980fa84e2c64f38f78ba3ea5c905ab5a2da27', 1, 'nlohmann::detail']]]
-    ];
+var searchData=
+[
+  ['idle',['Idle',['../_entity_8h.html#a224b9163917ac32fc95a60d8c1eec3aaad3fa9ae9431d6cb1772f9d9df48cab19',1,'Entity.h']]]
+];

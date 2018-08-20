@@ -1,4 +1,4 @@
-var searchData =
-    [
-        ['key', ['key', ['../classnlohmann_1_1basic__json.html#aea1c863b719b4ca5b77188c171bbfafea3c6e0b8a9c15224a8228b9a98ca1531d', 1, 'nlohmann::basic_json']]]
-    ];
+var searchData=
+[
+  ['right',['Right',['../_entity_8h.html#a224b9163917ac32fc95a60d8c1eec3aaad48f7af8c070184f3774c8e85854eb66',1,'Entity.h']]]
+];

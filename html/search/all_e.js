@@ -1,10 +1,5 @@
-var searchData =
-    [
-        ['parselevel', ['parseLevel', ['../class_level.html#ac44ee131c0de9e66a32f90c80afabe36', 1, 'Level']]],
-        ['passiveentity', ['PassiveEntity', ['../class_passive_entity.html', 1, '']]],
-        ['passiveentityview', ['PassiveEntityView', ['../class_passive_entity_view.html', 1, 'PassiveEntityView'], ['../class_passive_entity_view.html#a8e9f1ef7fcc981741e4bd41cac28bc4d', 1, 'PassiveEntityView::PassiveEntityView()']]],
-        ['playership', ['PlayerShip', ['../class_player_ship.html', 1, 'PlayerShip'], ['../class_player_ship.html#aec9ea2fb7e07f6ca941a4e605e250c53', 1, 'PlayerShip::PlayerShip()']]],
-        ['playershipview', ['PlayerShipView', ['../class_player_ship_view.html', 1, 'PlayerShipView'], ['../class_player_ship_view.html#aca48edd14836cb2c3b05466db4082f90', 1, 'PlayerShipView::PlayerShipView()']]],
-        ['processdirection', ['processDirection', ['../class_key_controller.html#a2bc8381a28e97711a174303ca16d1390', 1, 'KeyController']]],
-        ['processshooting', ['processShooting', ['../class_key_controller.html#ad471cdbcc56efa3f21ac89a088e0f4d6', 1, 'KeyController']]]
-    ];
+var searchData=
+[
+  ['name',['name',['../struct_highscore.html#a39f6f1f5d214f87b2fa39c7678990451',1,'Highscore::name()'],['../struct_levelfile.html#a3694d14f6cebecba85a31004a5978749',1,'Levelfile::name()']]],
+  ['notify',['notify',['../class_subject.html#a82c9c771c8fa4e7e7978bf17b56607d2',1,'Subject']]]
+];

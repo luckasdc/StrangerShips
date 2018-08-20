@@ -1,6 +1,35 @@
-var searchData =
-    [
-        ['update', ['update', ['../class_observer.html#ab80a3ba690100d4d1f3e4ef18dd9705c', 1, 'Observer::update()'], ['../class_active_entity_view.html#a4831d66edd7147db3373fc18fd81a05f', 1, 'ActiveEntityView::update()'], ['../class_passive_entity_view.html#a2326ba919c084d2ed24ad6511628e904', 1, 'PassiveEntityView::update()'], ['../class_world_view.html#a8fee29ec40df36c349f84e1596ec9c2a', 1, 'WorldView::update()']]],
-        ['updatebulletsandobstacles', ['updateBulletsAndObstacles', ['../class_collision_controller.html#abc15871bbf2975f36a8b245662b2fc33', 1, 'CollisionController']]],
-        ['updateentities', ['updateEntities', ['../class_world.html#a5cc73b1aa54db5da01e4004acd4fd8bb', 1, 'World']]]
-    ];
+var searchData=
+[
+  ['save',['save',['../class_settings.html#a29ce634c9b4756dd6bdcec46a83698fb',1,'Settings']]],
+  ['scoresstate',['ScoresState',['../class_scores_state.html',1,'ScoresState'],['../class_scores_state.html#a3b9b07b066feee492403b6308c5803ab',1,'ScoresState::ScoresState()']]],
+  ['secondplayership',['SecondPlayerShip',['../class_second_player_ship.html',1,'SecondPlayerShip'],['../class_second_player_ship.html#a894165cf41a246c53dd9277491cb4441',1,'SecondPlayerShip::SecondPlayerShip()']]],
+  ['secondplayershipview',['SecondPlayerShipView',['../class_second_player_ship_view.html',1,'SecondPlayerShipView'],['../class_second_player_ship_view.html#acb9a90eb97fabe5f54c66248eec24700',1,'SecondPlayerShipView::SecondPlayerShipView()']]],
+  ['settings',['Settings',['../class_settings.html',1,'Settings'],['../class_settings.html#a7868fb72eb4c3e9b62943ab010d02a97',1,'Settings::Settings()']]],
+  ['settings_2ecpp',['Settings.cpp',['../_settings_8cpp.html',1,'']]],
+  ['settings_2eh',['Settings.h',['../_settings_8h.html',1,'']]],
+  ['shiftleft',['shiftLeft',['../class_obstacle.html#ad33202d2c02d2b33c3890950a4c44e02',1,'Obstacle::shiftLeft()'],['../class_sporadic_obstacle.html#a4c7e6608280ec616e0c6b291780284f3',1,'SporadicObstacle::shiftLeft()']]],
+  ['ship',['Ship',['../class_ship.html',1,'Ship'],['../class_ship.html#aec153efb16d1b68f20cc290d90e3fb69',1,'Ship::Ship()']]],
+  ['ship_2ecpp',['Ship.cpp',['../_ship_8cpp.html',1,'']]],
+  ['ship_2eh',['Ship.h',['../_ship_8h.html',1,'']]],
+  ['shipview_2ecpp',['ShipView.cpp',['../_ship_view_8cpp.html',1,'']]],
+  ['shipview_2eh',['ShipView.h',['../_ship_view_8h.html',1,'']]],
+  ['shoot',['shoot',['../class_ship.html#ae1e35600f210a313848caf29618b357b',1,'Ship::shoot()'],['../class_player_ship.html#a57fc0bd594753f0141a79ee8fd83fc66',1,'PlayerShip::shoot()'],['../class_enemy_ship.html#a93ed16403c115c2c8b25b79168c9c802',1,'EnemyShip::shoot()'],['../class_boss_ship.html#ae88b6a34127ac1e03a7a42813eaaab8f',1,'BossShip::shoot()']]],
+  ['singleton',['Singleton',['../class_singleton.html',1,'Singleton&lt; Type &gt;'],['../class_singleton.html#aa72b41a2308c8dd97c9f97753ded124a',1,'Singleton::Singleton()'],['../class_singleton.html#ab1cbcd5b3122ba59ddadf35238530288',1,'Singleton::Singleton(Singleton const &amp;)=delete']]],
+  ['singleton_3c_20stopwatch_20_3e',['Singleton&lt; Stopwatch &gt;',['../class_singleton.html',1,'Singleton&lt; Stopwatch &gt;'],['../class_stopwatch.html#abc6f85aad8332653a976dc16390a0bdc',1,'Stopwatch::Singleton&lt; Stopwatch &gt;()']]],
+  ['singleton_3c_20transformation_20_3e',['Singleton&lt; Transformation &gt;',['../class_singleton.html',1,'Singleton&lt; Transformation &gt;'],['../class_transformation.html#ad02b2174d4bc9cc7404fe0317b80c55d',1,'Transformation::Singleton&lt; Transformation &gt;()']]],
+  ['singletons_2ecpp',['Singletons.cpp',['../_singletons_8cpp.html',1,'']]],
+  ['singletons_2eh',['Singletons.h',['../_singletons_8h.html',1,'']]],
+  ['sporadicobstacle',['SporadicObstacle',['../class_sporadic_obstacle.html',1,'SporadicObstacle'],['../class_sporadic_obstacle.html#a7f6a85d1ed0f0766d3dda5e17fea7d73',1,'SporadicObstacle::SporadicObstacle()']]],
+  ['sporadicobstacleview',['SporadicObstacleView',['../class_sporadic_obstacle_view.html',1,'SporadicObstacleView'],['../class_sporadic_obstacle_view.html#a237959320dcfe0618242ee83dc040e0f',1,'SporadicObstacleView::SporadicObstacleView()']]],
+  ['start',['start',['../class_stopwatch.html#a6d01ecc80c92f1d5210cd9c3eb72883d',1,'Stopwatch']]],
+  ['state',['State',['../class_state.html',1,'']]],
+  ['state_2ecpp',['State.cpp',['../_state_8cpp.html',1,'']]],
+  ['state_2eh',['State.h',['../_state_8h.html',1,'']]],
+  ['statemanager',['StateManager',['../class_state_manager.html',1,'StateManager'],['../class_game_preferences.html#a57e56e9bee12b68332b18a35ebb35249',1,'GamePreferences::stateManager()'],['../class_state_manager.html#a1f30c5e25d1b642feb3230523edc7211',1,'StateManager::StateManager()']]],
+  ['statemanager_2ecpp',['StateManager.cpp',['../_state_manager_8cpp.html',1,'']]],
+  ['statemanager_2eh',['StateManager.h',['../_state_manager_8h.html',1,'']]],
+  ['stopwatch',['Stopwatch',['../class_stopwatch.html',1,'']]],
+  ['subject',['Subject',['../class_subject.html',1,'Subject'],['../class_subject.html#ab4f33719b83034be37c7f8223f1a5e63',1,'Subject::Subject()']]],
+  ['subject_2ecpp',['Subject.cpp',['../_subject_8cpp.html',1,'']]],
+  ['subject_2eh',['Subject.h',['../_subject_8h.html',1,'']]]
+];

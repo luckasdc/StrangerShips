@@ -1,7 +1,9 @@
-var searchData =
-    [
-        ['observer', ['Observer', ['../class_observer.html', 1, 'Observer'], ['../class_observer.html#a179c0538524b51d5de4b244e798caf38', 1, 'Observer::Observer()']]],
-        ['obstacle', ['Obstacle', ['../class_obstacle.html', 1, 'Obstacle'], ['../class_obstacle.html#a2ca1c426c77a3e2763250434ab51dae4', 1, 'Obstacle::Obstacle()']]],
-        ['obstacleview', ['ObstacleView', ['../class_obstacle_view.html', 1, 'ObstacleView'], ['../class_obstacle_view.html#a2bb66db63032b688d36ff058f6bdbb38', 1, 'ObstacleView::ObstacleView()']]],
-        ['overlayview', ['OverlayView', ['../class_overlay_view.html', 1, 'OverlayView'], ['../class_overlay_view.html#adac029ebf4388daed9105da0ff91b24d', 1, 'OverlayView::OverlayView()']]]
-    ];
+var searchData=
+[
+  ['makedecisions',['makeDecisions',['../class_a_i_controller.html#a7e34f7cf8f40b267f90dd7769e35d20b',1,'AIController']]],
+  ['makesprite',['makeSprite',['../class_entity_view.html#aa66212186e8f6e76e35b914e09d29265',1,'EntityView::makeSprite()'],['../class_passive_entity_view.html#a47d1c1fe93ba03d7e9684d2b9ccfeaa9',1,'PassiveEntityView::makeSprite()'],['../class_boss_enemy_ship_view.html#a1faf6808e5d2e4727768623ee4c7b9f7',1,'BossEnemyShipView::makeSprite()']]],
+  ['menustate',['MenuState',['../class_menu_state.html',1,'MenuState'],['../class_menu_state.html#a58a11b03273eea8a5a267fa1342176c2',1,'MenuState::MenuState()']]],
+  ['move',['move',['../class_bullet.html#a806a753cedc47c2b3e1870e6f175cafa',1,'Bullet::move()'],['../class_active_entity.html#a63f10ec4648807639534edf62d2a856d',1,'ActiveEntity::move()'],['../class_ship.html#ae12a6244b3e216263ea2c5f2c9cc3a3f',1,'Ship::move()']]],
+  ['moveawayfrombullet',['moveAwayFromBullet',['../class_a_i_controller.html#a209edf33755e145382141eada2897d7a',1,'AIController']]],
+  ['moverandomdirection',['moveRandomDirection',['../class_enemy_ship.html#a4a9fbf701b3df072490d174e53f9938f',1,'EnemyShip']]]
+];

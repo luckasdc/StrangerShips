@@ -1,6 +1,9 @@
-var searchData =
-    [
-        ['wanderaroundaimlessly', ['wanderAroundAimlessly', ['../class_a_i_controller.html#a6e1fb50f9f09e8a3009c234542c9da55', 1, 'AIController']]],
-        ['world', ['World', ['../class_world.html#a1fc6067fe31da6405bece93c9dbb61ac', 1, 'World::World()=default'], ['../class_world.html#a4b88ccfab724f99c88696458188d49c4', 1, 'World::World(const char *level)']]],
-        ['worldview', ['WorldView', ['../class_world_view.html#aa21287708da9969a5c8ec4f3fb2150f2', 1, 'WorldView']]]
-    ];
+var searchData=
+[
+  ['_7eactiveentity',['~ActiveEntity',['../class_active_entity.html#ab0f82407870337b0c2a4304954d9a00f',1,'ActiveEntity']]],
+  ['_7eentity',['~Entity',['../class_entity.html#aa6ecb9c57b29b60cc49fe44ad4088ecf',1,'Entity']]],
+  ['_7ekeycontroller',['~KeyController',['../class_key_controller.html#a94967b47a4bb49272a26e487cb2a6c39',1,'KeyController']]],
+  ['_7eobserver',['~Observer',['../class_observer.html#a37824643eeaef086de17bba2717d865a',1,'Observer']]],
+  ['_7esingleton',['~Singleton',['../class_singleton.html#aa73e16c97657e5a48a24746c140fa486',1,'Singleton']]],
+  ['_7eworldview',['~WorldView',['../class_world_view.html#a7345ccb7396c4e58077f89a69618823d',1,'WorldView']]]
+];

@@ -1,8 +1,9 @@
-var searchData =
-    [
-        ['makedecisions', ['makeDecisions', ['../class_a_i_controller.html#a7e34f7cf8f40b267f90dd7769e35d20b', 1, 'AIController']]],
-        ['makesprite', ['makeSprite', ['../class_entity_view.html#aa66212186e8f6e76e35b914e09d29265', 1, 'EntityView::makeSprite()'], ['../class_passive_entity_view.html#a47d1c1fe93ba03d7e9684d2b9ccfeaa9', 1, 'PassiveEntityView::makeSprite()']]],
-        ['move', ['move', ['../class_bullet.html#a806a753cedc47c2b3e1870e6f175cafa', 1, 'Bullet::move()'], ['../class_active_entity.html#a63f10ec4648807639534edf62d2a856d', 1, 'ActiveEntity::move()'], ['../class_ship.html#ae12a6244b3e216263ea2c5f2c9cc3a3f', 1, 'Ship::move()']]],
-        ['moveawayfrombullet', ['moveAwayFromBullet', ['../class_a_i_controller.html#a209edf33755e145382141eada2897d7a', 1, 'AIController']]],
-        ['moverandomdirection', ['moveRandomDirection', ['../class_enemy_ship.html#a4a9fbf701b3df072490d174e53f9938f', 1, 'EnemyShip']]]
-    ];
+var searchData=
+[
+  ['launchbossenemy',['launchBossEnemy',['../class_world.html#af17551d14e18bbb1aec2fddbe377afe9',1,'World']]],
+  ['launchsporadicobstacle',['launchSporadicObstacle',['../class_a_i_controller.html#a3a17234f5e2a2fd28a1de2f914dae443',1,'AIController']]],
+  ['level',['Level',['../class_level.html#a5fa303ec69c77e681808d956ee5a0935',1,'Level']]],
+  ['levelentryexception',['LevelEntryException',['../classex_1_1_level_entry_exception.html#a6f409a9e457420953b79130b72836593',1,'ex::LevelEntryException']]],
+  ['levelfileexception',['LevelFileException',['../classex_1_1_level_file_exception.html#a62292064a4c910f330ebd132c4815694',1,'ex::LevelFileException']]],
+  ['loadfromlevel',['loadFromLevel',['../class_world.html#a63c168a7d53ef87b88e6e2f210a9592f',1,'World']]]
+];

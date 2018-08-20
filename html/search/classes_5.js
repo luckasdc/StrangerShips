@@ -1,4 +1,4 @@
-var searchData =
-    [
-        ['keycontroller', ['KeyController', ['../class_key_controller.html', 1, '']]]
-    ];
+var searchData=
+[
+  ['highscore',['Highscore',['../struct_highscore.html',1,'']]]
+];

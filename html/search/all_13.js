@@ -1,6 +1,7 @@
-var searchData =
-    [
-        ['wanderaroundaimlessly', ['wanderAroundAimlessly', ['../class_a_i_controller.html#a6e1fb50f9f09e8a3009c234542c9da55', 1, 'AIController']]],
-        ['world', ['World', ['../class_world.html', 1, 'World'], ['../class_world.html#a2e86d3f142c52ed8192a0a60302f050f', 1, 'World::World()']]],
-        ['worldview', ['WorldView', ['../class_world_view.html', 1, 'WorldView'], ['../class_world_view.html#aa21287708da9969a5c8ec4f3fb2150f2', 1, 'WorldView::WorldView()']]]
-    ];
+var searchData=
+[
+  ['targetinrange',['targetInRange',['../class_a_i_controller.html#ad7062b3d480aaa1aa61b5b681ecf04e8',1,'AIController']]],
+  ['transformation',['Transformation',['../class_transformation.html',1,'']]],
+  ['transformheight',['transformHeight',['../class_transformation.html#a3aca3aa4a538dafc51521cbeaf9b6d0c',1,'Transformation']]],
+  ['transformwidth',['transformWidth',['../class_transformation.html#a1a4bdc27cfd2de072da8c8d96533faa8',1,'Transformation']]]
+];

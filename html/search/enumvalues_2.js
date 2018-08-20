@@ -1,4 +1,4 @@
-var searchData =
-    [
-        ['discarded', ['discarded', ['../namespacenlohmann_1_1detail.html#a90aa5ef615aa8305e9ea20d8a947980fa94708897ec9db8647dfe695714c98e46', 1, 'nlohmann::detail']]]
-    ];
+var searchData=
+[
+  ['left',['Left',['../_entity_8h.html#a224b9163917ac32fc95a60d8c1eec3aaa9d4d8b0b72fc2659da772d761a3c5ecb',1,'Entity.h']]]
+];
