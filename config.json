@@ -47,6 +47,146 @@
         {
             "name": "barry",
             "score": 7
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 3
+        },
+        {
+            "name": "barry",
+            "score": 7
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
+        },
+        {
+            "name": "barry",
+            "score": 0
         }
     ],
     "Levels": [
@@ -59,7 +199,6 @@
             "name": "Level 2"
         }
     ],
-    "azerty": true,
     "font": "../assets/FlappyFont.ttf",
     "height": 900,
     "texture_background": "../assets/bg.png",

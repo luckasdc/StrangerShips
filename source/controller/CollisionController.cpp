@@ -89,18 +89,25 @@ bool CollisionController::circleCollisionTest(Location first, Location second) {
 
 bool CollisionController::circleRectangleCollisionTest(Location circle, Location rectangle, float width, float height, bool inversed) {
     float radius_circle = 0.15;
-
-    // TODO werkt voor boven- en onderkant, niet voor de SporadicObstacles
+    float circleDistance_x;
+    float circleDistance_y;
 
     if (inversed) {
-        float dx = circle.x - std::max(rectangle.x + width, std::min(circle.x, rectangle.x + width + width));
-        float dy = circle.y - std::max(rectangle.y + height, std::min(circle.y, rectangle.y + height + height));
-        return (dx * dx + dy * dy) < (radius_circle * radius_circle);
+        circleDistance_x = abs(circle.x - (rectangle.x + width - width/2));
+        circleDistance_y = abs(circle.y - (rectangle.y + height + height/2));
+    } else {
+        circleDistance_x = abs(circle.x - (rectangle.x + width - width/2));
+        circleDistance_y = abs(circle.y - (rectangle.y ) + height/2);
     }
+    if (circleDistance_x > (width/2 + radius_circle)) { return false; }
+    if (circleDistance_y > (height/2 + radius_circle)) { return false; }
 
-    float dx = circle.x - std::max(rectangle.x - width, std::min(circle.x, rectangle.x + width - width));
-    float dy = circle.y - std::max(rectangle.y - height, std::min(circle.y, rectangle.y + height - height));
-    return (dx * dx + dy * dy) < (radius_circle * radius_circle);
+    if (circleDistance_x <= (width/2)) { return true; }
+    if (circleDistance_y <= (height/2)) { return true; }
+
+    double cornerDistance_sq = pow(circleDistance_x - width/2, 2) + pow(circleDistance_y + height/2, 2);
+
+    return (cornerDistance_sq <= pow(radius_circle, 2));
 }
 
 

@@ -60,6 +60,7 @@ PlayerShip::PlayerShip(World* myWorld) {
 void PlayerShip::shoot() {
     this->_myWorld->addBullet(std::make_shared<Bullet>(false, this->_location));
     this->notify("newBullet");
+
 }
 
 SecondPlayerShip::SecondPlayerShip(World *myWorld) : PlayerShip(myWorld) {
