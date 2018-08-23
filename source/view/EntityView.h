@@ -26,6 +26,8 @@ public:
     EntityView(std::shared_ptr<GamePreferences> preferences, const std::shared_ptr<Entity> _entityPtr)
             : Observer(_entityPtr), _preferences(std::move(preferences)) {};
 
+    virtual ~EntityView();
+
     /**
      * @brief initialises a sprite based on the given filename;
      * @param string path + filename
@@ -54,6 +56,8 @@ public:
      */
     ActiveEntityView(const std::shared_ptr <GamePreferences> &preferences, const std::shared_ptr <ActiveEntity> &entityPtr)
         : EntityView(preferences, entityPtr), _entityPtr(entityPtr) {};
+
+    virtual ~ActiveEntityView();
 
     /**
      * @brief override the Observer function 'update'();
@@ -84,6 +88,8 @@ public:
         this->_width = _entityPtr->get_width();
         this->_height = _entityPtr->get_height();
     };
+
+    virtual ~PassiveEntityView();
 
     /**
      * @brief override the Observer function 'update'();

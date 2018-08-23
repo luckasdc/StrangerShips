@@ -11,6 +11,8 @@ public:
      */
     Obstacle() = default;
 
+    virtual ~Obstacle() = default;
+
     /**
      * @brief shifts an obstacle to the left with the given speed.
      * if the obstacle goes out of field, notify observers to destruct
@@ -34,6 +36,11 @@ public:
      */
     BorderObstacle(float speed, float xValueBottomRightCorner, bool inversed = false);
 
+    /**
+     * @brief default destructor
+     */
+    ~BorderObstacle() override = default;
+
 };
 
 class SporadicObstacle : public Obstacle {
@@ -44,6 +51,11 @@ public:
      * @param xValueBottomRightCorner
      */
     SporadicObstacle(float speed, float xValueBottomRightCorner);
+
+    /**
+     * @brief default destructor
+     */
+    ~SporadicObstacle() override = default;
 
     void shiftLeft() override;
 };

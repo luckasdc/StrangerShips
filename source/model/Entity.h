@@ -16,14 +16,21 @@ class Entity : public Subject {
 
 protected:
       Entity() = default;
-     ~Entity() = default;
+      virtual ~Entity() = default;
 };
 
 
 class ActiveEntity : public Entity {
 public:
+    /**
+     * @brief default constructor
+     */
     ActiveEntity() = default;
-    ~ActiveEntity() = default;
+
+    /**
+     * @brief default destructor
+     */
+    virtual ~ActiveEntity() = default;
 
     /**
      * @brief returns the location of an object in [-3, 3] x [-4, 4] dimensions
@@ -59,6 +66,15 @@ protected:
 
 class PassiveEntity : public Entity {
 public:
+    /**
+     * @brief default constructor
+     */
+    PassiveEntity() = default;
+
+    /**
+     * @brief default destructor, virtual
+     */
+    virtual ~PassiveEntity() = default;
 
     /**
      * @brief returns the bottom left corner of a passive entity.

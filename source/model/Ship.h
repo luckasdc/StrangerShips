@@ -16,6 +16,11 @@ public:
     Ship() = default;
 
     /**
+     * @brief default constructor
+     */
+     virtual ~Ship() = default;
+
+    /**
      * @brief the function that moves a ship. It is the same function for playership
      * as well as enemyship.
      * @param dir
@@ -43,6 +48,11 @@ public:
     PlayerShip(World* myWorld);
 
     /**
+     * @brief default constructor
+     */
+     ~PlayerShip() override = default;
+
+    /**
      * @brief the shoot function, overridden by the virtual shoot function of
      * the Ship class. Will be called in the main game loop by the KeyController.
      */
@@ -61,6 +71,11 @@ public:
     */
     SecondPlayerShip(World *myWorld);
 
+    /**
+     * @brief default destructor
+     */
+    ~SecondPlayerShip() override = default;
+
 };
 
 
@@ -74,6 +89,11 @@ public:
      * using the given WorldPointer.
      */
     EnemyShip(World* myWorld);
+
+    /**
+     * @brief default destructor
+     */
+    ~EnemyShip() override = default;
 
     /**
      * @brief increments the bullet counter, and shoots a bullet in the right direction
@@ -109,6 +129,11 @@ public:
     * using the given WorldPointer.
     */
     BossShip(World* myWorld);
+
+    /**
+     * @brief default destructor
+     */
+    ~BossShip() override = default;
 
     /**
     * @brief increments the bullet counter, and shoots a bullet in the right direction

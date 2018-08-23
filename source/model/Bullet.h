@@ -18,6 +18,8 @@ public:
          */
     Bullet(bool enemyShot, Location location, float speed = 0.1);
 
+    virtual ~Bullet() = default;
+
     /**
      * @brief overrides the virtual move function of ActiveEntity and controls the bullet movement.
      * Bullet can only move left or right, based on friendly or non-friendly fire.

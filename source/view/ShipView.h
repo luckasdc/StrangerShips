@@ -17,6 +17,7 @@ public:
      * @param shared_ptr<playerShip>
      */
     PlayerShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr);
+    ~PlayerShipView() override = default;
 };
 
 
@@ -30,6 +31,8 @@ public:
      */
     SecondPlayerShipView(const std::shared_ptr<GamePreferences> &preferences,
                          const std::shared_ptr<ActiveEntity> &_entityPtr);
+    ~SecondPlayerShipView() override = default;
+
 };
 
 
@@ -41,6 +44,8 @@ public:
      * @param shared_ptr<EnemyShip>
      */
     EnemyShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr);
+    ~EnemyShipView() override = default;
+
 };
 
 
@@ -52,8 +57,9 @@ public:
     * @param shared_ptr<BossEnemyShop>
     */
     BossEnemyShipView(const std::shared_ptr<GamePreferences> &preferences, const std::shared_ptr<ActiveEntity> &_entityPtr);
+    ~BossEnemyShipView() override = default;
 
-    void makeSprite(const std::string &file);
+    void makeSprite(const std::string &file) override;
 };
 
 #endif //STRANGERSHIPS_SHIPVIEW_H

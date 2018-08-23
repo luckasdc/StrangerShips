@@ -25,6 +25,10 @@ void EntityView::draw() {
     this->_preferences->_window->draw(*_sprite);
 }
 
+EntityView::~EntityView() {
+
+}
+
 /*
  * ActiveEntityView
  */
@@ -40,6 +44,10 @@ void ActiveEntityView::update(std::string what) {
 
 const std::shared_ptr<ActiveEntity> &ActiveEntityView::get_entityPtr() const {
     return _entityPtr;
+}
+
+ActiveEntityView::~ActiveEntityView() {
+
 }
 
 /*
@@ -75,4 +83,8 @@ void PassiveEntityView::makeSprite(const std::string &file) {
 
 const std::shared_ptr<PassiveEntity> &PassiveEntityView::get_entityPtr() const {
     return _entityPtr;
+}
+
+PassiveEntityView::~PassiveEntityView() {
+
 }
