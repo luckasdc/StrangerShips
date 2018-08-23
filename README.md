@@ -9,6 +9,8 @@ To play the game, you just need to run the ```run.sh``` script.
 Once the game is built and launched, you'll see the main menu. You can change your settings in the config.json file. 
 Please be careful while changing settings, as the game won't run if it can't be parsed.
 
+You can set your player name in the configfile. If you want to enter multiplayer mode: just change the boolean there. The entered player name will be your team name!
+
 ## How To Play
 You can move the playership using the ``up``, ``down``, ``left``  and ``right``  arrow keys
 and you can use the ``spacebar`` to launch some bullets.   
