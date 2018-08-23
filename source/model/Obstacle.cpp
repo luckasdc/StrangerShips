@@ -44,9 +44,7 @@ SporadicObstacle::SporadicObstacle(float speed, float yValueBottomRightCorner) {
     this->_speed = speed;
     Location loc;
     loc.x = 5;
-    loc.y = yValueBottomRightCorner; //TODO MOET TOP LEFT CORNER WORDEN
-
-    // TODO The sf::IntRect class is a simple utility type that represents a rectangle. Its constructor takes the coordinates of the TOP LEFT CORNER, and the size of the rectangle.
+    loc.y = yValueBottomRightCorner;
     this->_bottomRightCorner = loc;
 
     this->_width = 2.15;
