@@ -14,6 +14,5 @@ int main()
     catch (std::exception& what2) {
         std::cerr << "something went seriously wrong!" << std::endl;
     }
-
     return 0;
 }  
