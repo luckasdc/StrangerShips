@@ -116,6 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aec9ea2fb7e07f6ca941a4e605e250c53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_ship.html#aec9ea2fb7e07f6ca941a4e605e250c53">PlayerShip</a> (<a class="el" href="class_world.html">World</a> *myWorld)</td></tr>
 <tr class="memdesc:aec9ea2fb7e07f6ca941a4e605e250c53"><td class="mdescLeft">&#160;</td><td class="mdescRight">default constructor, initializes all the params in <a class="el" href="_ship_view_8cpp.html">ShipView.cpp</a> using the given WorldPointer.  <a href="#aec9ea2fb7e07f6ca941a4e605e250c53">More...</a><br /></td></tr>
 <tr class="separator:aec9ea2fb7e07f6ca941a4e605e250c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39be667bd2161344d35de1a82c21b2e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_ship.html#a39be667bd2161344d35de1a82c21b2e0">~PlayerShip</a> () override=default</td></tr>
+<tr class="memdesc:a39be667bd2161344d35de1a82c21b2e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">default constructor  <a href="#a39be667bd2161344d35de1a82c21b2e0">More...</a><br /></td></tr>
+<tr class="separator:a39be667bd2161344d35de1a82c21b2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57fc0bd594753f0141a79ee8fd83fc66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player_ship.html#a57fc0bd594753f0141a79ee8fd83fc66">shoot</a> () override</td></tr>
 <tr class="memdesc:a57fc0bd594753f0141a79ee8fd83fc66"><td class="mdescLeft">&#160;</td><td class="mdescRight">the shoot function, overridden by the virtual shoot function of the <a class="el" href="class_ship.html">Ship</a> class. Will be called in the main game loop by the <a class="el" href="class_key_controller.html">KeyController</a>.  <a href="#a57fc0bd594753f0141a79ee8fd83fc66">More...</a><br /></td></tr>
 <tr class="separator:a57fc0bd594753f0141a79ee8fd83fc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,14 +126,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aec153efb16d1b68f20cc290d90e3fb69 inherit pub_methods_class_ship"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship.html#aec153efb16d1b68f20cc290d90e3fb69">Ship</a> ()=default</td></tr>
 <tr class="memdesc:aec153efb16d1b68f20cc290d90e3fb69 inherit pub_methods_class_ship"><td class="mdescLeft">&#160;</td><td class="mdescRight">a basic default constructor, since the real parameters will be set using the constructors of <a class="el" href="class_player_ship.html">PlayerShip</a> and <a class="el" href="class_enemy_ship.html">EnemyShip</a> respectively  <a href="class_ship.html#aec153efb16d1b68f20cc290d90e3fb69">More...</a><br /></td></tr>
 <tr class="separator:aec153efb16d1b68f20cc290d90e3fb69 inherit pub_methods_class_ship"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3d49084ee33e691b6e46bff7b3e134d inherit pub_methods_class_ship"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship.html#ab3d49084ee33e691b6e46bff7b3e134d">~Ship</a> ()=default</td></tr>
+<tr class="memdesc:ab3d49084ee33e691b6e46bff7b3e134d inherit pub_methods_class_ship"><td class="mdescLeft">&#160;</td><td class="mdescRight">default constructor  <a href="class_ship.html#ab3d49084ee33e691b6e46bff7b3e134d">More...</a><br /></td></tr>
+<tr class="separator:ab3d49084ee33e691b6e46bff7b3e134d inherit pub_methods_class_ship"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae12a6244b3e216263ea2c5f2c9cc3a3f inherit pub_methods_class_ship"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ship.html#ae12a6244b3e216263ea2c5f2c9cc3a3f">move</a> (<a class="el" href="_entity_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> dir) override</td></tr>
 <tr class="memdesc:ae12a6244b3e216263ea2c5f2c9cc3a3f inherit pub_methods_class_ship"><td class="mdescLeft">&#160;</td><td class="mdescRight">the function that moves a ship. It is the same function for playership as well as enemyship.  <a href="class_ship.html#ae12a6244b3e216263ea2c5f2c9cc3a3f">More...</a><br /></td></tr>
 <tr class="separator:ae12a6244b3e216263ea2c5f2c9cc3a3f inherit pub_methods_class_ship"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_active_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_active_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_active_entity.html">ActiveEntity</a></td></tr>
 <tr class="memitem:a75480f4e00ef386c197f86d0f5f7ebfb inherit pub_methods_class_active_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_active_entity.html#a75480f4e00ef386c197f86d0f5f7ebfb">ActiveEntity</a> ()=default</td></tr>
+<tr class="memdesc:a75480f4e00ef386c197f86d0f5f7ebfb inherit pub_methods_class_active_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">default constructor  <a href="class_active_entity.html#a75480f4e00ef386c197f86d0f5f7ebfb">More...</a><br /></td></tr>
 <tr class="separator:a75480f4e00ef386c197f86d0f5f7ebfb inherit pub_methods_class_active_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0f82407870337b0c2a4304954d9a00f inherit pub_methods_class_active_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_active_entity.html#ab0f82407870337b0c2a4304954d9a00f">~ActiveEntity</a> ()=default</td></tr>
-<tr class="separator:ab0f82407870337b0c2a4304954d9a00f inherit pub_methods_class_active_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc339889a97df9df4e67b731bb71c3ad inherit pub_methods_class_active_entity"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_active_entity.html#adc339889a97df9df4e67b731bb71c3ad">~ActiveEntity</a> ()=default</td></tr>
+<tr class="memdesc:adc339889a97df9df4e67b731bb71c3ad inherit pub_methods_class_active_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">default destructor  <a href="class_active_entity.html#adc339889a97df9df4e67b731bb71c3ad">More...</a><br /></td></tr>
+<tr class="separator:adc339889a97df9df4e67b731bb71c3ad inherit pub_methods_class_active_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a725dee3c5bf8ce1519c74ce5afe066e2 inherit pub_methods_class_active_entity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_location.html">Location</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_active_entity.html#a725dee3c5bf8ce1519c74ce5afe066e2">getLocation</a> ()</td></tr>
 <tr class="memdesc:a725dee3c5bf8ce1519c74ce5afe066e2 inherit pub_methods_class_active_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the location of an object in [-3, 3] x [-4, 4] dimensions  <a href="class_active_entity.html#a725dee3c5bf8ce1519c74ce5afe066e2">More...</a><br /></td></tr>
 <tr class="separator:a725dee3c5bf8ce1519c74ce5afe066e2 inherit pub_methods_class_active_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,8 +166,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entity')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
 <tr class="memitem:aa28e3afd0766aae4d570ee9ee3c4ae3b inherit pro_methods_class_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aa28e3afd0766aae4d570ee9ee3c4ae3b">Entity</a> ()=default</td></tr>
 <tr class="separator:aa28e3afd0766aae4d570ee9ee3c4ae3b inherit pro_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6ecb9c57b29b60cc49fe44ad4088ecf inherit pro_methods_class_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aa6ecb9c57b29b60cc49fe44ad4088ecf">~Entity</a> ()=default</td></tr>
-<tr class="separator:aa6ecb9c57b29b60cc49fe44ad4088ecf inherit pro_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac479d009ddde62dfb378ca0a70d81307 inherit pro_methods_class_entity"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ac479d009ddde62dfb378ca0a70d81307">~Entity</a> ()=default</td></tr>
+<tr class="separator:ac479d009ddde62dfb378ca0a70d81307 inherit pro_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_active_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_active_entity')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_active_entity.html">ActiveEntity</a></td></tr>
 <tr class="memitem:a02ac4f9a0b85fc1d2a6e4b9b981f67d5 inherit pro_attribs_class_active_entity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_location.html">Location</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_active_entity.html#a02ac4f9a0b85fc1d2a6e4b9b981f67d5">_location</a></td></tr>
 <tr class="separator:a02ac4f9a0b85fc1d2a6e4b9b981f67d5 inherit pro_attribs_class_active_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,6 +194,33 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>default constructor, initializes all the params in <a class="el" href="_ship_view_8cpp.html">ShipView.cpp</a> using the given WorldPointer. </p>
+
+</div>
+</div>
+<a id="a39be667bd2161344d35de1a82c21b2e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39be667bd2161344d35de1a82c21b2e0">&#9670;&nbsp;</a></span>~PlayerShip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PlayerShip::~PlayerShip </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>default constructor </p>
 
 </div>
 </div>
