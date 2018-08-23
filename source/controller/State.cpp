@@ -5,6 +5,7 @@
 #include "../view/WorldView.h"
 #include "GameController.h"
 #include "../firstAid/Settings.h"
+#include "../firstAid/Exception.h"
 
 
 PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _preferences(std::move(preferences)) {
@@ -12,13 +13,13 @@ PlayingState::PlayingState(std::shared_ptr<GamePreferences> preferences) : _pref
 }
 
 void PlayingState::Init() {
+    std::string level = _preferences->_config->get_levels()[_preferences->currentLevel % _preferences->_config->get_levels().size()].file;
     try {
-        std::string level = _preferences->_config->get_levels()[_preferences->currentLevel % _preferences->_config->get_levels().size()].file;
         std::cout << "loading levelfile: " << level << "..." << std::endl;
         this->_world = std::make_shared<World> (level, this->_preferences->_multiplayer, _preferences);  ////
     }
-    catch (const std::exception& e){
-        std::cerr << "This is not a valid Level file! Error given: " << e.what() << std::endl;
+    catch (...){
+        throw ex::LevelFileException(level);
     }
     // Load World and Parse Level:
     this->_view = std::make_shared<WorldView> (_world, _preferences);
@@ -103,14 +104,14 @@ void MenuState::Init() {
     std::unique_ptr<sf::Texture> buttontexture(new sf::Texture);
     try {
         if (!texture->loadFromFile(_preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
-            throw std::runtime_error("Could not load texture from file");
+            throw ex::ResourceException(_preferences->_config->get_texture_background());
         }
         if (!buttontexture->loadFromFile(_preferences->_config->get_texture_playbutton())){
-            throw std::runtime_error("Could not load texture from file");
+            throw ex::ResourceException(_preferences->_config->get_texture_playbutton());
         }
     }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error: " << e.what() << std::endl;
+    catch (...) {
+        throw ex::ResourceException(_preferences->_config->get_texture_background() + _preferences->_config->get_texture_playbutton());
     }
     // transfer ownership of texture to MenuState
     this->_BgTexture = std::move(texture);
@@ -172,24 +173,24 @@ void ScoresState::Init() {
 
     try {
         if (!texture->loadFromFile(_preferences->_config->get_texture_background(),sf::IntRect(0, 0, _preferences->width, _preferences->height))){
-            throw std::runtime_error("Could not load texture from file");
+            throw ex::ResourceException(_preferences->_config->get_texture_background());
         }
 
         if (_won) {
             if (!_GOTitleTexture->loadFromFile(_preferences->_config->get_texture_youwontitle())){
-                throw std::runtime_error("Could not load texture from file");
+                throw ex::ResourceException(_preferences->_config->get_texture_youwontitle());
             }
         } else {
             if (!_GOTitleTexture->loadFromFile(_preferences->_config->get_texture_gameovertitle())){
-                throw std::runtime_error("Could not load texture from file");
+                throw ex::ResourceException(_preferences->_config->get_texture_gameovertitle());
             }
         }
         if (!_retryButtonTexture->loadFromFile(_preferences->_config->get_texture_playbutton())){
-            throw std::runtime_error("Could not load texture from file");
+            throw ex::ResourceException(_preferences->_config->get_texture_playbutton());
         }
     }
-    catch (std::runtime_error& e) {
-        std::cerr << "Fatal error: " << e.what() << std::endl;
+    catch (...) {
+        throw ex::ResourceException("scores state files");
     }
 
     // transfer ownership of texture to MenuState
@@ -205,7 +206,11 @@ void ScoresState::Init() {
     _retryButton->setPosition(sf::Vector2f((_preferences->width / 2) - (_retryButton->getGlobalBounds().width / 2), _GOContainer->getPosition().y + _GOContainer->getGlobalBounds().height + (_retryButton->getGlobalBounds().height * 0.2)));
 
     std::string scoretext = "Your score is: \n \n" + std::to_string(_score);
-    _font.loadFromFile("../assets/" + _preferences->_config->get_font());
+    try {
+        _font.loadFromFile(_preferences->_config->get_font());
+    } catch (...) {
+        ex::ResourceException(_preferences->_config->get_font());
+    }
     _scoreText.setFont(_font);
     _scoreText.setString(scoretext);
     _scoreText.setCharacterSize(56);
