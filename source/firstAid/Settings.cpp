@@ -32,6 +32,8 @@ void Settings::parseSettings(std::string filename) {
         _height = j["height"].get<int>();
         entry = "_username";
         _username = j["username"].get<std::string>();
+        entry = "_multiplayer";
+        _multiplayer = j["multiplayer"].get<bool>();
 
         entry = "_texture_playership";
         _texture_playership = j["texture_playership"].get<std::string>();
@@ -97,6 +99,7 @@ bool Settings::save(){
     j["height"] = _height;
     j["username"] = _username;
     j["font"] = _font;
+    j["multiplayer"] = _multiplayer;
 
     j["texture_playership"] = _texture_playership;
     j["texture_bossbird"] = _texture_bossbird;
@@ -218,6 +221,10 @@ const std::string &Settings::get_username() const {
 
 const std::string &Settings::get_texture_bossbird() const {
     return _texture_bossbird;
+}
+
+bool Settings::is_multiplayer() const {
+    return _multiplayer;
 }
 
 

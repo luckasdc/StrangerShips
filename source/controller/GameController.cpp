@@ -13,6 +13,7 @@ Game::Game(const std::string &configfile) {
     this->_preferences = std::make_shared<GamePreferences>(_config->get_width(), _config->get_height());
     _preferences->width = _config->get_width();
     _preferences->height = _config->get_height();
+    _preferences->_multiplayer = _config->is_multiplayer();
     _preferences->_config = _config;
 
     this->_preferences->stateManager = std::make_unique<StateManager>();
