@@ -8,7 +8,6 @@ int main()
         Game game("../config.json");
         game.run();
     }
-
     catch (ex::Exception& what){
         std::cerr << "Gradius error: " << what.what() << std::endl;
     }
